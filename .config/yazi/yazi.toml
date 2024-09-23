@@ -1,0 +1,13 @@
+# yazi.toml
+
+[manager]
+# Show hidden files
+show_hidden = true
+# Display directories first
+sort_dir_first = true
+# Default sort method to extension
+sort_by = "extension"
+# Display file size
+linemode = "size"
+# Show symlinks
+show_symlink = true
