@@ -1,0 +1,23 @@
+return {
+  -- {
+  --   'benlubas/molten-nvim',
+  --   version = '^1.0.0',
+  --   build = ':UpdateRemotePlugins',
+  --   init = function()
+  --     vim.g.molten_image_provider = 'image.nvim'
+  --     vim.g.molten_output_win_max_height = 20
+  --     vim.g.python3_host_prog = vim.fn.expand '~/school/2024/comp 309/venv/bin/python3'
+  --   end,
+  --   config = function()
+  --     vim.keymap.set('n', '<leader>ip', function()
+  --       local venv = os.getenv 'VIRTUAL_ENV'
+  --       if venv ~= nil then
+  --         venv = string.match(venv, '/.+/(.+)')
+  --         vim.cmd(('MoltenInit %s'):format(venv))
+  --       else
+  --         vim.cmd 'MoltenInit python3'
+  --       end
+  --     end, { desc = 'Initialize Molten for python3', silent = true })
+  --   end,
+  -- },
+}

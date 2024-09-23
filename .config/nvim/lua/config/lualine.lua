@@ -1,0 +1,30 @@
+-- require('lualine').setup {
+--   options = {
+--     icons_enabled = true,
+--     theme = 'iceberg_dark',
+--     globalstatus = true,
+--     component_separators = { left = ' ', right = ' ' },
+--     section_separators = { left = ' ', right = ' ' },
+--   },
+--   sections = {
+--     lualine_a = {
+--       {
+--         'mode',
+--         fmt = function(str)
+--           return str:sub(1, 1)
+--         end,
+--       },
+--     },
+--     lualine_b = { { 'buffers', show_filename_only = true, show_modified_status = true, mode = 0 } },
+--     -- lualine_b = { 'filename' },
+--     lualine_c = { 'searchcount' },
+--     lualine_x = {},
+--     lualine_y = { 'progress' },
+--     lualine_z = { 'diagnostics', 'branch' },
+--   },
+--   inactive_sections = {},
+--   tabline = {},
+--   winbar = {},
+--   inactive_winbar = {},
+--   extensions = {},
+-- }
