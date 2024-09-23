@@ -88,6 +88,7 @@ return {
         prettier = {},
         prettierd = {},
         cmake = {},
+				marksman = {}
       }
 
       -- Others to install
