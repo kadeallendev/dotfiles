@@ -85,8 +85,8 @@ function X.set_defaults(client, bufnr)
     end, 'Lsp Finder')
   end
 
-  -- Search workplace symbols
-  if cap.workplaceSymbolProvider then
+  -- Search workspace symbols
+  if cap.workspaceSymbolProvider then
     buf_set_keymap('n', '<leader>/S', function()
       require('fzf-lua').lsp_workspace_symbols()
     end, 'Search workplace symbols')

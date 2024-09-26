@@ -9,6 +9,7 @@ config.color_scheme = "rose-pine"
 -- Font
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 14
+config.harfbuzz_features = { "calt=0" }
 
 -- UI
 config.enable_tab_bar = false
