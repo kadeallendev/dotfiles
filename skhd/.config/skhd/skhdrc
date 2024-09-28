@@ -14,3 +14,6 @@ alt - o : open -a /Applications/Obsidian.app/Contents/MacOS/Obsidian
 
 # Preview
 alt - p : open -a /System/Applications/Preview.app/Contents/MacOS/Preview
+
+# Calendar
+alt - c : open -a /System/Applications/Calendar.app/Contents/MacOS/Calendar
