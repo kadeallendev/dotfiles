@@ -111,6 +111,13 @@ function X.set_defaults(client, bufnr)
     })
   end
 
+  -- if cap.inlayHintProvider then
+  --   vim.lsp.inlay_hint()
+  --   buf_set_keymap('n', '<leader>lh', function()
+  --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { 0 })
+  --   end)
+  -- end
+
   -- Ignore warnings
   local ft = vim.bo[bufnr].filetype
   if ft == 'sh' or ft == 'lua' then
