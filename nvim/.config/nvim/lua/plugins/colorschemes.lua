@@ -19,8 +19,14 @@ return {
     config = function()
       require('cyberdream').setup {
         transparent = true,
+        italic_comments = false,
+        terminal_colors = false,
         extensions = {
-          telescope = true,
+          telescope = false,
+          fzflua = false,
+          gitsigns = true,
+          lazy = true,
+          cmp = true,
         },
       }
     end,
