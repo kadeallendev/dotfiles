@@ -37,6 +37,7 @@ return {
       require('spellwarn').setup()
 
       local lspconfig = require 'lspconfig'
+      lspconfig.server_aliases()
       local keymaps = require 'plugins.lsp.keymaps'
 
       -- Lsp config
@@ -81,14 +82,16 @@ return {
         bashls = require 'plugins.lsp.servers.bashls'(on_attach),
         gopls = require 'plugins.lsp.servers.gopls'(on_attach),
         clangd = require 'plugins.lsp.servers.clangd'(on_attach),
-        lua_ls = {},
+        lua_ls = {
+          inlay_hints = { enabled = true },
+        },
         rust_analyzer = {},
         templ = {},
         pyright = {},
         prettier = {},
         prettierd = {},
         cmake = {},
-				marksman = {}
+        marksman = {},
       }
 
       -- Others to install
