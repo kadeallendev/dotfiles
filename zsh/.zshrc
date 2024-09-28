@@ -38,12 +38,16 @@ export PATH="$PATH:/Users/kadeallen/Library/Python/3.9/bin"
 export EDITOR=nvim
 export TERM=xterm-256color
 
+# Ledger file
+export LEDGER_FILE=/Users/kadeallen/vault/areas/ledger/ledger.journal
+
 # Aliases
 # tmux
 alias tls="tmux ls"
 alias tn="tmux new -s"
 alias ta="tmux attach -t"
 alias tks="tmux kill-session -t"
+
 
 # Home dir
 alias ~="cd ~"
@@ -80,6 +84,9 @@ alias py="python3"
 
 #java
 alias java22="/opt/homebrew/Cellar/openjdk/22.0.2/bin/java"
+
+# List downloads
+alias lsd="exa ~/downloads -Flr --sort=created"
 
 # Fzf shit
 export FZF_ALT_C_OPTS="
