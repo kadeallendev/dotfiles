@@ -38,6 +38,9 @@ export PATH="$PATH:/Users/kadeallen/Library/Python/3.9/bin"
 export EDITOR=nvim
 export TERM=xterm-256color
 
+# PJ file
+export PJ_FILE=/Users/kadeallen/.pj
+
 # Ledger file
 export LEDGER_FILE=/Users/kadeallen/vault/areas/ledger/ledger.journal
 
@@ -147,6 +150,9 @@ cd() {
 joinpdf() {
     #/System/Library/Automator/Combine PDF Pages.action/Contents/MacOS/join -o output.pdf files.pdf
 }
+
+# Source my scripts
+source ~/.local/scripts/pj
 
 
 

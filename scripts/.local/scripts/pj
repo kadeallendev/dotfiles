@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+#######################################
+# Simple Project Manager.
+#
+# Consists of a file at $PJ_FILE (~/.pj), containing directories of projects.
+# Calling `pj` with no arguments uses fzf to fuzzy find a project, and cd's into it.
+# The `add` command adds the given directory to the project list, skipping duplicates.
+# Globals:
+#   PJ_FILE The file of project directories
+# Arguments:
+#   COMMAND: only add right now
+#######################################
+function pj() {
+	# Check PJ file variable
+	if [[ -z ${PJ_FILE+x} ]]; then
+		echo "PJ_FILE variable is not set"
+		return 1
+	fi
+
+	# If the file doesn't exist, create it
+	if [[ ! -f PJ_FILE ]]; then
+		touch ~/.pj
+	fi
+
+	# If no arguments are given, fuzzy find project and cd into it
+	if [[ "$#" -eq 0 ]]; then
+		builtin cd "$(cat $PJ_FILE | fzf)"
+		return 0
+	fi
+
+	# If 'add' command was used, add the given directory to PJ_FILE
+	if [[ "$1" = "add" && "$#" -eq 2 ]]; then
+		PROJECT=$(realpath "$2")
+		# Check if project already exists in file
+		if grep -q -F "$PROJECT" "$PJ_FILE"; then
+			echo "$PROJECT already in PJ file"
+			return 0
+		fi
+
+		echo $PROJECT >> $PJ_FILE
+		return 0
+	fi
+
+	# Something other than the add command was passed
+	return 1
+}
