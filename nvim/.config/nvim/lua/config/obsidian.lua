@@ -63,10 +63,11 @@ require('obsidian').setup {
 
 -- Grep in vault
 vim.keymap.set('n', '<leader>os', '<CMD>ObsidianSearch<CR>', { desc = 'Grep search in notes in vault' })
-vim.keymap.set('n', '<leader>vs', '<cmd>ObsidianSearch<CR>', { desc = 'Grep search in vault' })
+vim.keymap.set('n', '<leader>vg', '<cmd>ObsidianSearch<CR>', { desc = 'Grep search in vault' })
 
 -- Search notes
-vim.keymap.set('n', '<leader>oq', '<CMD>ObsidianQuickSwitch<CR>', { desc = 'Quick search notes in vault' })
+vim.keymap.set('n', '<leader>vq', '<CMD>ObsidianQuickSwitch<CR>', { desc = 'Quick search notes in vault' })
+vim.keymap.set('n', '<leader>v.', '<CMD>ObsidianQuickSwitch<CR>', { desc = 'Quick search notes in vault' })
 
 -- Open obsidian
 vim.keymap.set('n', '<leader>oO', '<CMD>ObsidianOpen<CR>', { desc = 'Open note in obsidian' })
@@ -78,7 +79,7 @@ vim.keymap.set('v', '<leader>ol', '<CMD>ObsidianLink<CR>', { desc = 'Create link
 vim.keymap.set('n', '<leader>or', '<CMD>ObsidianRename<CR>', { desc = 'Rename note' })
 
 -- Insert template
-vim.keymap.set('n', '<leader>ot', '<CMD>ObsidianTemplate<CR>', { desc = 'Insert template' })
+vim.keymap.set('n', '<leader>vt', '<CMD>ObsidianTemplate<CR>', { desc = 'Insert template' })
 
 -- Create note
 vim.keymap.set('n', '<leader>on', '<CMD>ObsidianNew<CR>', { desc = 'Create new obsidian note' })

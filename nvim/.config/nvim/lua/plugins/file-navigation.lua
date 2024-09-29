@@ -1,5 +1,5 @@
--- Better directory navigation and editing
 return {
+  -- Oil, edit directories like buffers
   {
     'stevearc/oil.nvim',
     dependencies = {
@@ -16,6 +16,7 @@ return {
         },
         keymaps = {
           ['<C-h>'] = false,
+          ['<C-l>'] = false,
           ['<'] = 'actions.parent',
           ['<C-v>'] = 'actions.select_vsplit',
           ['q'] = 'actions.close',
@@ -25,5 +26,22 @@ return {
 
       vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
     end,
+  },
+  -- Yazi
+  {
+    'mikavilpas/yazi.nvim',
+    event = 'VeryLazy',
+    keys = {
+      {
+        '<leader>-',
+        '<CMD>Yazi cwd<CR>',
+        desc = 'Open yazi at cwd',
+      },
+      {
+        '<leader>_',
+        '<CMD>Yazi<CR>',
+        desc = 'Open yazi at the current file',
+      },
+    },
   },
 }

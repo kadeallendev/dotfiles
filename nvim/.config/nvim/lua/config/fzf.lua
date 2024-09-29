@@ -13,9 +13,11 @@ fzf.setup {
       ['CTRL-Q'] = 'select-all+accept',
     },
   },
+  fzf_colors = true,
   winopts = {
     height = 0.7, -- Default 0.85
     width = 0.7, -- Default 0.80
+    border = 'single',
     preview = {
       horizontal = 'right:55%', -- Default right:60%
       title_pos = 'left', -- Default center
@@ -34,6 +36,7 @@ fzf.setup {
     cwd_prompt_shorten_val = 3, -- Shorten each folder to 3 characters
   },
   grep = {
+    rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
     winopts = {
       width = 0.8,
       height = 0.75,

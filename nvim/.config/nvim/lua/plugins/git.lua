@@ -20,12 +20,11 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
+      -- 'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
     },
     event = 'VeryLazy',
-    config = function()
-      require 'config.neogit'
-    end,
+    config = true,
   },
 
   -- Branch viewer
