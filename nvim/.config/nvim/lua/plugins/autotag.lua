@@ -1,5 +1,5 @@
--- Auto xml-style tags
 return {
+  -- Provides auto XML-style tag completion
   {
     'windwp/nvim-ts-autotag',
     requries = {

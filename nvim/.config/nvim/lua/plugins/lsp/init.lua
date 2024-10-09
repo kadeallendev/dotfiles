@@ -63,6 +63,15 @@ return {
       vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.hover, border)
       vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, border)
 
+      -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_public_diagnostics, {
+      --   signs = {
+      --     severity_limit = 'Hint',
+      --   },
+      --   virtual_text = {
+      --     severity_limit = 'Error',
+      --   },
+      -- })
+
       -- Capabilities
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       if pcall(require, 'cmp_nvim_lsp') then
@@ -82,6 +91,20 @@ return {
         bashls = require 'plugins.lsp.servers.bashls'(on_attach),
         gopls = require 'plugins.lsp.servers.gopls'(on_attach),
         clangd = require 'plugins.lsp.servers.clangd'(on_attach),
+        omnisharp = {
+          cmd = { '/Users/kadeallen/.local/share/lsp/omnisharp/run' },
+          -- cmd = { 'dotnet', '/Users/kadeallen/.local/share/nvim/mason/packages/omnisharp/libexec/Omnisharp.dll' },
+          -- settings = {
+          --   FormattingOptions = {
+          --     EnableEditorConfigSupport = true,
+          --     OrganizeImports = true,
+          --   },
+          -- },
+          -- MsBuild = {
+          --   LoadProjectsOnDemand = nil,
+          -- },
+        },
+        -- omnisharp_mono = {},
         lua_ls = {
           inlay_hints = { enabled = true },
         },

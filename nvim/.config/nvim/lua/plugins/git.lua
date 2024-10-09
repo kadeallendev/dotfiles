@@ -24,7 +24,10 @@ return {
       'ibhagwan/fzf-lua',
     },
     event = 'VeryLazy',
-    config = true,
+    config = function()
+      require('neogit').setup {}
+      vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<CR>', { desc = 'Neogit' })
+    end,
   },
 
   -- Branch viewer

@@ -1,5 +1,5 @@
--- Help with commenting
 return {
+  -- Commenting functionality
   {
     'numToStr/Comment.nvim',
     event = 'InsertEnter',

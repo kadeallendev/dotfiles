@@ -86,8 +86,36 @@ set ffs=unix,dos,mac
 " Always show the status line
 set laststatus=2
 
+" set statusline=\ %F%m%r%h\ %w\ \ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
 " Format the status line
-set statusline=\ %F%m%r%h\ %w\ \ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" Create highlight group
+highlight StatusLineCWD guifg=#5ea1ff gui=bold
+function! StatusLine()
+  let cwd = getcwd()
+  let home = expand('~')
+  let full_fname = expand('%:p')
+
+  " Replace home directory with ~
+  if stridx(cwd, home) == 0
+    let cwd = substitute(cwd, home, '~', '')
+  endif
+
+  if stridx(full_fname, home) == 0
+    let full_fname = substitute(full_fname, home, '~', '')
+  endif
+
+  " Replace cwd in full_fname if it's a subdirectory of cwd
+  if stridx(full_fname, cwd) == 0
+    let relative_fname = full_fname[len(cwd) + 1:]
+
+    return '%<' . '%h' . '%#StatusLineCWD#' . cwd . '/' . '%*' . relative_fname . ' ' . '%m' . '%=' . '%y ' . '(%l,%c%V)' . ' ' . '%P'
+  else
+    return full_fname
+  endif
+endfunction
+
+set statusline=%!StatusLine()
 
 " --------
 " Backups

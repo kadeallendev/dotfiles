@@ -1,32 +1,41 @@
 set -x
+
 # Homebrew setup
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Set zinit directory
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# -----------------
+# PLUGINS
+# -----------------
 
-# Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
+# TODO: Deal with sheldon
+# eval "$(sheldon source)"
 
-# Add zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-# zinit light Aloxaf/fzf-tab
-
-# Load completions
-autoload -U compinit && compinit
-zinit cdreplay -q
+# # Set zinit directory
+# ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+#
+# # Load zinit
+# source "${ZINIT_HOME}/zinit.zsh"
+#
+# # Add zsh plugins
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+# # zinit light Aloxaf/fzf-tab
+#
+# # Load completions
+# autoload -U compinit && compinit
+# zinit cdreplay -q
 
 # Variables
 # Stop homebrew always updating before installing package
 export HOMEBREW_NO_AUTO_UPDATE=1
+
 # Go path
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
 # psql
 export PATH="$PATH:/opt/homebrew/opt/postgresql@16/bin"
 # Temporary binaries
@@ -34,6 +43,9 @@ export PATH="$PATH:/tmp/bin"
 
 # Python stuff, mainly for mdformat
 export PATH="$PATH:/Users/kadeallen/Library/Python/3.9/bin"
+
+# Add PDFLatex to path
+export PATH="$PATH:/Library/Tex/texbin"
 
 export EDITOR=nvim
 export TERM=xterm-256color
@@ -56,8 +68,10 @@ alias tks="tmux kill-session -t"
 alias ~="cd ~"
 
 # Exa
-alias ls="exa -Fl --sort=ext"
-alias lsa="exa -Fa --sort=ext"
+# alias ls="exa -Fl --sort=ext"
+alias ls="eza -l --sort=ext"
+alias lsa="eza -a --sort=ext"
+# alias lsa="exa -Fa --sort=ext"
 
 # Uni
 alias cdtri="cd ~/School/2024/"
@@ -81,15 +95,14 @@ alias envim="nvim ~/.config/nvim"
 
 # Auto cd ..
 alias ..="cd .."
-
-# Python
-alias py="python3"
+alias ...="cd ../.."
+alias ....="cd ../../.."
 
 #java
 alias java22="/opt/homebrew/Cellar/openjdk/22.0.2/bin/java"
 
 # List downloads
-alias lsd="exa ~/downloads -Flr --sort=created"
+alias lsd="eza ~/downloads -lr --sort=created"
 
 # Fzf shit
 export FZF_ALT_C_OPTS="
@@ -117,20 +130,10 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-# zstyle ':completion:*' menu no
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
 
-# Shell integrations
-eval "$(fzf --zsh)"
-
-# Get go makefile
-gomake() {
-    # makefile_path="~/go/template-makefile"
-    # current_path=$(pwd)
-    # new_path=$current_path/Makefile
-    cp ~/go/template-makefile ./Makefile
-}
 
 # Custom cd method to use fzf
 cd() {
@@ -155,14 +158,25 @@ joinpdf() {
 source ~/.local/scripts/pj
 
 
-
-alias "initvenv"=python3 -m venv venv && source venv/bin/activate
-
 # #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # export SDKMAN_DIR="$HOME/.sdkman"
 # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# Shell integrations
+eval "$(fzf --zsh)"
+
 # Load starship prompt
 eval "$(starship init zsh)"
+
+# Load syntax highlighting
+source $(brew --prefix zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Load zsh completions
+fpath=($(brew --prefix zsh-completions)/share/zsh-completions $fpath)
+autoload -U compinit && compinit
+
+# Load ZSH auto suggestions
+source $(brew --prefix zsh-autosuggestions)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 set +x

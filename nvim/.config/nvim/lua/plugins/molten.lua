@@ -1,9 +1,5 @@
 return {
   {
-    'willothy/wezterm.nvim',
-    config = true,
-  },
-  {
     'benlubas/molten-nvim',
     version = '^1.0.0',
     build = ':UpdateRemotePlugins',
@@ -30,62 +26,6 @@ return {
       -- vim.keymap.set('n', '<leader>pe', ':MoltenReevaluateCell<CR>', { desc = 'Molten reevaluate cell', silent = true })
       vim.keymap.set('v', '<leader>pv', ':MoltenEvaluateVisual<CR>', { desc = 'Molten evaluate visual', silent = true })
       vim.keymap.set('n', '<leader>pl', ':MoltenEvaluateLine<CR>', { desc = 'Molten evaluate line', silent = true })
-    end,
-  },
-  {
-    'GCBallesteros/jupytext.nvim',
-    config = function()
-      require('jupytext').setup {
-        style = 'markdown',
-        output_extension = 'md',
-        force_ft = 'markdown',
-      }
-    end,
-  },
-  {
-    'quarto-dev/quarto-nvim',
-    ft = { 'quarto', 'markdown' },
-    dependencies = {
-      'jmbuhr/otter.nvim',
-      'nvim-treesitter/nvim-treesitter',
-    },
-    config = function()
-      require('quarto').setup {
-        lspFeatures = {
-          languages = { 'python' },
-          chunks = 'all',
-          diagnostics = {
-            enabled = true,
-            triggers = { 'BufWritePost' },
-          },
-          completion = {
-            enabled = true,
-          },
-        },
-        -- keymap = {
-        -- 	hover = "K",
-        -- 	definition = "gd",
-        -- 	rename = "<leader>lr",
-        -- 	references = "gr",
-        -- 	format = "<leader>lf"
-        -- },
-        codeRunner = {
-          enabled = true,
-          default_method = 'molten',
-        },
-      }
-
-      local runner = require 'quarto.runner'
-      vim.keymap.set('n', '<leader>pc', runner.run_cell, { desc = 'Quarto run cell', silent = true })
-      vim.keymap.set('n', '<leader>pr', runner.run_all, { desc = 'Quarto run all', silent = true })
-      vim.keymap.set('n', '<leader>pa', runner.run_above, { desc = 'Quarto run cell and above', silent = true })
-
-      vim.api.nvim_create_autocmd({ 'FileType' }, {
-        pattern = { '.md', '.py' },
-        callback = function()
-          require('quarto').activate()
-        end,
-      })
     end,
   },
 }
