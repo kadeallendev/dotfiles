@@ -24,8 +24,8 @@ require('lazy').setup({ import = 'plugins' }, {
       'matchparen', -- Same as matchit
       'netrwPlugin', -- We don't use netrw
       'tarPlugin', -- Editing tar shit
-      'tohtml', -- Converts buffer to HTML
-      'tutor', -- Vim Tutor
+      -- 'tohtml', -- Converts buffer to HTML
+      -- 'tutor', -- Vim Tutor
       'zipPlugin', -- Zip files
     },
   },

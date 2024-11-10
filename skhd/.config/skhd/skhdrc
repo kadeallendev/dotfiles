@@ -1,7 +1,8 @@
 # APPS #
-#
-# Arc
-alt - a : open -a /Applications/Arc.app/Contents/MacOS/Arc
+
+# Firefox
+# Used to use Arc so 'a' worked
+alt - a : open -a /Applications/Firefox.app/Contents/MacOS/firefox
 
 # Terminal (WezTerm)
 alt - t : open -a /Applications/WezTerm.app/Contents/MacOS/wezterm-gui
@@ -17,3 +18,7 @@ alt - p : open -a /System/Applications/Preview.app/Contents/MacOS/Preview
 
 # Calendar (schedule)
 alt - s : open -a /System/Applications/Calendar.app/Contents/MacOS/Calendar
+
+# Yazi
+# NOTE: doesn't work
+ctrl + alt - y : /Applications/WezTerm.app/Contents/MacOS/wezterm start -e yazi
