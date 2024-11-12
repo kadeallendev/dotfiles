@@ -1,32 +1,67 @@
-scan_timeout = 10
+# Get editor completions
+"$schema" = 'https://starship.rs/config-schema.json'
 
-command_timeout =100 
+add_newline = false
+
+scan_timeout = 10
+command_timeout = 25
+
 format = """
+
+($status\n)\
+($cmd_duration\n)\
+
+$hostname\n\
 $username\
-$hostname\
 $directory\
+
 $git_branch\
+$git_commit\
 $git_state\
 $git_status\
-$cmd_duration\
-$line_break\
+$dotnet\
+$c\
+$go\
+$elixir\
+$rust\
+$java\
+$python\
+$nodejs\
+$nix_shell\
+$container\
+$docker_context\
+$direnv\
+
+\n\
 $character"""
 
-[directory]
-style = "bold green"
-truncate_to_repo = true
-truncation_symbol = '.../'
+[status]
+style = "bold #ff6e5e"
+format = 'exited with [$status]($style) [$common_meaning$signal_name](#7b8496)'
+disabled = false
 
+[cmd_duration]
+style = "bold #ffbd5e"
+min_time = 1_000
+show_milliseconds = true
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style)'
+style = '#7b8496'
+
+[directory]
+style = "bold #5ea1ff"
+truncate_to_repo = true
 
 [character]
 format = "$symbol "
-success_symbol = "[❯](purple)"
-error_symbol = "[❯](red)"
+success_symbol = "[❯](#ffffff)"
+error_symbol = "[❯](#ff6e5e)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-format = "[$symbol$branch]($style)"
-style = "blue"
+format = "on [$branch]($style)"
+style = "#bd5eff"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -43,6 +78,48 @@ stashed = "≡"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
+# Languages
+
+[dotnet]
+format = "[dotnet ($version)]($style)"
+style = "#7b8496"
+
+[c]
+format = "[c ($version)]($style)"
+style = "#7b8496"
+
+[golang]
+format = "[go ($version)]($style)"
+style = "#7b8496"
+
+[elixir]
+format = "[elixir ($version)]($style)"
+style = "#7b8496"
+
+[java]
+format = "[java ($version)]($style)"
+style = "#7b8496"
+
+[rust]
+format = "[rust ($version)]($style)"
+style = "#7b8496"
+
+[python]
+format = "[python ($version)]($style)"
+style = "#7b8496"
+
+[nodejs]
+format = "[node ($version)]($style)"
+style = "#7b8496"
+
+[nix_shell]
+format = "[nix-shell ($state\\($name\\))]($style)"
+style = "#7b8496"
+
+[container]
+format = "[container ($name)]($style)"
+style = "#7b8496"
+
+[docker_context]
+format = "[docker ($context)]($style)"
+style = "#7b8496"
