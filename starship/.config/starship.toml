@@ -9,10 +9,10 @@ command_timeout = 25
 format = """
 
 ($status\n)\
-($cmd_duration\n)\
+($cmd_duration\n\n)\
 
-$hostname\n\
-$username\n\
+($hostname\n)\
+($username\n)\
 $directory\
 
 $git_branch\
