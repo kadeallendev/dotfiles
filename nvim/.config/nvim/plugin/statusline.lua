@@ -20,6 +20,11 @@ function StatusLine()
     full_fname = full_fname:gsub(home, '~')
   end
 
+  local path_sep = '/'
+  if not vim.fn.has 'macunix' then
+    path_sep = '\\'
+  end
+
   if full_fname:find(cwd, 1, true) then
     local relative_fname = full_fname:sub(#cwd + 2)
 
@@ -28,7 +33,7 @@ function StatusLine()
       '%h',
       '%#StatusLineCWD#',
       cwd,
-      '/',
+      path_sep,
       '%*',
       relative_fname,
       ' ',
