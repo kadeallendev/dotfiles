@@ -51,6 +51,11 @@ export PATH="$PATH:/Library/Tex/texbin"
 export DOTNET_ROOT="/usr/local/share/dotnet"
 export PATH="$PATH:$DOTNET_ROOT"
 
+# Add Mono
+
+MONO_BIN="/Library/Frameworks/Mono.framework/Versions/Current/bin"
+export PATH="$PATH:$MONO_BIN"
+
 export EDITOR=nvim
 export TERM=xterm-256color
 

@@ -92,6 +92,9 @@ return {
         bashls = require 'plugins.lsp.servers.bashls'(on_attach),
         gopls = require 'plugins.lsp.servers.gopls'(on_attach),
         clangd = require 'plugins.lsp.servers.clangd'(on_attach),
+        omnisharp = {
+          -- cmd = { 'ls' },
+        },
         -- omnisharp = {
         --   cmd = { '/Users/kadeallen/.local/share/lsp/omnisharp/run' },
         --   -- cmd = { 'dotnet', '/Users/kadeallen/.local/share/nvim/mason/packages/omnisharp/libexec/Omnisharp.dll' },
