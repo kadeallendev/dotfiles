@@ -1,0 +1,126 @@
+{
+	// --- EDITOR ---
+	"editor.fontSize": 16,
+	"editor.formatOnType": false,
+	"editor.cursorBlinking": "expand",
+	"editor.cursorWidth": 3,
+	"editor.fontLigatures": false,
+	"editor.lineHeight": 0,
+	"editor.rulers": [80],
+	"editor.suggestSelection": "first",
+	"editor.cursorStyle": "line",
+	"editor.insertSpaces": false,
+	"editor.lineNumbers": "on",
+	"editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+	"editor.linkedEditing": true,
+	"editor.wordWrap": "off",
+	"editor.tabSize": 4,
+	"editor.minimap.enabled": false,
+	"editor.inlineSuggest.enabled": true,
+	"editor.fontFamily": "JetBrains Mono",
+	"editor.accessibilitySupport": "off",
+	"files.exclude": {
+		"**/.DS_Store": false,
+		"**/.git": false,
+		"**/.hg": false,
+		"**/.svn": false,
+		"**/CVS": false,
+		"**/Thumbs.db": false
+	},
+	"files.autoSave": "onFocusChange",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"security.workspace.trust.untrustedFiles": "open",
+	
+	// --- TERMINAL ---
+	"terminal.integrated.fontFamily": "JetBrains Mono",
+	"terminal.integrated.fontSize": 16,
+	"terminal.integrated.tabs.enabled": false,
+
+	// --- GIT ---
+	"git.confirmSync": false,
+
+	// --- UI ---
+	"workbench.colorTheme": "Rosé Pine",
+	"zenMode.centerLayout": false,
+	"zenMode.hideLineNumbers": false,
+	"zenMode.showTabs": "single",
+	"workbench.editor.showTabs": "single",
+	
+	// --- NEOVIM ---
+	"vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	
+	// --- LANGUAGES ---
+	"[c]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"[java]": {
+		"editor.defaultFormatter": "redhat.java"
+	},
+	"[rust]": {
+		"editor.defaultFormatter": "rust-lang.rust-analyzer"
+	},
+	"[cpp]": {
+		"editor.defaultFormatter": "ms-vscode.cpptools"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	},
+	"[csharp]": {
+		"editor.defaultFormatter": "ms-dotnettools.csharp"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[lisp]": {
+		"editor.defaultFormatter": "rheller.alive"
+	},
+	"[typescript]": {
+		"editor.formatOnSave": true,
+	},
+	"[typescriptreact]": {
+		"editor.formatOnSave": true,
+	},
+	"[toml]": {
+		"editor.defaultFormatter": "tamasfe.even-better-toml"
+	},
+	"javascript.preferences.quoteStyle": "double",
+	"python.defaultInterpreterPath": "/Users/kadeallen/.virtualenvs/neovim",
+	
+	// --- GO ---
+	"go.toolsManagement.autoUpdate": true,
+
+	
+	// --- JAVA ---
+	"java.configuration.runtimes": [
+		{
+			"name": "JavaSE-17",
+			"path": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+		},
+		{
+			"name": "JavaSE-19",
+			"path": "/Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home",
+			"default": true,
+		}
+	],
+	
+	// --- C/C++ ---
+	"C_Cpp.autocompleteAddParentheses": true,
+	"C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Chromium, IndentWidth: 4, TabWidth: 4 }",
+	"cmake.pinnedCommands": [
+		"cmake.debugTarget",
+		"cmake.launchTarget",
+		"cmake.build",
+		"cmake.clean",
+		"workbench.action.tasks.configureTaskRunner",
+		"workbench.action.tasks.runTask"
+	],
+	"cmake.configureOnOpen": true,
+	"vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+
+}

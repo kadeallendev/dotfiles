@@ -9,10 +9,10 @@ command_timeout = 25
 format = """
 
 ($status\n)\
-($cmd_duration\n)\
+($cmd_duration\n\n)\
 
-$hostname\n\
-$username\
+($hostname\n)\
+($username\n)\
 $directory\
 
 $git_branch\
@@ -48,6 +48,10 @@ show_milliseconds = true
 [hostname]
 format = '[$ssh_symbol$hostname]($style)'
 style = '#7b8496'
+
+[username]
+format = '[$user]($style)'
+disabled = true
 
 [directory]
 style = "bold #5ea1ff"

@@ -21,7 +21,7 @@ function StatusLine()
   end
 
   local path_sep = '/'
-  if not vim.fn.has 'macunix' then
+  if vim.loop.os_uname().sysname == 'Windows_NT' then
     path_sep = '\\'
   end
 

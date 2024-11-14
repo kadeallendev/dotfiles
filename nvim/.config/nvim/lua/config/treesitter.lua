@@ -1,17 +1,16 @@
 ---@diagnostic disable-next-line
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
-    'go',
     'bash',
+    'powershell',
+    'go',
     'c',
+    'c_sharp',
     'html',
     'lua',
     'markdown',
-    'rust',
-    'python',
     'yaml',
     'cpp',
-    'java',
   },
   sync_install = false,
   auto_install = true,
@@ -19,7 +18,6 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = {
       'csv',
-      '',
     },
   },
   indent = { enable = true },

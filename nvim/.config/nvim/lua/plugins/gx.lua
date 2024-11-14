@@ -10,5 +10,6 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = true,
     submodules = false,
+    event = 'VeryLazy',
   },
 }

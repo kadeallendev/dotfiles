@@ -1,5 +1,6 @@
 -- Colorschemes
 return {
+  -- Rose Pine
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -12,6 +13,8 @@ return {
       }
     end,
   },
+  
+  -- Cyberdream
   {
     'scottmckendry/cyberdream.nvim',
     lazy = false,

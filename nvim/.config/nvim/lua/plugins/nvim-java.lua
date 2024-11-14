@@ -1,3 +1,4 @@
+-- Helpful java plugin
 return {
   {
     'nvim-java/nvim-java',

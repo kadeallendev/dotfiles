@@ -1,4 +1,5 @@
 return {
+  -- Display markdown in Neovim
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = {
@@ -9,6 +10,8 @@ return {
       require 'config.markdown'
     end,
   },
+
+  -- Better editing of markdown tables
   {
     'Kicamon/markdown-table-mode.nvim',
     config = function()

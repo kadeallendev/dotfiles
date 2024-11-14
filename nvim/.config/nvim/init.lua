@@ -5,30 +5,44 @@
 
 -- Set leader key
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
+-- bootstrap lazy
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+      { out, 'WarningMsg' },
+      { '\nPress any key to exit...' },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
 vim.opt.rtp:prepend(lazypath)
 
+-- Setup lazy
 require('lazy').setup({ import = 'plugins' }, {
   change_detection = {
     notify = false,
   },
   performance = {
     disabled_plugins = {
-      'gzip', -- Editing compressed files
-      'matchit', -- Better '%' movement, replaced by vim-matchup plugin
-      'matchparen', -- Same as matchit
-      'netrwPlugin', -- We don't use netrw
-      'tarPlugin', -- Editing tar shit
-      -- 'tohtml', -- Converts buffer to HTML
-      -- 'tutor', -- Vim Tutor
-      'zipPlugin', -- Zip files
+      'gzip',
+      'matchit',
+      'matchparen',
+      'tarPlugin',
+      'zipPlugin',
     },
   },
 })
 
 vim.cmd [[colorscheme cyberdream]]
+
+-- Setup VSCode
+if vim.g.vscode then
+  require 'vscode'
+end
