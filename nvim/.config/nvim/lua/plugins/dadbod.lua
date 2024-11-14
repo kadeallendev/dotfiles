@@ -1,6 +1,7 @@
 -- Database UI
 return {
   'tpope/vim-dadbod',
+  event = 'VeryLazy',
   dependencies = {
     'kristijanhusak/vim-dadbod-completion',
     'kristijanhusak/vim-dadbod-ui',

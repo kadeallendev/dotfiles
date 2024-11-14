@@ -1,6 +1,5 @@
 -- Makes ui nice, disabled for now
 return {
-  -- THis makes ui shit look nice
   -- {
   --   'stevearc/dressing.nvim',
   --   config = function()

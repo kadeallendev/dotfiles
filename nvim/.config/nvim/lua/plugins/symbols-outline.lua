@@ -1,3 +1,4 @@
+-- Display symbols outline of file
 return {
   'simrat39/symbols-outline.nvim',
   opts = {},

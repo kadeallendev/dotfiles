@@ -1,5 +1,6 @@
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
 --
 -- vim.keymap.set('n', 'gd', function()
 --   require('omnisharp_extended').lsp_definition()

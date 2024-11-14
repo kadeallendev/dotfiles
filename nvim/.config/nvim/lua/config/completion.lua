@@ -14,10 +14,10 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'buffer' },
-    -- { name = 'nvim_lsp_signature_help' },
-    -- { name = 'treesitter' },
-    -- { name = 'nvim_lua'},
+    { name = 'treesitter'},
     { name = 'luasnip' },
+    -- { name = 'nvim_lsp_signature_help' },
+    -- { name = 'nvim_lua'},
   },
   window = {
     completion = {
@@ -42,15 +42,18 @@ cmp.setup {
       },
       { 'i', 'c' }
     ),
+
     -- Scroll down in docs
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+
     -- Next item in luasnip
     ['<C-l>'] = cmp.mapping(function()
       if luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       end
     end, { 'i', 's' }),
+
     -- Previous item in luasnip
     ['<C-h>'] = cmp.mapping(function()
       if luasnip.locally_jumpable(-1) then
@@ -65,14 +68,6 @@ cmp.setup {
     end,
   },
 }
-
--- Setup vim-dadbod
-cmp.setup.filetype({ 'sql' }, {
-  sources = {
-    { name = 'vim-dadbod-completion' },
-    { name = 'buffer' },
-  },
-})
 
 luasnip.config.set_config {
   history = false,
