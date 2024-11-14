@@ -89,9 +89,9 @@ return {
 
       -- Servers to install with configs
       local servers = {
-        bashls = require 'plugins.lsp.servers.bashls'(on_attach),
+        -- bashls = require 'plugins.lsp.servers.bashls'(on_attach),
         gopls = require 'plugins.lsp.servers.gopls'(on_attach),
-        clangd = require 'plugins.lsp.servers.clangd'(on_attach),
+        -- clangd = require 'plugins.lsp.servers.clangd'(on_attach),
         omnisharp = {
           -- cmd = { 'ls' },
         },
@@ -124,7 +124,7 @@ return {
       -- Others to install
       local ensure_installed = {
         'stylua',
-        'clang-format',
+        -- 'clang-format',
         'yamlfmt',
       }
 

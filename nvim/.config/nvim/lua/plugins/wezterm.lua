@@ -2,11 +2,12 @@
 
 -- Disable for windows
 local utils = require 'utils'
-if utils.is_windows() then
-  return {}
+
+if utils.is_mac() then
+  return {
+    'willothy/wezterm.nvim',
+    config = true,
+  }
 end
 
-return {
-  'willothy/wezterm.nvim',
-  config = true,
-}
+return {}
