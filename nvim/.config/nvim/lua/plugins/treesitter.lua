@@ -7,7 +7,6 @@ return {
       -- 'nvim-treesitter/nvim-treesitter-context',
     },
     build = ':TSUpdate',
-    tag = 'v0.9.2',
     lazy = false,
     config = function()
       require 'config.treesitter'

@@ -2,7 +2,6 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
-    'powershell',
     'go',
     'c',
     'c_sharp',

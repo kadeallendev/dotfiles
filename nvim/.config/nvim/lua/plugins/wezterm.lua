@@ -1,13 +1,12 @@
 -- Integrations with WezTerm
 
--- Only use if on unix system
-if vim.loop.os_uname().sysname == "Linux" then
-	return {
-  {
-    'willothy/wezterm.nvim',
-    config = true,
-  },
-}
+-- Disable for windows
+local utils = require 'utils'
+if utils.is_windows() then
+  return {}
 end
 
-return {}
+return {
+  'willothy/wezterm.nvim',
+  config = true,
+}

@@ -47,8 +47,9 @@ export PATH="$PATH:/Users/kadeallen/Library/Python/3.9/bin"
 # Add PDFLatex to path
 export PATH="$PATH:/Library/Tex/texbin"
 
-# Add dotnet tools
-export PATH="$PATH:$HOME/.dotnet/tools"
+# Add dotnet
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="$PATH:$DOTNET_ROOT"
 
 export EDITOR=nvim
 export TERM=xterm-256color

@@ -1,17 +1,20 @@
--- Obsidian integration
-if vim.loop.os_uname().sysname == "Linux" then
-	return {
-		{
-			'epwalsh/obsidian.nvim',
-			version = '*',
-			dependencies = {
-				'nvim-lua/plenary.nvim',
-			},
-			config = function()
-					require 'config.obsidian'
-			end,
-		},
-	}
+-- Obsidian integration, not for windows
+local utils = require 'utils'
+
+-- Disable for windows
+if utils.is_windows() then
+  return {}
 end
 
-return {}
+return {
+  {
+    'epwalsh/obsidian.nvim',
+    version = '*',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      require 'config.obsidian'
+    end,
+  },
+}
