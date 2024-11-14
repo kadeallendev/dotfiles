@@ -3,6 +3,11 @@
 
 $dotfiles = "C:\Users\kade.allen\dotfiles"
 $config_dir = "C:\Users\kade.allen\AppData\Local"
+# $wsl_dotfiles = "/home/kade/"
+# $wsl_config_dir = "/home/kade/.config"
+
+# Update WSL
+# Copy-Item -Path $dotfiles -Destination /home/kade/ -Recurse -Force
 
 # Starship prompt
 $starship_toml = "${dotfiles}\starship\.config\starship.toml"
