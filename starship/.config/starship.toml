@@ -4,7 +4,7 @@
 add_newline = false
 
 scan_timeout = 10
-command_timeout = 25
+command_timeout = 50
 
 format = """
 
