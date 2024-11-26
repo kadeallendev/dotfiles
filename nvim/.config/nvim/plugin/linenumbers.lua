@@ -1,0 +1,56 @@
+-- -- Sets the current line number's colour based off the diagnostic
+--
+-- local function get_diagnostic_level()
+--   local bufnr = vim.api.nvim_get_current_buf()
+--   local cursor_pos = vim.api.nvim_win_get_cursor(0)
+--   local line = cursor_pos[1] - 1
+--   local diagnostics = vim.diagnostic.get(bufnr, { lnum = line })
+--
+--   if #diagnostics == 0 then
+--     return 0
+--   end
+--
+--   local max_severity = diagnostics[1].severity
+--   for _, diagnostic in ipairs(diagnostics) do
+--     if diagnostic.severity < max_severity then
+--       max_severity = diagnostic.severity
+--     end
+--   end
+--
+--   return max_severity
+-- end
+--
+-- local function update_linenr_hl_from_diagnostic(sev_num)
+--   local cb = require 'cyberdream.colors'
+--   local normal = cb.blue
+--   local hint = cb.cyan
+--   local warning = cb.yellow
+--   local error = cb.red
+--
+--   vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#7b8496', bg = 'NONE' })
+--
+--   local new_color = normal
+--
+--   local severity = vim.diagnostic.severity[sev_num]
+--   if severity == 'HINT' then
+--     new_color = hint
+--   elseif severity == 'WARN' then
+--     new_color = warning
+--   elseif severity == 'ERROR' then
+--     new_color = error
+--   end
+--
+--   vim.api.nvim_set_hl(0, 'LineNr', { fg = new_color, bg = 'NONE' })
+--
+--   vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#7b8496', bg = 'NONE' })
+-- end
+--
+-- vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+--   callback = function()
+--     local sev = get_diagnostic_level()
+--     if sev < 0 then
+--       return
+--     end
+--     update_linenr_hl_from_diagnostic(sev)
+--   end,
+-- })

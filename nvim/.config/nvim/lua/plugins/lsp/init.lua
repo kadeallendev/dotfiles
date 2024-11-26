@@ -112,6 +112,16 @@ return {
         lua_ls = {
           inlay_hints = { enabled = true },
         },
+        powershell_es = {
+          -- settings = {
+          --   powershell = {
+          --     codeFormatting = {
+          --       preset = 'OTBS',
+          --       openBraceOnSameLine = true,
+          --     },
+          --   },
+          -- },
+        },
         rust_analyzer = {},
         templ = {},
         pyright = {},
@@ -124,6 +134,7 @@ return {
       -- Others to install
       local ensure_installed = {
         'stylua',
+        'lua-language-server',
         -- 'clang-format',
         'yamlfmt',
       }

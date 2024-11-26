@@ -3,7 +3,6 @@
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'github-actions-workflow',
   callback = function()
-    print 'IN GITHUB'
     vim.lsp.start {
       name = 'gh-actions-lsp',
       filetypes = { 'github-actions-workflow' },

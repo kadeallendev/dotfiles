@@ -13,7 +13,7 @@ return {
       }
     end,
   },
-  
+
   -- Cyberdream
   {
     'scottmckendry/cyberdream.nvim',
@@ -24,6 +24,17 @@ return {
         transparent = true,
         italic_comments = false,
         terminal_colors = false,
+
+        theme = {
+          -- Override default highlights
+          overrides = function(colors)
+            return {
+              LineNrAbove = { fg = colors.grey, bg = 'NONE' },
+              LineNr = { fg = colors.blue, bg = 'NONE' },
+              LineNrBelow = { fg = colors.grey, bg = 'NONE' },
+            }
+          end,
+        },
         extensions = {
           telescope = false,
           fzflua = false,
