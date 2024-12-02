@@ -10,15 +10,15 @@ vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns stage_hunk<CR>', { desc = 'Stag
 -- Stage current buffer and commit, prompting for message
 local function stage_and_commit()
   -- Stage buffer
-  vim.cmd 'silent !git stage %'
+  vim.cmd 'G stage %'
 
   -- Prompt for commit message
   vim.ui.input({ prompt = 'Commit msg: ' }, function(input)
     if input then
       -- Create git commit
-      vim.cmd('!git commit -m "' .. input .. '"')
+      vim.cmd('G commit -m "' .. input .. '"')
     else
-      print 'Commit message was not provide    d'
+      print 'Commit message was not provided'
     end
   end)
 end
