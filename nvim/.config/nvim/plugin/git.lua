@@ -61,3 +61,5 @@ local function commit()
 end
 
 vim.keymap.set('n', '<leader>gc', commit, { noremap = true, silent = true, desc = 'Commit with branch prefix' })
+
+vim.keymap.set('n', '<leader>gC', '<CMD>G commit<CR>', { noremap = true, silent = true, desc = 'Commit with long message' })
