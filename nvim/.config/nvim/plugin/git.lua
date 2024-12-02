@@ -25,5 +25,4 @@ end
 vim.keymap.set('n', '<leader>gc', stage_and_commit, { noremap = true, silent = true, desc = 'Stage current file and commit' })
 
 -- Push to upstream branch
--- Add another comit
 vim.keymap.set('n', '<leader>gp', '<CMD>G push origin<CR>', { noremap = true, silent = true, desc = 'Push to upstream branch' })
