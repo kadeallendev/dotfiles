@@ -10,7 +10,7 @@ return {
     'lewis6991/gitsigns.nvim',
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      require 'config.gitsigns'
+      require('gitsigns').setup {}
     end,
   },
 
@@ -26,7 +26,6 @@ return {
     event = 'VeryLazy',
     config = function()
       require('neogit').setup {}
-      vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<CR>', { desc = 'Neogit' })
     end,
   },
 

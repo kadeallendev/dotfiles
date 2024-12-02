@@ -56,7 +56,6 @@ set lazyredraw
 " Turn magic on for regular expressions
 set magic
 
-
 " Return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -132,6 +131,8 @@ set noswapfile
 call plug#begin()
 
 Plug 'rose-pine/vim'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 

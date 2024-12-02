@@ -149,7 +149,7 @@ vim.keymap.set('n', '<leader>g/', function()
 end, { desc = 'Fzf Git status' })
 
 -- Git commits
-vim.keymap.set('n', '<leader>gc', function()
+vim.keymap.set('n', '<leader>/gc', function()
   fzf.git_commits()
 end, { desc = 'Fzf Git commits' })
 
