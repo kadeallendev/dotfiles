@@ -1,3 +1,4 @@
+local utils = require 'utils'
 local opt = vim.opt
 
 -- Line Numbers {{{
@@ -92,3 +93,8 @@ opt.wrap = false
 -- Completion
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.shortmess:append 'c'
+
+-- Terminal shell
+if utils.is_windows() then
+  vim.o.shell = 'powershell.exe'
+end

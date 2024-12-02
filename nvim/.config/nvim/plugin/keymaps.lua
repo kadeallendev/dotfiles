@@ -23,6 +23,6 @@ set('n', 'zj', 'zb', { desc = 'Move to bottom' })
 set('x', '<leader>p', [["_dP]])
 set('x', '<leader>d', [["_d]])
 
--- Tab movement with tab key
-set('n', '<TAB>', '<CMD>tabn<CR>', { desc = 'Next tab' })
-set('n', '<S-TAB>', '<CMD>tabp<CR>', { desc = 'Previous tab' })
+-- -- Tab movement with tab key
+-- set('n', '<TAB>', '<CMD>tabn<CR>', { desc = 'Next tab' })
+-- set('n', '<S-TAB>', '<CMD>tabp<CR>', { desc = 'Previous tab' })

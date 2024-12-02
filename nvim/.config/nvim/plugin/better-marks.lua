@@ -1,0 +1,14 @@
+-- Better mark navigation by centering screen after jumping
+
+-- local function center_mark()
+--   local mark = vim.fn.nr2char(vim.fn.getchar())
+--   vim.cmd("normal! '" .. mark .. 'zz')
+-- end
+--
+-- vim.keymap.set('n', "'", function()
+--   center_mark()
+-- end, { noremap = true, silent = true })
+--
+-- vim.keymap.set('n', '`', function()
+--   center_mark()
+-- end, { noremap = true, silent = true })
