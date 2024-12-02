@@ -18,7 +18,7 @@ local function stage_and_commit()
       -- Create git commit
       vim.cmd('!git commit -m "' .. input .. '"')
     else
-      print 'Commit message was not provided'
+      print 'Commit message was not provide    d'
     end
   end)
 end
