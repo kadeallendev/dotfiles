@@ -8,6 +8,7 @@ require('gitsigns').setup {
   -- },
 }
 
+
 -- Hunk movement
 vim.keymap.set('n', ']h', '<CMD>Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
 vim.keymap.set('n', '[h', '<CMD>Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
