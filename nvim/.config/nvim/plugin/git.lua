@@ -11,7 +11,6 @@ vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns stage_hunk<CR>', { desc = 'Stag
 local function stage_and_commit()
   -- Stage buffer
   vim.cmd 'G stage %'
-  vim.cmd 'lua print("THIS IF ROM")'
 
   -- Prompt for commit message
   vim.ui.input({ prompt = 'Commit msg: ' }, function(input)
