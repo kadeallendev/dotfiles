@@ -10,7 +10,7 @@ vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns stage_hunk<CR>', { desc = 'Stag
 -- Stage current buffer and commit, prompting for message
 local function stage_and_commit()
   -- Stage buffer
-  require('gitsigns').stage_buffer()
+  vim.cmd 'G stage %'
 
   -- Prompt for commit message
   vim.ui.input({ prompt = 'Commit msg: ' }, function(input)
