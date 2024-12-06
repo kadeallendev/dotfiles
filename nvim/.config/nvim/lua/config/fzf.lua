@@ -34,6 +34,12 @@ fzf.setup {
     formatter = 'path.filename_first', -- Show filename first, e.g. "fzf-lua/previewer/fzf.lua" => "fzf.lua previewer/fzf-lua"
     cwd_prompt_shorten_len = 20, -- Shorten the cwd prompt at 20 letters
     cwd_prompt_shorten_val = 3, -- Shorten each folder to 3 characters
+    winopts = {
+      width = 0.8,
+      preview = {
+        horizontal = 'right:40%',
+      },
+    },
   },
   grep = {
     rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
