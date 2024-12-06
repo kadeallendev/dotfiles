@@ -13,7 +13,17 @@ vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns stage_hunk<CR>', { desc = 'Stag
 -- Stage buffer
 vim.keymap.set('n', '<leader>gs', '<CMD>Gitsigns stage_buffer<CR>', { noremap = true, silent = true, desc = 'Stage buffer' })
 
-local jira_prefix_pat = '^[A-Za-z]+%-%d+'
+-- Gitsigns toggle_current_line_blame
+-- Gitsigns toggle_linehl
+
+-- Diff current file
+vim.keymap.set('n', '<leader>gdt', '<CMD>Gitsigns diffthis<CR>', { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
+
+-- Blame current line
+vim.keymap.set('n', '<leader>gbl', '<CMD>Gitsigns blame_line<CR>', { noremap = true, silent = true, desc = 'Gitsigns blame line' })
+
+-- Blame all lines
+vim.keymap.set('n', '<leader>gba', '<CMD>Gitsigns blame<CR>', { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
 -- Commit with branch prefix
 local function get_branch_prefix()
@@ -24,6 +34,7 @@ local function get_branch_prefix()
   end
   local branch_name = handle:read('*a'):gsub('%s+', '') -- Remove trailing whitespace
   handle:close()
+  local jira_prefix_pat = '^[A-Za-z]+%-%d+'
   return branch_name:match(jira_prefix_pat)
 end
 
