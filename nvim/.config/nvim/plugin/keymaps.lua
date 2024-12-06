@@ -15,10 +15,6 @@ set('n', ']q', '<CMD>cnext<CR>', { desc = 'Go to next entry in quickfix list' })
 set('n', '<C-d>', '<C-d>zz')
 set('n', '<C-u>', '<C-u>zz')
 
--- Move to top and bottom
-set('n', 'zk', 'z<CR>', { desc = 'Move to top' })
-set('n', 'zj', 'zb', { desc = 'Move to bottom' })
-
 -- Better pasting and deleting
 set('x', '<leader>p', [["_dP]])
 set('x', '<leader>d', [["_d]])
