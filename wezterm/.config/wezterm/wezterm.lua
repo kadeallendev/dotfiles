@@ -4,7 +4,8 @@ local wezterm = require("wezterm")
 -- Load config table
 local config = wezterm.config_builder()
 
-config.color_scheme = "rose-pine"
+-- config.color_scheme = "rose-pine"
+config.colors = require("cyberdream")
 
 -- Font
 config.font = wezterm.font("JetBrains Mono")
