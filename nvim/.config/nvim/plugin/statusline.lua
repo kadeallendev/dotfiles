@@ -11,6 +11,11 @@ function StatusLine()
   local home = vim.fn.expand '~'
   local full_fname = vim.fn.expand '%:p'
   local filetype = vim.bo.filetype
+  local bufname = vim.fn.bufname()
+
+  if bufname:sub(1, 6) == 'oil://' then
+    return bufname
+  end
 
   if cwd:find(home, 1, true) then
     cwd = cwd:gsub(home, '~')
