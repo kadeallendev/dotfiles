@@ -25,6 +25,8 @@ vim.keymap.set('n', '<leader>gbl', '<CMD>Gitsigns blame_line<CR>', { noremap = t
 -- Blame all lines
 vim.keymap.set('n', '<leader>gba', '<CMD>Gitsigns blame<CR>', { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
+local jira_prefix_pat = '^[A-Za-z]+%-%d+'
+
 -- Commit with branch prefix
 local function get_branch_prefix()
   local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
@@ -34,7 +36,6 @@ local function get_branch_prefix()
   end
   local branch_name = handle:read('*a'):gsub('%s+', '') -- Remove trailing whitespace
   handle:close()
-  local jira_prefix_pat = '^[A-Za-z]+%-%d+'
   return branch_name:match(jira_prefix_pat)
 end
 
