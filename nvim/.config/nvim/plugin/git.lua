@@ -3,27 +3,33 @@
 -- Neogit status
 vim.keymap.set('n', '<leader>gn', '<CMD>Neogit<CR>', { noremap = true, silent = true, desc = 'Neogit' })
 
+local gitsigns = require 'gitsigns'
+
 -- Hunk movement
-vim.keymap.set('n', ']h', '<CMD>Gitsigns next_hunk<CR>', { desc = 'Next hunk' })
-vim.keymap.set('n', '[h', '<CMD>Gitsigns prev_hunk<CR>', { desc = 'Previous hunk' })
+vim.keymap.set('n', ']h', gitsigns.next_hunk, { desc = 'Next hunk' })
+vim.keymap.set('n', '[h', gitsigns.prev_hunk, { desc = 'Previous hunk' })
 
 -- Stage hunk
-vim.keymap.set('n', '<leader>gh', '<CMD>Gitsigns stage_hunk<CR>', { desc = 'Stage hunk' })
+vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { desc = 'Stage hunk' })
 
 -- Stage buffer
-vim.keymap.set('n', '<leader>gs', '<CMD>Gitsigns stage_buffer<CR>', { noremap = true, silent = true, desc = 'Stage buffer' })
+vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, { noremap = true, silent = true, desc = 'Stage buffer' })
 
 -- Gitsigns toggle_current_line_blame
 -- Gitsigns toggle_linehl
 
 -- Diff current file
-vim.keymap.set('n', '<leader>gdt', '<CMD>Gitsigns diffthis<CR>', { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
+vim.keymap.set('n', '<leader>gdt', function()
+  gitsigns.diffthis '~'
+end, { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
 
 -- Blame current line
-vim.keymap.set('n', '<leader>gbl', '<CMD>Gitsigns blame_line<CR>', { noremap = true, silent = true, desc = 'Gitsigns blame line' })
+vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { noremap = true, silent = true, desc = 'Gitsigns blame line' })
 
 -- Blame all lines
-vim.keymap.set('n', '<leader>gba', '<CMD>Gitsigns blame<CR>', { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
+vim.keymap.set('n', '<leader>gba', gitsigns.blame, { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
+
+vim.keymap.set('n', '<leader>ghp', gitsigns.preview_hunk, { noremap = true, silent = true, desc = 'Gitsigns preview hunk' })
 
 -- Commit with branch prefix
 local function get_branch_prefix()
