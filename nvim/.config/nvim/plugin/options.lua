@@ -30,8 +30,13 @@ opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 
 -- Enable break indent
 opt.breakindent = true
+
 -- Folding
-opt.foldmethod = 'manual'
+opt.foldmethod = 'expr'
+opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+opt.foldcolumn = '0'
+opt.foldlevel = 99
+opt.foldlevelstart = 1
 
 -- Save undo history
 opt.undofile = true
