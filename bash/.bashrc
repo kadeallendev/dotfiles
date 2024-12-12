@@ -5,6 +5,12 @@ export EDITOR=nvim
 # Aliases
 # -------
 
+# Git
+alias gl="git log"
+alias glo="git log --oneline"
+alias gs="git status"
+alias gc="git commit"
+
 # Tmux
 alias tls="tmux ls"
 alias tn="tmux new -s"

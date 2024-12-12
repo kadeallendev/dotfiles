@@ -66,6 +66,13 @@ export PJ_FILE=/Users/kadeallen/.pj
 export LEDGER_FILE=/Users/kadeallen/vault/areas/ledger/ledger.journal
 
 # Aliases
+
+# Git
+alias gl="git log"
+alias glo="git log --oneline"
+alias gs="git status"
+alias gc="git commit"
+
 # tmux
 alias tls="tmux ls"
 alias tn="tmux new -s"
