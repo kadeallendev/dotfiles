@@ -94,17 +94,17 @@ vim.keymap.set('n', '<leader>/g', function()
   fzf.live_grep()
 end, { desc = 'Live grep search' })
 
--- PT-Vault
-vim.keymap.set('n', '<leader>/v', function()
-  local vault_dir = '/mnt/c/users/kade.allen/OneDrive - PartsTrader/PT-Vault'
-  if utils.is_windows() then
-    vault_dir = 'C:/Users/kade.allen/OneDrive - PartsTrader/PT-Vault'
-  end
+--- VAULT ---
 
-  fzf.live_grep_native {
-    cwd = vault_dir,
-  }
+-- PT-Vault live grep
+vim.keymap.set('n', '<leader>/v', function()
+  fzf.live_grep_native { cwd = utils.pt_vault_dir() }
 end, { desc = 'Live grep in PT Vault' })
+
+-- PT-Vault files
+vim.keymap.set('n', '<leader>/V', function()
+  fzf.files { cwd = utils.pt_vault_dir() }
+end)
 
 --- NEOVIM SEARCHING ---
 

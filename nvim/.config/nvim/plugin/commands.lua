@@ -33,3 +33,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Disable automatic comment on enter
 vim.cmd [[autocmd FileType * setlocal formatoptions-=cro]]
+
