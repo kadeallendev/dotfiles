@@ -101,7 +101,7 @@ vim.keymap.set('n', '<leader>/v', function()
     vault_dir = 'C:/Users/kade.allen/OneDrive - PartsTrader/PT-Vault'
   end
 
-  fzf.live_grep {
+  fzf.live_grep_native {
     cwd = vault_dir,
   }
 end, { desc = 'Live grep in PT Vault' })
