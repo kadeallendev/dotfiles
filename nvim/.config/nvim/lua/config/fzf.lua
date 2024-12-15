@@ -1,6 +1,7 @@
 local fzf = require 'fzf-lua'
 local actions = require 'fzf-lua.actions'
--- TODO: Add profile
+local utils = require 'utils'
+
 fzf.setup {
   keymap = {
     builtin = {
@@ -51,19 +52,6 @@ fzf.setup {
       },
     },
   },
-  git = {
-    status = {
-      -- Actions to stage and unstage with <C-y> and <C-s>
-      -- NOTE: for some reason this doesn't work
-      -- actions = {
-      --   ['right'] = false,
-      --   ['left'] = false,
-      --   ['ctrl+x'] = { fn = actions.git_reset, reload = true },
-      --   ['ctrl+y'] = { fn = actions.git_stage_unstage, reload = true },
-      --   ['ctrl+s'] = { fn = actions.git_stage_unstage, reload = true },
-      -- },
-    },
-  },
   lsp = {
     code_actions = {
       previewer = 'codeaction_native',
@@ -99,18 +87,24 @@ vim.keymap.set('n', '<leader>,', function()
   fzf.buffers()
 end, { desc = 'Search buffers' })
 
--- Search git files
--- NOTE: Kinda pointless, just use files instead
--- vim.keymap.set('n', '<leader>.', function()
---   fzf.git_files()
--- end, { desc = 'Search git files' })
-
 --- IN-FILE SEARCHING ---
 
 -- Live grep
 vim.keymap.set('n', '<leader>/g', function()
   fzf.live_grep()
 end, { desc = 'Live grep search' })
+
+-- PT-Vault
+vim.keymap.set('n', '<leader>/v', function()
+  local vault_dir = '/mnt/c/users/kade.allen/OneDrive - PartsTrader/PT-Vault'
+  if utils.is_windows() then
+    vault_dir = 'C:/Users/kade.allen/OneDrive - PartsTrader/PT-Vault'
+  end
+
+  fzf.live_grep {
+    cwd = vault_dir,
+  }
+end, { desc = 'Live grep in PT Vault' })
 
 --- NEOVIM SEARCHING ---
 
@@ -123,6 +117,11 @@ end, { desc = 'Search commands' })
 vim.keymap.set('n', '<leader>/C', function()
   fzf.command_history()
 end, { desc = 'Search command history' })
+
+-- Help Tags
+vim.keymap.set('n', '<leader>/h', function()
+  fzf.helptags()
+end, { desc = 'Search help tags' })
 
 -- Resume last search
 vim.keymap.set('n', '<leader>/r', function()
