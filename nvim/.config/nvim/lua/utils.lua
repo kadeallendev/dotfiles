@@ -36,4 +36,15 @@ M.nvim_data_path = function()
   return home .. '/.local/share/nvim'
 end
 
+M.pt_vault_dir = function()
+  local vault_dir = '/mnt/c/users/kade.allen/OneDrive - PartsTrader/PT-Vault'
+  if M.is_windows() then
+    vault_dir = 'C:/Users/kade.allen/OneDrive - PartsTrader/PT-Vault'
+  elseif M.is_mac() then
+    vault_dir = '/Users/kadeallen/PT-Vault'
+  end
+
+  return vault_dir
+end
+
 return M

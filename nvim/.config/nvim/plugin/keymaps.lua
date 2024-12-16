@@ -23,6 +23,10 @@ set('n', '<C-u>', '<C-u>zz')
 set('x', '<leader>p', [["_dP]])
 set('x', '<leader>d', [["_d]])
 
+-- Better horizontal scrolling
+set('n', 'zl', 'zL')
+set('n', 'zh', 'zH')
+
 -- -- Tab movement with tab key
 -- set('n', '<TAB>', '<CMD>tabn<CR>', { desc = 'Next tab' })
 -- set('n', '<S-TAB>', '<CMD>tabp<CR>', { desc = 'Previous tab' })
