@@ -19,6 +19,17 @@ end
 -- Set highlight for cwd
 vim.api.nvim_set_hl(0, 'StatusLineCWD', { fg = '#5ea1ff', bold = true })
 vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
+vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
+vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
+
+local protocols = { 'oil://', 'fugitive://', 'http://' }
+local function is_protocol_file(bufname)
+  for _, protocol in ipairs(protocols) do
+    if bufname:sub(1, #protocol) == protocol then
+      return true
+    end
+  end
+end
 
 function StatusLine()
   local cwd = vim.fn.getcwd()
@@ -28,8 +39,16 @@ function StatusLine()
   local bufname = vim.fn.bufname()
   local branch_prefix = get_branch_prefix()
 
-  if bufname:sub(1, 6) == 'oil://' then
-    return bufname
+  if is_protocol_file(bufname) then
+    local protocol = bufname:match '^[^:]+://'
+    local filename = bufname:sub(#protocol + 1)
+    return table.concat {
+      '%#StatusLineProtocol#',
+      protocol,
+      '%#StatusLineFile#',
+      filename,
+      '%*',
+    }
   end
 
   if cwd:find(home, 1, true) then
