@@ -51,10 +51,16 @@ export PATH="$PATH:/Library/Tex/texbin"
 export DOTNET_ROOT="/usr/local/share/dotnet"
 export PATH="$PATH:$DOTNET_ROOT"
 
+# Add czkawka
+export PATH="$PATH:/opt/homebrew/Cellar/czkawka/8.0.0/bin"
+
 # Add Mono
 
 MONO_BIN="/Library/Frameworks/Mono.framework/Versions/Current/bin"
 export PATH="$PATH:$MONO_BIN"
+
+# Add homebrew share
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:/opt/homebrew/share"
 
 export EDITOR=nvim
 export TERM=xterm-256color
@@ -119,6 +125,8 @@ alias java22="/opt/homebrew/Cellar/openjdk/22.0.2/bin/java"
 
 # List downloads
 alias lsd="eza ~/downloads -lr --sort=created"
+# List screenshots
+alias lss="eza ~/desktop/Screenshots/ -lr --sort=created | head -5"
 
 # Fzf shit
 export FZF_ALT_C_OPTS="

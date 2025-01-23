@@ -3,8 +3,33 @@
 -- The format string looks like this
 -- '%<%h %f %m%=(%l,%c%V) %P'
 
+-- TODO: Move this to a utils that works
+local jira_prefix_pat = '^[A-Za-z]+%-%d+'
+local function get_branch_prefix()
+  local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
+  if handle == nil then
+    print 'ERROR: unable to get branch name'
+    return
+  end
+  local branch_name = handle:read('*a'):gsub('%s+', '') -- Remove trailing whitespace
+  handle:close()
+  return branch_name:match(jira_prefix_pat)
+end
+
 -- Set highlight for cwd
 vim.api.nvim_set_hl(0, 'StatusLineCWD', { fg = '#5ea1ff', bold = true })
+vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
+vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
+vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
+
+local protocols = { 'oil://', 'fugitive://', 'http://' }
+local function is_protocol_file(bufname)
+  for _, protocol in ipairs(protocols) do
+    if bufname:sub(1, #protocol) == protocol then
+      return true
+    end
+  end
+end
 
 function StatusLine()
   local cwd = vim.fn.getcwd()
@@ -12,9 +37,18 @@ function StatusLine()
   local full_fname = vim.fn.expand '%:p'
   local filetype = vim.bo.filetype
   local bufname = vim.fn.bufname()
+  local branch_prefix = get_branch_prefix()
 
-  if bufname:sub(1, 6) == 'oil://' then
-    return bufname
+  if is_protocol_file(bufname) then
+    local protocol = bufname:match '^[^:]+://'
+    local filename = bufname:sub(#protocol + 1)
+    return table.concat {
+      '%#StatusLineProtocol#',
+      protocol,
+      '%#StatusLineFile#',
+      filename,
+      '%*',
+    }
   end
 
   if cwd:find(home, 1, true) then
@@ -32,6 +66,9 @@ function StatusLine()
 
   if full_fname:find(cwd, 1, true) then
     local relative_fname = full_fname:sub(#cwd + 2)
+    if branch_prefix then
+      relative_fname = relative_fname .. '%#StatusLineBranch#' .. ' ' .. branch_prefix
+    end
 
     return table.concat {
       '%<',
@@ -41,6 +78,7 @@ function StatusLine()
       path_sep,
       '%*',
       relative_fname,
+      '%*',
       ' ',
       '%m',
       '%=',

@@ -27,6 +27,6 @@ set('x', '<leader>d', [["_d]])
 set('n', 'zl', 'zL')
 set('n', 'zh', 'zH')
 
--- -- Tab movement with tab key
--- set('n', '<TAB>', '<CMD>tabn<CR>', { desc = 'Next tab' })
--- set('n', '<S-TAB>', '<CMD>tabp<CR>', { desc = 'Previous tab' })
+-- Tab movement with square brackets
+set('n', '[t', '<CMD>tabp<CR>', { desc = 'Next tab' })
+set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })

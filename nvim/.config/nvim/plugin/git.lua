@@ -5,12 +5,27 @@ vim.keymap.set('n', '<leader>gn', '<CMD>Neogit<CR>', { noremap = true, silent = 
 
 local gitsigns = require 'gitsigns'
 
--- Hunk movement
-vim.keymap.set('n', ']h', gitsigns.next_hunk, { desc = 'Next hunk' })
-vim.keymap.set('n', '[h', gitsigns.prev_hunk, { desc = 'Previous hunk' })
+-- Hunk movement ---
+
+-- Next hunk
+vim.keymap.set('n', ']h', function()
+  gitsigns.nav_hunk 'next'
+end, { desc = 'Next hunk', noremap = true, silent = true })
+-- Previous hunk
+vim.keymap.set('n', '[h', function()
+  gitsigns.nav_hunk 'prev'
+end, { desc = 'Previous hunk', noremap = true, silent = true })
+-- First hunk
+vim.keymap.set('n', '[H', function()
+  gitsigns.nav_hunk 'first'
+end, { desc = 'First hunk', noremap = true, silent = true })
+-- Last hunk
+vim.keymap.set('n', ']H', function()
+  gitsigns.nav_hunk 'last'
+end, { desc = 'Last hunk', noremap = true, silent = true })
 
 -- Stage hunk
-vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { desc = 'Stage hunk' })
+vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { noremap = true, silent = true, desc = 'Stage hunk' })
 
 -- Stage buffer
 vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, { noremap = true, silent = true, desc = 'Stage buffer' })
@@ -19,9 +34,7 @@ vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, { noremap = true, silen
 -- Gitsigns toggle_linehl
 
 -- Diff current file
-vim.keymap.set('n', '<leader>gdt', function()
-  gitsigns.diffthis '~'
-end, { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
+vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
 
 -- Blame current line
 vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { noremap = true, silent = true, desc = 'Gitsigns blame line' })
@@ -29,11 +42,12 @@ vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { noremap = true, silent
 -- Blame all lines
 vim.keymap.set('n', '<leader>gba', gitsigns.blame, { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
-vim.keymap.set('n', '<leader>ghp', gitsigns.preview_hunk, { noremap = true, silent = true, desc = 'Gitsigns preview hunk' })
+-- Preview hunk
+vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk, { noremap = true, silent = true, desc = 'Gitsigns preview hunk' })
 
-local jira_prefix_pat = '^[A-Za-z]+%-%d+'
 
 -- Commit with branch prefix
+local jira_prefix_pat = '^[A-Za-z]+%-%d+'
 local function get_branch_prefix()
   local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
   if handle == nil then
@@ -78,6 +92,7 @@ local function commit()
   end)
 end
 
+-- Commit
 vim.keymap.set('n', '<leader>gc', commit, { noremap = true, silent = true, desc = 'Commit with branch prefix' })
-
+-- Commit with message
 vim.keymap.set('n', '<leader>gC', '<CMD>G commit<CR>', { noremap = true, silent = true, desc = 'Commit with long message' })
