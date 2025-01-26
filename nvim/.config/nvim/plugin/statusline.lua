@@ -22,7 +22,7 @@ vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
 vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
 vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
 
-local protocols = { 'oil://', 'fugitive://', 'http://' }
+local protocols = { 'oil://', 'fugitive://', 'http://', 'octo://' }
 local function is_protocol_file(bufname)
   for _, protocol in ipairs(protocols) do
     if bufname:sub(1, #protocol) == protocol then
