@@ -4,6 +4,7 @@
 -- '%<%h %f %m%=(%l,%c%V) %P'
 
 -- TODO: Move this to a utils that works
+-- local jira_prefix_pat = '^(feature/)?[A-Za-z]+%-%d+'
 local jira_prefix_pat = '^[A-Za-z]+%-%d+'
 local function get_branch_prefix()
   local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
@@ -13,7 +14,8 @@ local function get_branch_prefix()
   end
   local branch_name = handle:read('*a'):gsub('%s+', '') -- Remove trailing whitespace
   handle:close()
-  return branch_name:match(jira_prefix_pat)
+  local prefix = branch_name:match(jira_prefix_pat)
+  return prefix
 end
 
 -- Set highlight for cwd

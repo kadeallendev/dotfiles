@@ -103,3 +103,6 @@ vim.opt.shortmess:append 'c'
 if utils.is_windows() then
   vim.o.shell = 'powershell.exe'
 end
+
+-- Diff opts
+vim.opt.diffopt:append('vertical')

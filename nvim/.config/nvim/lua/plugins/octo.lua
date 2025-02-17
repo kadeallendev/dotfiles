@@ -6,6 +6,7 @@ return {
       'ibhagwan/fzf-lua',
       'nvim-tree/nvim-web-devicons',
     },
+    event = 'VeryLazy',
     config = function()
       require('octo').setup {
         picker = 'fzf-lua',
