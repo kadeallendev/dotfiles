@@ -30,3 +30,6 @@ set('n', 'zh', 'zH')
 -- Tab movement with square brackets
 set('n', '[t', '<CMD>tabp<CR>', { desc = 'Next tab' })
 set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })
+
+-- Overwrite ' goto mark with ` goto mark
+set('n', "'", '`', {})
