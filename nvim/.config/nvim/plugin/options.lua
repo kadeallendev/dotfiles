@@ -61,7 +61,7 @@ opt.splitbelow = true
 -- opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 6
+opt.scrolloff = 12
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
@@ -105,4 +105,4 @@ if utils.is_windows() then
 end
 
 -- Diff opts
-vim.opt.diffopt:append('vertical')
+vim.opt.diffopt:append 'vertical'
