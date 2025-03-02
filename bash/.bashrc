@@ -132,6 +132,10 @@ export FZF_ALT_C_OPTS="
 --preview 'tree -C {}'"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
 
+export PATH="$PATH:/home/kade/slides"
+
+export PATH="$PATH:/home/kade/zig"
+
 # Aliases
 
 # Git
@@ -150,8 +154,8 @@ alias tks="tmux kill-session -t"
 alias ~="cd ~"
 
 # Ls
-alias ls="ls -l --color=auto"
-alias lsa="ls -la --color=auto"
+alias ls="ls -l --color=auto --group-directories-first"
+alias lsa="ls -la --color=auto --group-directories-first"
 
 # Auto cd ..
 alias ..="cd .."
@@ -182,3 +186,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
