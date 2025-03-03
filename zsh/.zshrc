@@ -91,8 +91,8 @@ alias ~="cd ~"
 
 # Exa
 # alias ls="exa -Fl --sort=ext"
-alias ls="eza -l --sort=ext"
-alias lsa="eza -a --sort=ext"
+alias ls="eza -lh --sort=ext"
+alias lsa="eza -ha --sort=ext"
 # alias lsa="exa -Fa --sort=ext"
 
 # Uni
