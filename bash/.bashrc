@@ -154,8 +154,8 @@ alias tks="tmux kill-session -t"
 alias ~="cd ~"
 
 # Ls
-alias ls="ls -l --color=auto --group-directories-first"
-alias lsa="ls -la --color=auto --group-directories-first"
+alias ls="ls -lh --color=auto --group-directories-first"
+alias lsa="ls -lha --color=auto --group-directories-first"
 
 # Auto cd ..
 alias ..="cd .."
