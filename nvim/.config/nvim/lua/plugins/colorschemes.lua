@@ -8,8 +8,17 @@ return {
     priority = 1000,
     config = function()
       require('rose-pine').setup {
-        transparent = true,
+        transparent = false,
         variant = 'main',
+        enable = {
+          terminal = true,
+        },
+        styles = {
+          bold = true,
+          italic = false,
+          transparent = false,
+          transparency = false,
+        },
       }
     end,
   },

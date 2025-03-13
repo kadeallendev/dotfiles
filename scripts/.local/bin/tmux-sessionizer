@@ -3,7 +3,13 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/development ~/school/2024 ~/.config ~/documents ~/go/src/github.com/kadeallendev -mindepth 1 -maxdepth 2 -type d | fzf --height=100%)
+    os=$(uname -s)
+    # Work computer
+    if [[ $os == 'Linux' ]]; then
+        selected=$(find ~/Dev ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    else
+        selected=$(find ~/development ~/school/2024 ~/.config ~/documents ~/go/src/github.com/kadeallendev -mindepth 1 -maxdepth 2 -type d | fzf --height=100%)
+    fi
 fi
 
 if [[ -z $selected ]]; then
