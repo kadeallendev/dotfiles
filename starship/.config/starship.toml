@@ -79,7 +79,7 @@ style = "bright-black"
 
 [shell]
 disabled = false
-format = ' [$indicator]($style)'
+format = ' [$indicator]($style) '
 bash_indicator = 'bash'
 powershell_indicator = 'pwsh'
 style = 'dimmed'
