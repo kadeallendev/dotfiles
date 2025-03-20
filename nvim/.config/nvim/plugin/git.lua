@@ -45,7 +45,10 @@ vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { noremap = true, silent
 vim.keymap.set('n', '<leader>gba', gitsigns.blame, { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
 -- Preview hunk
-vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk, { noremap = true, silent = true, desc = 'Gitsigns preview hunk' })
+vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline, { noremap = true, silent = true, desc = 'Gitsigns preview hunk inline' })
+
+-- Reset hunk
+vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { noremap = true, silent = true, desc = 'Gitsigns reset hunk' })
 
 -- Commit with the branch jira prefix prefixed to commit message
 local function commit()
@@ -83,4 +86,4 @@ end
 -- Commit
 vim.keymap.set('n', '<leader>gc', commit, { noremap = true, silent = true, desc = 'Commit with branch prefix' })
 -- Commit with message
-vim.keymap.set('n', '<leader>gC', '<CMD>G commit<CR>', { noremap = true, silent = true, desc = 'Commit with long message' })
+vim.keymap.set('n', '<leader>gC', '<CMD>G commit --verbose<CR>', { noremap = true, silent = true, desc = 'Commit with long message' })

@@ -77,6 +77,14 @@ require('nvim-treesitter.configs').setup {
       },
     },
   },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<cr>",
+      node_incremental = "+",
+      node_decremental = "-"
+    }
+  }
 }
 
 require('nvim-treesitter.install').compilers = { 'clang' }
