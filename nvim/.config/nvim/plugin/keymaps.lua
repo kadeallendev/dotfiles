@@ -33,3 +33,8 @@ set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })
 
 -- Overwrite ' goto mark with ` goto mark
 set('n', "'", '`', {})
+
+-- Toggles
+set('n', '<leader>tcl', '<CMD>Tcl<CR>', { desc = 'Toggle Cursor Line' })
+set('n', '<leader>td', '<CMD>Tdiag<CR>', { desc = 'Toggle diagnostics' })
+set('n', '<leader>ts', '<CMD>Tspell<CR>', { desc = 'Toggle spell' })

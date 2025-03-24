@@ -7,6 +7,9 @@ vim.api.nvim_create_user_command('Tspell', 'setlocal spell! spell?', { desc = 'T
 -- Toggle wrapping
 vim.api.nvim_create_user_command('Twrap', 'setlocal wrap! nowrap?', { desc = 'Toggle line wrapping' })
 
+-- Toggle cursor line
+vim.api.nvim_create_user_command('Tcl', 'setlocal cursorline!', { desc = 'Toggle cursor line' })
+
 -- Toggle diagnostics
 vim.g['diagnostics_active'] = true
 local function toggle_diagnostics()
@@ -33,4 +36,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Disable automatic comment on enter
 vim.cmd [[autocmd FileType * setlocal formatoptions-=cro]]
-
