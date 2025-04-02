@@ -28,6 +28,7 @@ chat.setup {
       ratio = 0.3,
     },
   },
+  model = 'gpt-4',
 }
 
 -- Open chat
