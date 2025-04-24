@@ -136,6 +136,9 @@ export PATH="$PATH:/home/kade/slides"
 
 export PATH="$PATH:/home/kade/zig"
 
+# Use neovim as manpager
+export MANPAGER="nvim +Man!"
+
 # Aliases
 
 # Git

@@ -54,6 +54,9 @@ export PATH="$PATH:$DOTNET_ROOT"
 # Add czkawka
 export PATH="$PATH:/opt/homebrew/Cellar/czkawka/8.0.0/bin"
 
+# Use nvim as man pager
+export MANPAGER="nvim +Man!"
+
 # Add Mono
 
 MONO_BIN="/Library/Frameworks/Mono.framework/Versions/Current/bin"
