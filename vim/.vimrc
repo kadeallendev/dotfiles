@@ -131,8 +131,10 @@ set noswapfile
 call plug#begin()
 
 Plug 'rose-pine/vim'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'PProvost/vim-ps1'
 
 call plug#end()
 

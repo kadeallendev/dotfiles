@@ -47,15 +47,25 @@ M.pt_vault_dir = function()
   return vault_dir
 end
 
-M.jira_prefix_pat = '^[A-Za-z]+%-%d+'
-M.get_branch_prefix = function()
+M.get_branch_name = function()
   local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
   if handle == nil then
     print 'ERROR: unable to get branch name'
     return
   end
-  local branch_name = handle:read('*a'):gsub('%s+', '') -- Remove trailing whitespace
+  local branch_name = handle:read('*a'):gsub('%s+', '')
   handle:close()
+  return branch_name
+end
+
+M.jira_prefix_pat = '^f?e?a?t?u?r?e?/?([A-Za-z]+%-%d+)'
+-- M.jira_prefix_pat = '^(feature/)?[A-Za-z]+%-%d+'
+
+M.get_branch_prefix = function()
+  local branch_name = M.get_branch_name()
+  if branch_name == nil then
+    return
+  end
   return branch_name:match(M.jira_prefix_pat)
 end
 

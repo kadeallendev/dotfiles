@@ -54,6 +54,9 @@ export PATH="$PATH:$DOTNET_ROOT"
 # Add czkawka
 export PATH="$PATH:/opt/homebrew/Cellar/czkawka/8.0.0/bin"
 
+# Use nvim as man pager
+export MANPAGER="nvim +Man!"
+
 # Add Mono
 
 MONO_BIN="/Library/Frameworks/Mono.framework/Versions/Current/bin"
@@ -91,8 +94,8 @@ alias ~="cd ~"
 
 # Exa
 # alias ls="exa -Fl --sort=ext"
-alias ls="eza -l --sort=ext"
-alias lsa="eza -a --sort=ext"
+alias ls="eza -lh --sort=ext"
+alias lsa="eza -ha --sort=ext"
 # alias lsa="exa -Fa --sort=ext"
 
 # Uni

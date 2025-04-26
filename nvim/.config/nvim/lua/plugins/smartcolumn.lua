@@ -2,6 +2,7 @@
 return {
   {
     'm4xshen/smartcolumn.nvim',
+    event = 'InsertEnter',
     opts = {
       scope = 'line',
       custom_colorcolumn = {

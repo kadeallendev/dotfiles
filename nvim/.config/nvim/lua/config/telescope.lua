@@ -21,7 +21,7 @@ require('telescope').setup {
 
 -- pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'smart_history')
-pcall(require('telescope').load_extension, 'ui-select')
+-- pcall(require('telescope').load_extension, 'ui-select')
 
 local builtin = require 'telescope.builtin'
 

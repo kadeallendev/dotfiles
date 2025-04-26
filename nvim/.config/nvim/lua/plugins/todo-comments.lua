@@ -2,12 +2,15 @@
 return {
   {
     'folke/todo-comments.nvim',
-    event = "BufEnter",
+    event = 'BufEnter',
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
     opts = {
       signs = false,
+      highlight = {
+        multiline_pattern = '^|.',
+      },
     },
   },
 }

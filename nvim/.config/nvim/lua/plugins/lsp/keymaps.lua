@@ -120,26 +120,24 @@ function X.set_defaults(client, bufnr)
 
   -- Ignore warnings
   local ft = vim.bo[bufnr].filetype
-  if ft == 'sh' or ft == 'lua' then
-    buf_set_keymap('n', '<leader>li', function()
-      local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
-      local msgs = vim.diagnostic.get(bufnr)
-      local last, result = unpack { 'error', '' }
-      if ft == 'lua' then
-        result = '---@diagnostic disable-next-line'
-      else
-        for _, d in pairs(msgs) do
-          if d.lnum == (row - 1) and d.code ~= last then
-            result = (result ~= '') and result .. ',' .. d.code or '#shellcheck disable=' .. d.code
-            last = tostring(d.code)
-          end
+  buf_set_keymap('n', '<leader>li', function()
+    local row, _ = unpack(vim.api.nvim_win_get_cursor(0))
+    local msgs = vim.diagnostic.get(bufnr)
+    local last, result = unpack { 'error', '' }
+    if ft == 'lua' then
+      result = '---@diagnostic disable-next-line'
+    else
+      for _, d in pairs(msgs) do
+        if d.lnum == (row - 1) and d.code ~= last then
+          result = (result ~= '') and result .. ',' .. d.code or '#shellcheck disable=' .. d.code
+          last = tostring(d.code)
         end
       end
-      if result ~= '' then
-        vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { result })
-      end
-    end, 'Ignore warnings')
-  end
+    end
+    if result ~= '' then
+      vim.api.nvim_buf_set_lines(0, row - 1, row - 1, false, { result })
+    end
+  end, 'Ignore warnings')
 end
 
 return X

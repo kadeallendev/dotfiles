@@ -8,8 +8,17 @@ return {
     priority = 1000,
     config = function()
       require('rose-pine').setup {
-        transparent = true,
+        transparent = false,
         variant = 'main',
+        enable = {
+          terminal = true,
+        },
+        styles = {
+          bold = true,
+          italic = false,
+          transparent = false,
+          transparency = false,
+        },
       }
     end,
   },
@@ -25,16 +34,14 @@ return {
         italic_comments = false,
         terminal_colors = false,
 
-        theme = {
-          -- Override default highlights
-          overrides = function(colors)
-            return {
-              LineNrAbove = { fg = colors.grey, bg = 'NONE' },
-              LineNr = { fg = colors.blue, bg = 'NONE' },
-              LineNrBelow = { fg = colors.grey, bg = 'NONE' },
-            }
-          end,
-        },
+        -- Override default highlights
+        overrides = function(colors)
+          return {
+            LineNrAbove = { fg = colors.grey, bg = 'NONE' },
+            LineNr = { fg = colors.blue, bg = 'NONE' },
+            LineNrBelow = { fg = colors.grey, bg = 'NONE' },
+          }
+        end,
         extensions = {
           telescope = false,
           fzflua = false,
