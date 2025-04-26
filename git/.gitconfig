@@ -1,0 +1,34 @@
+[user]
+	name = Kade Allen
+	email = 38875538+kadeallendev@users.noreply.github.com
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[core]
+	excludesfile = /Users/kadeallen/.gitignore_global
+	pager = delta
+
+[delta]
+	navigate = true
+	dark = true
+
+[diff]
+	colorMoved = default
+
+[github]
+	user = kadeallendev
+
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+[init]
+    defaultBranch = main
+[http]
+	postBuffer = 157286400
