@@ -5,9 +5,12 @@
 ```
 allow-loopback-pinentry
 pinentry-program /usr/bin/pinentry
+max-cache-ttl 60480000
+default-cache-ttl 60480000
 ```
 
-The last line can be done with: `echo "pinentry-program $(which pinentry) >> ~/.gnupg/gpg-agent.conf`
+The `pinentry-program` can be done with: `echo "pinentry-program $(which pinentry) >> ~/.gnupg/gpg-agent.conf`
+The cache-ttl values mean the passphrase has to be entered only once per session
 
 ## `gpg.conf`
 
