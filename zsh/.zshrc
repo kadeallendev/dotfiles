@@ -57,6 +57,9 @@ export PATH="$PATH:/opt/homebrew/Cellar/czkawka/8.0.0/bin"
 # Use nvim as man pager
 export MANPAGER="nvim +Man!"
 
+# GPG Signing
+export GPG_TTY=$(tty)
+
 # Add Mono
 
 MONO_BIN="/Library/Frameworks/Mono.framework/Versions/Current/bin"

@@ -139,6 +139,9 @@ export PATH="$PATH:/home/kade/zig"
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
 
+# GPG signing
+export GPG_TTY=$(tty)
+
 # Aliases
 
 # Git
