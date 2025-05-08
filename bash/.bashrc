@@ -75,7 +75,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto -lah'
+    alias ls='ls --color=auto -Xlah'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -160,8 +160,8 @@ alias tks="tmux kill-session -t"
 alias ~="cd ~"
 
 # Ls
-alias ls="ls -lh --color=auto --group-directories-first"
-alias lsa="ls -lha --color=auto --group-directories-first"
+alias ls="ls -Xlh --color=auto --group-directories-first"
+alias lsa="ls -Xlha --color=auto --group-directories-first"
 
 # Auto cd ..
 alias ..="cd .."
