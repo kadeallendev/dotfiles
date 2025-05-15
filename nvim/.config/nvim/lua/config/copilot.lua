@@ -22,21 +22,22 @@ vim.keymap.set('n', '<leader>cs', '<cmd>Copilot panel<cr>', { desc = 'Open Copil
 -- Chat
 local chat = require 'CopilotChat'
 chat.setup {
-  panel = {
-    layout = {
-      position = 'right',
-      ratio = 0.3,
+  window = {
+    layout = 'vertical',
+    width = 0.4,
+  },
+  model = 'claude-3.7-sonnet',
+  mappings = {
+    reset = {
+      normal = '<leader>cr',
+      callback = function()
+        chat.reset()
+      end,
     },
   },
-  model = 'gpt-4',
 }
 
 -- Open chat
 vim.keymap.set('n', '<leader>cp', function()
   chat.toggle()
 end, { noremap = true, silent = true, desc = 'Open Copilot chat' })
-
--- Reset chat
-vim.keymap.set('n', '<leader>cr', function()
-  chat.reset()
-end, { noremap = true, silent = true, desc = 'Rest Copilot chat' })
