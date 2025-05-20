@@ -184,6 +184,11 @@ joinpdf() {
     #/System/Library/Automator/Combine PDF Pages.action/Contents/MacOS/join -o output.pdf files.pdf
 }
 
+function otw() {
+  game=$(echo $1 | tr -d '[:digit:]')
+  ssh -p 2220 "${1}@${game}.labs.overthewire.org"
+}
+
 # Source my scripts
 source ~/.local/scripts/pj
 
