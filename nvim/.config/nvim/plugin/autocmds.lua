@@ -3,77 +3,42 @@ local utils = require 'utils'
 -- Create an augroup for Git and JIRA related autocommands
 local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })
 
---------------------------------------------------------
--- Inserts the current git branch into the 'b' register.
--- Defaults to 'main' if not in git repo.
---------------------------------------------------------
-local function set_reg_git_branch()
-  local branch = utils.get_git_branch()
-  if branch then
-    vim.fn.setreg('b', branch)
-  end
-end
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Load git branch name into register b',
-  group = git_jira_group,
-  callback = set_reg_git_branch,
-})
-vim.api.nvim_create_autocmd('User', {
-  desc = 'Load git branch name into register b',
-  group = git_jira_group,
-  pattern = 'FugitiveChanged',
-  callback = set_reg_git_branch,
-})
-
-----------------------------------------------
--- Inserts the JIRA ticket to the 't' register
-----------------------------------------------
-local function set_reg_jira_ticket()
-  local ticket = utils.get_jira_ticket()
-  if ticket == nil then
-    return nil
+-------------------------------------------------------------------
+-- Loads the git branch as well as JIRA ticket and link into global
+-- variables and registers
+-------------------------------------------------------------------
+local function update_git_and_jira_info()
+  -- Get branch, ticket, and link
+  local branch = utils.get_git_branch() or ''
+  local ticket = utils.get_jira_ticket() or ''
+  local link = ''
+  if ticket ~= '' then
+    link = string.format('- [%s](https://partstrader.atlassian.net/browse/%s)', ticket, ticket)
   end
 
+  -- Set global variables
+  vim.g.gitbranch = branch
+  vim.g.jiraticket = ticket
+
+  -- Set registers
+  vim.fn.setreg('b', branch)
   vim.fn.setreg('t', ticket)
+  vim.fn.setreg('j', link)
 end
 
+-- Update git and jira on VimEnter
 vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Load JIRA ticket into register t',
   group = git_jira_group,
-  callback = set_reg_jira_ticket,
+  desc = 'Initialize Git and JIRA globals and registers',
+  callback = update_git_and_jira_info,
 })
+
+-- Update git and jira on git repo changing
 vim.api.nvim_create_autocmd('User', {
-  desc = 'Load JIRA ticket into register t',
-  group = git_jira_group,
   pattern = 'FugitiveChanged',
-  callback = set_reg_jira_ticket,
-})
-
------------------------------------------------------
--- Inserts a link to the current branch's JIRA ticket
--- into the 'j' register
------------------------------------------------------
-local function set_reg_jira_link()
-  local ticket = utils.get_jira_ticket()
-  if ticket == nil then
-    return nil
-  end
-
-  local jira_link = '- [' .. ticket .. '](https://partstrader.atlassian.net/browse/' .. ticket .. ')'
-  vim.fn.setreg('j', jira_link)
-end
-
-vim.api.nvim_create_autocmd('VimEnter', {
-  desc = 'Load JIRA link into register j',
   group = git_jira_group,
-  callback = set_reg_jira_link,
-})
-vim.api.nvim_create_autocmd('User', {
-  desc = 'Load JIRA link into register j',
-  group = git_jira_group,
-  pattern = 'FugitiveChanged',
-  callback = set_reg_jira_link,
+  desc = 'Reload Git and JIRA globals and registers',
+  callback = update_git_and_jira_info,
 })
 
 ----------------------------------------
