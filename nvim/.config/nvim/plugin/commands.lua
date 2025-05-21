@@ -24,15 +24,11 @@ end
 
 vim.api.nvim_create_user_command('Tdiag', toggle_diagnostics, { desc = 'Toggle diagnostics' })
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
+-- TODO: This doesn't belong here
 -- Disable automatic comment on enter
 vim.cmd [[autocmd FileType * setlocal formatoptions-=cro]]
+
+-- Reload special git registers
+vim.api.nvim_create_user_command('Rreg', function()
+  vim.cmd 'do User FugitiveChanged'
+end, { desc = 'Reset git registers' })
