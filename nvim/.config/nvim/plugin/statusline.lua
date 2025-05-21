@@ -26,7 +26,7 @@ function StatusLine()
   local full_fname = vim.fn.expand '%:p'
   local filetype = vim.bo.filetype
   local bufname = vim.fn.bufname()
-  local branch_name = utils.get_branch_prefix()
+  local branch_name = utils.get_jira_ticket()
   if branch_name == nil then
     branch_name = utils.get_git_branch()
   end

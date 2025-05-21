@@ -80,7 +80,7 @@ end
 M.jira_prefix_pat = '^f?e?a?t?u?r?e?/?([A-Za-z]+%-%d+)'
 -- M.jira_prefix_pat = '^(feature/)?[A-Za-z]+%-%d+'
 
-M.get_branch_prefix = function()
+M.get_jira_ticket = function()
   local branch_name = M.get_git_branch()
   if branch_name == nil then
     return

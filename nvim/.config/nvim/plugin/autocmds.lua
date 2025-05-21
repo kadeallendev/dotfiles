@@ -13,13 +13,27 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+----------------------------------------------
+-- Inserts the JIRA ticket to the 't' register
+----------------------------------------------
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    local ticket = utils.get_jira_ticket()
+    if ticket == nil then
+      return nil
+    end
+
+    vim.fn.setreg('t', ticket)
+  end,
+})
+
 -----------------------------------------------------
 -- Inserts a link to the current branch's JIRA ticket
 -- into the 'j' register
 -----------------------------------------------------
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
-    local ticket = utils.get_branch_prefix()
+    local ticket = utils.get_jira_ticket()
     if ticket == nil then
       return nil
     end

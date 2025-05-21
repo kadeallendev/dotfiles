@@ -54,7 +54,7 @@ vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { noremap = true, silent
 local function commit()
   local prompt = 'Commit msg: '
   -- Get branch prefix
-  local branch_prefix = utils.get_branch_prefix()
+  local branch_prefix = utils.get_jira_ticket()
   if branch_prefix ~= nil then
     prompt = 'Commit msg [' .. branch_prefix .. ']: '
   end
