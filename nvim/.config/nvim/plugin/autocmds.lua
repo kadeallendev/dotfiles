@@ -49,7 +49,7 @@ local function set_reg_jira_link()
     return nil
   end
 
-  local jira_link = 'https://partstrader.atlassian.net/browse/' .. ticket
+  local jira_link = '- [' .. ticket .. '](https://partstrader.atlassian.net/browse/' .. ticket .. ')'
   vim.fn.setreg('j', jira_link)
 end
 
