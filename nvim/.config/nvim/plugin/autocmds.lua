@@ -1,38 +1,30 @@
+local utils = require 'utils'
+
 --------------------------------------------------------
 -- Inserts the current git branch into the 'b' register.
 -- Defaults to 'main' if not in git repo.
 --------------------------------------------------------
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
-    local function get_git_branch()
-      -- Check if git command exists
-      local git_exists = vim.fn.executable 'git'
-      if git_exists == 0 then
-        return 'main'
-      end
-
-      -- Check if inside git repo
-      local success, is_git_output = pcall(function()
-        return vim.fn.system 'git rev-parse --is-inside-work-tree 2>/dev/null'
-      end)
-      if not (success and is_git_output:match 'true') then
-        return 'main'
-      end
-
-      -- Get branch name safely
-      local branch_success, branch = pcall(function()
-        return vim.fn.trim(vim.fn.system 'git branch --show-current 2>/dev/null')
-      end)
-      if not branch_success or branch == '' then
-        return 'main'
-      end
-
-      return branch
-    end
-
-    local branch = get_git_branch()
+    local branch = utils.get_git_branch()
     if branch then
       vim.fn.setreg('b', branch)
     end
+  end,
+})
+
+-----------------------------------------------------
+-- Inserts a link to the current branch's JIRA ticket
+-- into the 'j' register
+-----------------------------------------------------
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    local ticket = utils.get_branch_prefix()
+    if ticket == nil then
+      return nil
+    end
+
+    local jira_link = 'https://partstrader.atlassian.net/browse/' .. ticket
+    vim.fn.setreg('j', jira_link)
   end,
 })

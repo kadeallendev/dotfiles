@@ -47,22 +47,41 @@ M.pt_vault_dir = function()
   return vault_dir
 end
 
-M.get_branch_name = function()
-  local handle = io.popen 'git rev-parse --abbrev-ref HEAD 2> /dev/null'
-  if handle == nil then
-    print 'ERROR: unable to get branch name'
-    return
+M.get_git_branch = function()
+  -- Check if git executable exists
+  local git_exists = vim.fn.executable 'git'
+  if git_exists == 0 then
+    print 'ERROR: git executable does not exist'
+    return nil
   end
-  local branch_name = handle:read('*a'):gsub('%s+', '')
-  handle:close()
-  return branch_name
+
+  -- Check if inside git repo
+  local success, is_git_output = pcall(function()
+    return vim.fn.system 'git rev-parse --is-inside-work-tree 2>/dev/null'
+  end)
+  if not (success and is_git_output:match 'true') then
+    -- If not inside git repo, set branch to 'main'
+    return 'main'
+  end
+
+  -- Get branch name
+  local branch_success, branch = pcall(function()
+    return vim.fn.trim(vim.fn.system 'git branch --show-current 2>/dev/null')
+  end)
+  if not branch_success or branch == '' then
+    print 'ERROR: unable to get branch name'
+    return nil
+  end
+
+  -- Remove whitespace from branch and return
+  return branch:gsub('%s+', '')
 end
 
 M.jira_prefix_pat = '^f?e?a?t?u?r?e?/?([A-Za-z]+%-%d+)'
 -- M.jira_prefix_pat = '^(feature/)?[A-Za-z]+%-%d+'
 
 M.get_branch_prefix = function()
-  local branch_name = M.get_branch_name()
+  local branch_name = M.get_git_branch()
   if branch_name == nil then
     return
   end

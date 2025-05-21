@@ -28,7 +28,7 @@ function StatusLine()
   local bufname = vim.fn.bufname()
   local branch_name = utils.get_branch_prefix()
   if branch_name == nil then
-    branch_name = utils.get_branch_name()
+    branch_name = utils.get_git_branch()
   end
 
   if is_protocol_file(bufname) then
