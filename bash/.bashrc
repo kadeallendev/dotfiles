@@ -185,6 +185,12 @@ cd() {
   fi
 }
 
+# Over the wire function
+function otw() {
+  game=$(echo $1 | tr -d '[:digit:]')
+  ssh -p 2220 "${1}@${game}.labs.overthewire.org"
+}
+
 eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
