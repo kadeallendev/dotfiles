@@ -3,6 +3,23 @@ local set = vim.keymap.set
 -- Set leader key to space
 vim.g.mapleader = ' '
 
+-- Make relative line jumps with j and k populate the jump list
+local rel_cap = 4
+set('n', 'j', function()
+  if vim.v.count > rel_cap then
+    return "m'" .. vim.v.count .. 'j'
+  else
+    return 'j'
+  end
+end, { expr = true })
+set('n', 'k', function()
+  if vim.v.count > rel_cap then
+    return "m'" .. vim.v.count .. 'k'
+  else
+    return 'k'
+  end
+end, { expr = true })
+
 -- Diagnostic keymaps
 set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 
