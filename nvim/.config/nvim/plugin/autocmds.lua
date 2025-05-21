@@ -1,5 +1,8 @@
 local utils = require 'utils'
 
+-- Create an augroup for Git and JIRA related autocommands
+local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })
+
 --------------------------------------------------------
 -- Inserts the current git branch into the 'b' register.
 -- Defaults to 'main' if not in git repo.
@@ -12,9 +15,13 @@ local function set_reg_git_branch()
 end
 
 vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Load git branch name into register b',
+  group = git_jira_group,
   callback = set_reg_git_branch,
 })
 vim.api.nvim_create_autocmd('User', {
+  desc = 'Load git branch name into register b',
+  group = git_jira_group,
   pattern = 'FugitiveChanged',
   callback = set_reg_git_branch,
 })
@@ -32,9 +39,13 @@ local function set_reg_jira_ticket()
 end
 
 vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Load JIRA ticket into register t',
+  group = git_jira_group,
   callback = set_reg_jira_ticket,
 })
 vim.api.nvim_create_autocmd('User', {
+  desc = 'Load JIRA ticket into register t',
+  group = git_jira_group,
   pattern = 'FugitiveChanged',
   callback = set_reg_jira_ticket,
 })
@@ -54,9 +65,13 @@ local function set_reg_jira_link()
 end
 
 vim.api.nvim_create_autocmd('VimEnter', {
+  desc = 'Load JIRA link into register j',
+  group = git_jira_group,
   callback = set_reg_jira_link,
 })
 vim.api.nvim_create_autocmd('User', {
+  desc = 'Load JIRA link into register j',
+  group = git_jira_group,
   pattern = 'FugitiveChanged',
   callback = set_reg_jira_link,
 })
