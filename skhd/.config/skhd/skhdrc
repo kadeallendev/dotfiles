@@ -22,3 +22,7 @@ alt - s : open -a /System/Applications/Calendar.app/Contents/MacOS/Calendar
 # Yazi
 # NOTE: doesn't work
 ctrl + alt - y : /Applications/WezTerm.app/Contents/MacOS/wezterm start -e yazi
+
+# Mullvad
+
+alt - f : open -a /Applications/Mullvad\ VPN.app/Contents/MacOS/Mullvad\ VPN

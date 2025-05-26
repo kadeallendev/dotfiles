@@ -9,7 +9,7 @@ config.colors = require("cyberdream")
 
 -- Font
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 14
+config.font_size = 16
 config.harfbuzz_features = { "calt=0" }
 
 -- UI
