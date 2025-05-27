@@ -7,7 +7,7 @@ end
 
 ab('i', 'PT', 'PartsTrader') -- PartsTrader
 ab('i', '@@', 'kade.allen@ptml.com') -- Email
-ab('i', 'gb', vim.g.gitbranch) -- Git branch
+-- ab('i', 'gb', vim.g.gitbranch) -- Git branch
 ab('i', 'ddate', os.date '%Y-%m-%d') -- Date
 ab('i', 'ttime', os.date '%H:%M:%S') -- Time
 ab('i', 'diso', vim.fn.system 'date -Iseconds') -- ISO 8601 time
