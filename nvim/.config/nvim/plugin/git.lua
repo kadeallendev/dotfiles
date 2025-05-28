@@ -91,4 +91,21 @@ end
 -- Commit
 vim.keymap.set('n', '<leader>gc', commit, { noremap = true, silent = true, desc = 'Commit with branch prefix' })
 -- Commit with message
-vim.keymap.set('n', '<leader>gC', '<CMD>G commit --verbose<CR>', { noremap = true, silent = true, desc = 'Commit with long message' })
+vim.keymap.set('n', '<leader>gC', function()
+  -- Open commit window
+  vim.cmd 'G commit --verbose'
+
+  -- Wait for commit buffer to open
+  vim.defer_fn(function()
+    -- Paste JIRA ticket from 't' reg
+    local content = vim.fn.getreg 't' .. ' '
+    local lines = {}
+    for line in string.gmatch(content, '[^\n]+') do
+      table.insert(lines, line)
+    end
+    vim.api.nvim_put(lines, '', false, true)
+
+    -- Enter insert mode
+    vim.cmd 'startinsert!'
+  end, 100)
+end, { noremap = true, silent = true, desc = 'Commit with long message' })
