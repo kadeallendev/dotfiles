@@ -31,21 +31,26 @@ vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { noremap = true, silent 
 
 -- Stage buffer
 vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, { noremap = true, silent = true, desc = 'Stage buffer' })
-
--- Gitsigns toggle_current_line_blame
--- Gitsigns toggle_linehl
+vim.keymap.set('n', '<leader>ga', gitsigns.stage_buffer, { desc = 'Add buffer to index (stage)' })
+-- Unstage buffer
+vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { noremap = true, silent = true, desc = 'Unstage buffer' })
 
 -- Diff current file
 vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { noremap = true, silent = true, desc = 'Gitsigns diffthis' })
 
 -- Blame current line
-vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { noremap = true, silent = true, desc = 'Gitsigns blame line' })
+vim.keymap.set('n', '<leader>gbl', function()
+  gitsigns.blame_line { full = true }
+end, { noremap = true, silent = true, desc = 'Gitsigns blame line' })
 
 -- Blame all lines
 vim.keymap.set('n', '<leader>gba', gitsigns.blame, { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
 -- Preview hunk
 vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline, { noremap = true, silent = true, desc = 'Gitsigns preview hunk inline' })
+
+-- Toggle line highlight a.k.a. preview all lines
+vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl, { noremap = true, silent = true, desc = 'Gitsigns toggle line highlight' })
 
 -- Reset hunk
 vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { noremap = true, silent = true, desc = 'Gitsigns reset hunk' })
