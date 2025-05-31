@@ -40,7 +40,7 @@ require('lazy').setup({ import = 'plugins' }, {
   },
 })
 
-vim.cmd [[colorscheme cyberdream]]
+vim.cmd [[colorscheme yugen]]
 
 -- Setup VSCode
 if vim.g.vscode then

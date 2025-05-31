@@ -52,4 +52,8 @@ return {
       }
     end,
   },
+
+  {
+    'bettervim/yugen.nvim',
+  },
 }
