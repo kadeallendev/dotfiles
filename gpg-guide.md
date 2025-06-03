@@ -34,6 +34,9 @@ export GPG_TTY=$(tty)
 
 ## Fugitive / Vim
 
+> [!note]
+> This is not needed if using GPG with YubiKey
+
 To get commit signing inside vim, you need to add this script to `/usr/local/bin` or any other path
 that precedes `/usr/bin`:
 
