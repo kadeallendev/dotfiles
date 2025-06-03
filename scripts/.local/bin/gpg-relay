@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+GPG_AGENT_SOCKET="${HOME}/.gnupg/S.gpg-agent"
+
+# Check if process is already running
+if pgrep -f "socat UNIX-LISTEN:${GPG_AGENT_SOCKET}" > /dev/null; then
+	exit 0
+fi
+
+# If socket exists remove it
+if [ -e "$GPG_AGENT_SOCKET" ]; then
+	rm "$GPG_AGENT_SOCKET"
+fi
+
+# Start socat in background
+socat UNIX-LISTEN:"${GPG_AGENT_SOCKET},fork", EXEC:'wsl-relay.exe --input-closes --pipe-closes --gpg',nofork > /dev/null 2>&1 &
+

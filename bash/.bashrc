@@ -135,6 +135,8 @@ export PATH="$PATH:/home/kade/slides"
 
 export PATH="$PATH:/home/kade/zig"
 
+export PATH="$PATH:/mnt/c/Users/kade.allen/bin"
+
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
 
@@ -165,6 +167,9 @@ alias lsa="ls -Xlha --color=auto --group-directories-first"
 # Auto cd ..
 alias ..="cd .."
 alias ...="cd ../.."
+
+# GPG RELAY
+~/.local/bin/gpg-relay
 
 # -------
 # Methods
