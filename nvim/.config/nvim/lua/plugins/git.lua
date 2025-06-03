@@ -4,6 +4,13 @@ return {
     'tpope/vim-fugitive',
     event = 'VeryLazy',
   },
+  {
+    'tpope/vim-rhubarb',
+    event = 'VeryLazy',
+    dependencies = {
+      'tpope/vim-fugitive',
+    },
+  },
 
   -- Gitsigns
   {
@@ -14,20 +21,26 @@ return {
     end,
   },
 
-  -- Neogit
+  -- Diffview
   {
-    'neogitorg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim',
-      -- 'nvim-telescope/telescope.nvim',
-      'ibhagwan/fzf-lua',
-    },
+    'sindrets/diffview.nvim',
     event = 'VeryLazy',
-    config = function()
-      require('neogit').setup {}
-    end,
   },
+
+  -- Neogit
+  -- {
+  --   'neogitorg/neogit',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'sindrets/diffview.nvim',
+  --     -- 'nvim-telescope/telescope.nvim',
+  --     'ibhagwan/fzf-lua',
+  --   },
+  --   event = 'VeryLazy',
+  --   config = function()
+  --     require('neogit').setup {}
+  --   end,
+  -- },
 
   -- Branch viewer
   {
