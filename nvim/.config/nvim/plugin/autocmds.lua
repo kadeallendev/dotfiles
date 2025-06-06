@@ -1,4 +1,10 @@
-local utils = require 'utils'
+local utils = require 'kade.utils'
+
+-- Disable automatic comment on enter
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  command = 'setlocal formatoptions-=cro',
+})
 
 -- Create an augroup for Git and JIRA related autocommands
 local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })

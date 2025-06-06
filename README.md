@@ -16,3 +16,8 @@ stow nvim tmux zsh wezterm vim skhd scripts nix-darwin kitty alacritty karabiner
 ## TODO
 
 - Use `vim.fn.stdpath "data"` instead of method in `utils` file.
+
+### Third Heading
+
+
+#### Fourth heading

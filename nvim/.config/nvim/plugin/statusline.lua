@@ -3,13 +3,13 @@
 -- The format string looks like this
 -- '%<%h %f %m%=(%l,%c%V) %P'
 
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 -- Set highlight for cwd
-vim.api.nvim_set_hl(0, 'StatusLineCWD', { fg = '#5ea1ff', bold = true })
-vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
-vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
-vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
+-- vim.api.nvim_set_hl(0, 'StatusLineCWD', { fg = '#5ea1ff', bold = true })
+-- vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
+-- vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
+-- vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
 
 local protocols = { 'oil://', 'fugitive://', 'http://', 'octo://' }
 local function is_protocol_file(bufname)

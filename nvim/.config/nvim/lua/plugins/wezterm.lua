@@ -1,7 +1,7 @@
 -- Integrations with WezTerm
 
 -- Disable for windows
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 if utils.is_mac() then
   return {

@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 -- Git related shit
 

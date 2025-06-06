@@ -1,6 +1,6 @@
 -- Powershell development
 
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 if not utils.is_windows() then
   return {}

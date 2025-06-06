@@ -10,7 +10,7 @@ return {
     build = ':TSUpdate',
     lazy = false,
     config = function()
-      require 'config.treesitter'
+      require 'plugins.config.cfg-treesitter'
     end,
   },
 }

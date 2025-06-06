@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 -- Only setup for mac
 if utils.is_mac() then

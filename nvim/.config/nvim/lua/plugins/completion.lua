@@ -16,7 +16,7 @@ return {
       { 'windwp/nvim-autopairs', config = true }, -- Auto pairs brackets
     },
     config = function()
-      require 'config.completion'
+      require 'plugins.config.cfg-completion'
     end,
   },
 }

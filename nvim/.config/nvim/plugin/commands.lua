@@ -21,14 +21,19 @@ local function toggle_diagnostics()
     vim.diagnostic.enable()
   end
 end
-
 vim.api.nvim_create_user_command('Tdiag', toggle_diagnostics, { desc = 'Toggle diagnostics' })
-
--- TODO: This doesn't belong here
--- Disable automatic comment on enter
-vim.cmd [[autocmd FileType * setlocal formatoptions-=cro]]
 
 -- Reload special git registers
 vim.api.nvim_create_user_command('Rreg', function()
   vim.cmd 'do User FugitiveChanged'
 end, { desc = 'Reset git registers' })
+
+-- Toggle foldcolumn
+vim.api.nvim_create_user_command('Tfc', function()
+  local current_value = vim.wo.foldcolumn
+  if current_value == '0' then
+    vim.wo.foldcolumn = 'auto'
+  else
+    vim.wo.foldcolumn = '0'
+  end
+end, { desc = 'Toggle foldcolumn between 0 and auto' })

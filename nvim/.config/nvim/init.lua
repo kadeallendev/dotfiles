@@ -40,7 +40,8 @@ require('lazy').setup({ import = 'plugins' }, {
   },
 })
 
-vim.cmd [[colorscheme default]]
+-- we can't set the colorscheme if we use custom highlights in plugin/highlight.lua
+-- vim.cmd [[colorscheme default]]
 
 -- Setup VSCode
 if vim.g.vscode then

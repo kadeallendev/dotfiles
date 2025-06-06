@@ -2,7 +2,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       -- {
@@ -17,7 +17,7 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require 'config.telescope'
+      require 'plugins.config.cfg-telescope'
     end,
   },
 }

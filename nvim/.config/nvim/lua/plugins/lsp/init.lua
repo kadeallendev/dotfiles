@@ -3,21 +3,17 @@ return {
   {
     'ray-x/lsp_signature.nvim',
     event = 'InsertEnter',
-    opts = {
-      bind = true,
-      handler_opts = {
-        border = 'rounded',
-      },
-      hint_enable = false,
-      max_width = 100,
-    },
-    config = function(_, opts)
-      require('lsp_signature').setup(opts)
-
-      -- Lsp Signature config
-      vim.keymap.set({ 'i' }, '<C-k>', function()
-        require('lsp_signature').toggle_float_win()
-      end, { desc = 'Toggle signature help' })
+    config = function()
+      require('lsp_signature').setup {
+        bind = true,
+        handler_opts = {
+          border = 'solid',
+        },
+        hint_enable = false,
+        max_width = 100,
+        max_height = 16,
+        toggle_key = '<C-k>',
+      }
     end,
   },
 
@@ -49,29 +45,21 @@ return {
         underline = true,
         update_in_insert = true,
         float = {
-          border = 'single',
+          border = 'solid',
           style = 'minimal',
-          focus = false,
-          focusable = false,
+          focus = true,
+          focusable = true,
         },
       }
       lspconfig.util.default_config = vim.tbl_deep_extend('force', lspconfig.util.default_config, config)
       vim.diagnostic.config(config)
 
       local border = {
-        border = 'single',
+        border = 'rounded',
+        winhighlight = 'NormalFloat:Pmenu',
       }
       vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.hover, border)
       vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, border)
-
-      -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_public_diagnostics, {
-      --   signs = {
-      --     severity_limit = 'Hint',
-      --   },
-      --   virtual_text = {
-      --     severity_limit = 'Error',
-      --   },
-      -- })
 
       -- Capabilities
       local capabilities = vim.tbl_deep_extend('force', {}, vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())

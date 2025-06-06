@@ -1,4 +1,4 @@
-local utils = require 'utils'
+local utils = require 'kade.utils'
 local opt = vim.opt
 
 -- Line Numbers {{{
@@ -9,6 +9,9 @@ opt.relativenumber = true -- Relative numbers
 -- Mouse {{{
 opt.mouse = 'a'
 -- }}}
+
+-- Language
+opt.spelllang = 'en_us,en_nz'
 
 -- Tabs {{{
 opt.tabstop = 4
@@ -85,9 +88,6 @@ opt.wildignore:append '.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kbg'
 -- Undercurl
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
 vim.cmd [[let &t_Ce = "\e[4:0m"]]
-
--- TODO: Play around with this
--- opt.conceallevel=0
 
 -- Something with hidden buffers
 opt.hidden = true

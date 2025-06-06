@@ -1,6 +1,6 @@
 local fzf = require 'fzf-lua'
 local actions = require 'fzf-lua.actions'
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 fzf.setup {
   keymap = {

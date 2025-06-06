@@ -55,6 +55,7 @@ set('n', "'", '`', {})
 set('n', '<leader>tcl', '<CMD>Tcl<CR>', { desc = 'Toggle Cursor Line' })
 set('n', '<leader>td', '<CMD>Tdiag<CR>', { desc = 'Toggle diagnostics' })
 set('n', '<leader>ts', '<CMD>Tspell<CR>', { desc = 'Toggle spell' })
+set('n', '<leader>tfc', '<CMD>Tfc<CR>', { desc = 'Toggle foldcolumn' })
 
 -- Better indenting with '<' and '>'
 set('x', '<', '<gv', {})

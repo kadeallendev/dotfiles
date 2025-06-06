@@ -1,5 +1,5 @@
 -- Obsidian integration, not for windows
-local utils = require 'utils'
+local utils = require 'kade.utils'
 
 -- Disable for windows
 if utils.is_mac() then
@@ -11,7 +11,7 @@ if utils.is_mac() then
         'nvim-lua/plenary.nvim',
       },
       config = function()
-        require 'config.obsidian'
+        require 'plugins.config.cfg-obsidian'
       end,
     },
   }

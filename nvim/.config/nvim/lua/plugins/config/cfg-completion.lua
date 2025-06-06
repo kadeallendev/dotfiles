@@ -4,7 +4,7 @@ lspkind.init {}
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 
-vim.api.nvim_set_hl(0, 'CmpNormal', { bg = '#000000' })
+-- vim.api.nvim_set_hl(0, 'CmpNormal', { bg = '#000000' })
 
 cmp.setup {
   formatting = {
@@ -16,16 +16,17 @@ cmp.setup {
     { name = 'buffer' },
     { name = 'treesitter' },
     { name = 'luasnip' },
+    arg,
     -- { name = 'nvim_lsp_signature_help' },
     -- { name = 'nvim_lua'},
   },
   window = {
     completion = {
-      border = 'shadow',
+      border = 'solid',
     },
     documentation = {
-      border = 'shadow',
-      -- winhighlight = 'Normal:CmpNormal',
+      border = 'solid',
+      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu',
     },
   },
   mapping = {
@@ -74,7 +75,7 @@ luasnip.config.set_config {
   updateevents = 'TextChanged,TextChangedI',
 }
 
-for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/custom/snippets/*.lua', true)) do
+for _, ft_path in ipairs(vim.api.nvim_get_runtime_file('lua/kade/snippets/*.lua', true)) do
   loadfile(ft_path)()
 end
 
