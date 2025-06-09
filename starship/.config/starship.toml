@@ -42,20 +42,20 @@ format = 'exited with [$status]($style) [$common_meaning$signal_name](#7b8496)'
 disabled = false
 
 [cmd_duration]
-style = "bold #ffbd5e"
+style = "bold #FCE094"
 min_time = 1_000
 show_milliseconds = true
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style)'
-style = '#7b8496'
+style = '#004c63'
 
 [username]
 format = '[$user]($style)'
 disabled = true
 
 [directory]
-style = "bold #5ea1ff"
+style = "bold #A6DBFF"
 truncate_to_repo = true
 
 [character]
@@ -66,7 +66,7 @@ vimcmd_symbol = "[❮](green)"
 
 [git_branch]
 format = "on [$branch]($style)"
-style = "#bd5eff"
+style = "#FFCAFF"
 
 [git_status]
 format = '( [$conflicted$modified$staged$ahead_behind]($style))'
