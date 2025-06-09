@@ -121,7 +121,6 @@ alias aws-mfa="aws-mfa --profile default"
 alias aws-mfa="aws-mfa --profile default"
 
 # ---- Kade's Section ----
-set -o vi
 
 # Options
 export EDITOR=nvim
