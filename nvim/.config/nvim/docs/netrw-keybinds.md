@@ -1,4 +1,5 @@
 # Netrw keybindings
+
 - <Enter> - Enter directory or open file
 - <Del> - Attempt to delete directory or file
 - <C-l> - Refresh directory
@@ -10,7 +11,7 @@
 - o - Enter the file/directory under the cursor in a new horizontal split
 - v - Enter file in a vertical split
 - p - Preview the file
-k
+- % - create file
 
 ## Marking
 - mf - Mark a file
