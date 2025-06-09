@@ -60,3 +60,6 @@ set('n', '<leader>tfc', '<CMD>Tfc<CR>', { desc = 'Toggle foldcolumn' })
 -- Better indenting with '<' and '>'
 set('x', '<', '<gv', {})
 set('x', '>', '>gv', {})
+
+-- LSP Checkhealth
+set('n', '<leader>cl', '<CMD>checkhealth vim.lsp<CR>', { desc = 'Checkhealth lsp' })

@@ -59,9 +59,7 @@ M.get_git_branch = function()
   local success, is_git_output = pcall(function()
     return vim.fn.system 'git rev-parse --is-inside-work-tree 2>/dev/null'
   end)
-  if not (success and is_git_output:match 'true') then
-    -- If not inside git repo, set branch to 'main'
-    return 'main'
+  if not (success and is_git_output:match 'true') then -- If not inside git repo, set branch to 'main' return 'main'
   end
 
   -- Get branch name
@@ -69,7 +67,6 @@ M.get_git_branch = function()
     return vim.fn.trim(vim.fn.system 'git branch --show-current 2>/dev/null')
   end)
   if not branch_success or branch == '' then
-    print 'ERROR: unable to get branch name'
     return nil
   end
 
