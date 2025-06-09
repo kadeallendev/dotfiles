@@ -24,6 +24,7 @@ vim.lsp.enable {
   'gopls',
   'jsonls',
   'rust_analyzer',
+  -- 'marksman', -- TODO: Sort out why this throws an error when opening lua file
 }
 
 vim.keymap.set('n', 'K', function()
