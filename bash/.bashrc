@@ -129,7 +129,10 @@ export EDITOR=nvim
 export FZF_ALT_C_OPTS="
 --walker-skip .git,node_modules,target,venv
 --preview 'tree -C {}'"
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+export FZF_DEFAULT_OPTS="
+--height 40% --layout=reverse
+--color=fg+:#E0E2EA,info:#FFC0B9,spinner:#A6DBFF,bg+:#4F5258,pointer:#FCE094,hl:#FCE904,bg:#14161B,fg:#E0E2EA,prompt:#B4F6C0,marker:#FCE094,header:#A6DBFF,hl+:#FCE904
+"
 
 export PATH="$PATH:/home/kade/slides"
 
