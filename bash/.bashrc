@@ -32,7 +32,7 @@ shopt -s checkwinsize
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-	debian_chroot=$( cat /etc/debian_chroot)
+	debian_chroot=$(cat /etc/debian_chroot)
 fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -46,7 +46,7 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-	if  [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 		# We have color support; assume it's compliant with Ecma-48
 		# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
 		# a case would tend to support setf rather than setaf.)
@@ -73,14 +73,14 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-	test  -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias  ls='ls --color=auto -Xlah'
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto -Xlah'
 	#alias dir='dir --color=auto'
 	#alias vdir='vdir --color=auto'
 
-	alias  grep='grep --color=auto'
-	alias  fgrep='fgrep --color=auto'
-	alias  egrep='egrep --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 fi
 
 # colored GCC warnings and errors
@@ -101,7 +101,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-	.  ~/.bash_aliases
+	. ~/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -121,6 +121,7 @@ alias aws-mfa="aws-mfa --profile default"
 alias aws-mfa="aws-mfa --profile default"
 
 # ---- Kade's Section ----
+set -o vi
 
 # Options
 export EDITOR=nvim
@@ -182,7 +183,7 @@ cd() {
 		# No arguments, use fd an fzf
 		selected_dir=$(fd --type directory | fzf)
 		if [ -n "$selected_dir" ]; then
-			builtin  cd "$selected_dir"
+			builtin cd "$selected_dir"
 		fi
 	else
 		# Arguments provided, use regular cd
