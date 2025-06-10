@@ -14,10 +14,6 @@ vim.cmd [[
   hi! link NormalFloat Pmenu
 ]]
 
--- StatusLine
--- TODO: Update statusline
-vim.cmd [[ hi StatusLine guibg=NvimLightGrey4]]
-
 -- Line numbers
 vim.cmd [[
   hi LineNr guifg=NvimLightBlue
@@ -25,5 +21,8 @@ vim.cmd [[
   hi LineNrBelow guifg=NvimDarkGray4
 ]]
 
--- TODO:
--- QuickFixLine: LineNr seems to fuck with line numbers in quickfix
+-- Quickfix
+vim.cmd [[
+  hi QuickFixLine guibg=NvimLightCyan guifg=NvimDarkGrey2
+  hi qfLineNr guifg=NvimDarkGrey4
+]]
