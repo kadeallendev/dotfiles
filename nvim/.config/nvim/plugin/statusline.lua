@@ -1,88 +1,42 @@
--- Status line configuration
--- Displays filename, modified status, and line number
--- The format string looks like this
--- '%<%h %f %m%=(%l,%c%V) %P'
-
+-- Statusline configuration
 local utils = require 'kade.utils'
 
--- Set highlight for cwd
--- vim.api.nvim_set_hl(0, 'StatusLineCWD', { fg = '#5ea1ff', bold = true })
--- vim.api.nvim_set_hl(0, 'StatusLineBranch', { fg = '#bd5eff', bold = true })
--- vim.api.nvim_set_hl(0, 'StatusLineProtocol', { fg = '#5ea1ff', bold = true })
--- vim.api.nvim_set_hl(0, 'StatusLineFile', { fg = '#ffffff', bold = true })
-
-local protocols = { 'oil://', 'fugitive://', 'http://', 'octo://' }
-local function is_protocol_file(bufname)
-  for _, protocol in ipairs(protocols) do
-    if bufname:sub(1, #protocol) == protocol then
-      return true
-    end
-  end
-end
-
 function StatusLine()
-  local cwd = vim.fn.getcwd()
-  local home = vim.fn.expand '~'
-  local full_fname = vim.fn.expand '%:p'
-  local filetype = vim.bo.filetype
-  local bufname = vim.fn.bufname()
-  local branch_name = utils.get_jira_ticket()
-  if branch_name == nil then
-    branch_name = utils.get_git_branch()
-  end
-
-  if is_protocol_file(bufname) then
-    local protocol = bufname:match '^[^:]+://'
-    local filename = bufname:sub(#protocol + 1)
-    return table.concat {
-      '%#StatusLineProtocol#',
-      protocol,
-      '%#StatusLineFile#',
-      filename,
-      '%*',
-    }
-  end
-
-  if cwd:find(home, 1, true) then
-    cwd = cwd:gsub(home, '~')
-  end
-
-  if full_fname:find(home, 1, true) then
-    full_fname = full_fname:gsub(home, '~')
-  end
-
-  local path_sep = '/'
-  if vim.loop.os_uname().sysname == 'Windows_NT' then
-    path_sep = '\\'
-  end
-
-  if full_fname:find(cwd, 1, true) then
-    local relative_fname = full_fname:sub(#cwd + 2)
-    if branch_name then
-      relative_fname = relative_fname .. ' ' .. '%#StatusLineBranch#' .. branch_name
-    end
-
-    return table.concat {
-      '%<',
-      '%h',
-      '%#StatusLineCWD#',
-      cwd,
-      path_sep,
-      '%*',
-      relative_fname,
-      '%*',
-      ' ',
-      '%m',
-      '%=',
-      filetype,
-      ' ',
-      '(%l,%c%V)',
-      ' ',
-      '%P',
-    }
+  -- Get the git branch
+  -- If there is a JIRA ticket in branch name use that instead
+  local branch = utils.get_git_branch()
+  local jira_ticket = utils.get_jira_ticket()
+  if jira_ticket then
+    branch = '[ ' .. jira_ticket .. ']'
+  elseif branch then
+    branch = '[󰘬 ' .. branch .. ']'
   else
-    return full_fname
+    branch = ''
   end
+
+  return table.concat {
+    '%<', -- Where to truncate
+    '%f', -- Filename relative to cwd
+    ' ',
+    '%h', -- Help flag
+    '%w', -- Preview window flag
+    '%m', -- Modified flag
+    '%r', -- Readonly flag
+    '%=', -- Separation flag
+    '%a', -- Arglist flag
+    ' ',
+    '%y', -- Filetype flag
+    branch, -- Git branch or Jira ticket
+    ' ',
+    -- BEGIN cursor pos group
+    '%10.(', -- Left justified item group with 14 min width
+    '%l,%c%V', -- Line number, Column number, Virtual col number
+    '%)', -- End item group
+    -- END cursor pos group
+  }
 end
 
 vim.opt.statusline = '%!v:lua.StatusLine()'
+
+-- Default
+-- set statusline=%<%f\ %h%w%m%r%=%-14.(%l,%c%V%)\ %P
