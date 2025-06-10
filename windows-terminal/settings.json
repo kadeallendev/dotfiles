@@ -202,12 +202,14 @@
             {
                 "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
                 "hidden": true,
+                "intenseTextStyle": "all",
                 "name": "Ubuntu",
                 "source": "Windows.Terminal.Wsl"
             },
             {
                 "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
                 "hidden": false,
+                "intenseTextStyle": "all",
                 "name": "Ubuntu",
                 "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
             },
@@ -262,27 +264,27 @@
             "yellow": "#F1FF5E"
         },
         {
-            "name": "neovim",
             "background": "#14161B",
-            "foreground": "#E0E2EA",
-            "selectionBackground": "#4F5258",
-            "cursorColor": "#7B8496",
-            "black": "#07080D",
+            "black": "#2C2E33",
             "blue": "#A6DBFF",
-            "cyan": "#8CF8F7",
-            "green": "#B4F6C0",
-            "red": "#FFC0B9",
-            "purple": "#FFCAFF",
-            "yellow": "#FCE094",
-            "brightBlack": "#07080D",
+            "brightBlack": "#767676",
             "brightBlue": "#A6DBFF",
             "brightCyan": "#8CF8F7",
             "brightGreen": "#B4F6C0",
-            "brightRed": "#FFC0B9",
             "brightPurple": "#FFCAFF",
+            "brightRed": "#FFC0B9",
+            "brightWhite": "#FFFFFF",
             "brightYellow": "#FCE094",
-            "white": "#ffffff",
-            "brightWhite": "#ffffff"
+            "cursorColor": "#7B8496",
+            "cyan": "#8CF8F7",
+            "foreground": "#E0E2EA",
+            "green": "#B4F6C0",
+            "name": "neovim",
+            "purple": "#FFCAFF",
+            "red": "#FFC0B9",
+            "selectionBackground": "#4F5258",
+            "white": "#FFFFFF",
+            "yellow": "#FCE094"
         }
     ],
     "themes": []
