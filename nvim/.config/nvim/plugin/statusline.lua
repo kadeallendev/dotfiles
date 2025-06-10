@@ -59,7 +59,7 @@ function StatusLine()
   if full_fname:find(cwd, 1, true) then
     local relative_fname = full_fname:sub(#cwd + 2)
     if branch_name then
-      relative_fname = relative_fname .. '%#StatusLineBranch#' .. ' ' .. branch_name
+      relative_fname = relative_fname .. ' ' .. '%#StatusLineBranch#' .. branch_name
     end
 
     return table.concat {
