@@ -8,8 +8,9 @@ return {
           override_vim_notify = true,
           window = {
             normal_hl = 'Pmenu',
-            winblend = 100,
-            border = 'rounded',
+            winblend = 0,
+            border = 'solid',
+            y_padding = 1,
           },
         },
       }
