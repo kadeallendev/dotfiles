@@ -55,6 +55,7 @@ set('n', "'", '`', {})
 
 -- Toggles
 set('n', '<leader>tcl', '<CMD>Tcl<CR>', { desc = 'Toggle Cursor Line' })
+set('n', '<leader>tcc', '<CMD>Tcc<CR>', { desc = 'Toggle color column' })
 set('n', '<leader>td', '<CMD>Tdiag<CR>', { desc = 'Toggle diagnostics' })
 set('n', '<leader>ts', '<CMD>Tspell<CR>', { desc = 'Toggle spell' })
 set('n', '<leader>tfc', '<CMD>Tfc<CR>', { desc = 'Toggle foldcolumn' })

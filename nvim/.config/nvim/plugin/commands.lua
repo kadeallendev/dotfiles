@@ -10,6 +10,15 @@ vim.api.nvim_create_user_command('Twrap', 'setlocal wrap! nowrap?', { desc = 'To
 -- Toggle cursor line
 vim.api.nvim_create_user_command('Tcl', 'setlocal cursorline!', { desc = 'Toggle cursor line' })
 
+-- Toggle color column
+vim.api.nvim_create_user_command('Tcc', function()
+  if vim.o.colorcolumn == '' then
+    vim.o.colorcolumn = '80'
+  else
+    vim.o.colorcolumn = ''
+  end
+end, { desc = 'Toggle color column' })
+
 -- Toggle diagnostics
 vim.g['diagnostics_active'] = true
 local function toggle_diagnostics()
