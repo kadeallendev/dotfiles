@@ -9,9 +9,18 @@ fzf.setup {
       ['<C-u>'] = 'preview-page-up',
       ['<C-e>'] = 'preview-down',
       ['<C-y>'] = 'preview-up',
+      ['<C-/>'] = 'toggle-help',
     },
     fzf = {
+      ['CTRL-Z'] = 'abort',
+      ['CTRL-U'] = 'unix-line-discard',
       ['CTRL-Q'] = 'select-all+accept',
+    },
+  },
+  actions = {
+    files = {
+      ['enter'] = actions.file_edit_or_qf,
+      ['CTRL-S'] = actions.file_vsplit, -- On windows keyboard we have to override the CTRL-S as CTRL-V is used
     },
   },
   fzf_colors = true,
