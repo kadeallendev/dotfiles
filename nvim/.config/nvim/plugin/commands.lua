@@ -46,3 +46,7 @@ vim.api.nvim_create_user_command('Tfc', function()
     vim.wo.foldcolumn = '0'
   end
 end, { desc = 'Toggle foldcolumn between 0 and auto' })
+
+-- Toggle statusline highlights
+local st = require 'kade.statusline-toggle'
+vim.api.nvim_create_user_command('Tsl', st.toggle, { desc = 'Toggle statusline highlights' })
