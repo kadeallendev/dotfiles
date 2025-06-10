@@ -20,6 +20,7 @@ fzf.setup {
   actions = {
     files = {
       ['enter'] = actions.file_edit_or_qf,
+      ['CTRL-l'] = actions.file_sel_to_ll,
       ['CTRL-S'] = actions.file_vsplit, -- On windows keyboard we have to override the CTRL-S as CTRL-V is used
     },
   },
@@ -116,6 +117,8 @@ vim.keymap.set('n', '<leader>/V', function()
 end)
 
 --- NEOVIM SEARCHING ---
+
+-- Document symbols is defined in plugin/lsp.lua
 
 -- Commands
 vim.keymap.set('n', '<leader>/c', function()
