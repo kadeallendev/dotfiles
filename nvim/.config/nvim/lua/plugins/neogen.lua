@@ -4,7 +4,8 @@ return {
     'danymat/neogen',
     event = 'InsertEnter',
     config = function()
-      require('neogen').setup {
+      local neogen = require 'neogen'
+      neogen.setup {
         snippet_engine = 'luasnip',
         enabled = true,
         languages = {
@@ -33,9 +34,9 @@ return {
           },
         },
       }
-      vim.keymap.set('n', '<leader>l/', function()
-        require('neogen').generate {}
-      end)
+      vim.keymap.set('n', 'gr/', function()
+        neogen.generate {}
+      end, { desc = 'Generate doc comment' })
     end,
   },
 }
