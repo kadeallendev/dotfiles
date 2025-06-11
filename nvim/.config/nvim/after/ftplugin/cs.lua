@@ -6,4 +6,8 @@ vim.cmd [[
   hi Statement guifg=NvimLightGreen
   hi Type guifg=NvimLightYellow
   hi String guifg=NvimLightMagenta
+  hi Function guifg=NvimLightBlue
 ]]
+
+-- Give treesitter highlighting priority
+vim.highlight.priorities.semantic_tokens = 95
