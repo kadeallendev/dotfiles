@@ -49,6 +49,9 @@ opt.undodir = vim.fn.stdpath 'data' .. '/undo'
 opt.ignorecase = true
 opt.smartcase = true
 
+-- Find path
+opt.path = '.,,**'
+
 -- Keep signcolumn on by default
 opt.signcolumn = 'yes'
 
