@@ -5,7 +5,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- config.color_scheme = "rose-pine"
-config.colors = require("cyberdream")
+-- config.colors = require("cyberdream")
+config.color_scheme = "nvim_default_dark"
 
 -- Font
 config.font = wezterm.font("JetBrains Mono")
