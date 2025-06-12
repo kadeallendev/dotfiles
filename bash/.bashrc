@@ -153,6 +153,7 @@ alias gl="git log"
 alias glo="git log --oneline"
 alias gs="git status"
 alias gc="git commit"
+alias gcl="git clone"
 
 # Tmux
 alias tls="tmux ls"
