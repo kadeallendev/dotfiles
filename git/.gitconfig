@@ -30,9 +30,12 @@
 	useHttpPath = true
 [http]
 	postBuffer = 157286400
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-
