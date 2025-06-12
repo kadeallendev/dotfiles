@@ -20,14 +20,11 @@ vim.api.nvim_create_user_command('Tcc', function()
 end, { desc = 'Toggle color column' })
 
 -- Toggle diagnostics
-vim.g['diagnostics_active'] = true
 local function toggle_diagnostics()
-  if vim.g.diagnostics_active then
-    vim.g.diagnostics_active = false
+  if vim.diagnostic.is_enabled() then
     vim.diagnostic.enable(false)
   else
-    vim.g.diagnostics_active = true
-    vim.diagnostic.enable()
+    vim.diagnostic.enable(true)
   end
 end
 vim.api.nvim_create_user_command('Tdiag', toggle_diagnostics, { desc = 'Toggle diagnostics' })
@@ -50,3 +47,9 @@ end, { desc = 'Toggle foldcolumn between 0 and auto' })
 -- Toggle statusline highlights
 local st = require 'kade.statusline-toggle'
 vim.api.nvim_create_user_command('Tsl', st.toggle, { desc = 'Toggle statusline highlights' })
+
+-- Print full path to current buffer
+vim.api.nvim_create_user_command('Path', function()
+  local path = vim.fn.expand '%'
+  print(path)
+end, { desc = 'Print full path of current buffer' })
