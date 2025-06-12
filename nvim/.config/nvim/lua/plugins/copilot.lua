@@ -1,12 +1,4 @@
 return {
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   event = 'VeryLazy',
-  --   config = function()
-  --     require 'config.copilot'
-  --   end,
-  -- },
   {
     'CopilotC-Nvim/CopilotChat.nvim',
     branch = 'main',
