@@ -64,7 +64,7 @@ fzf.setup {
   },
   lsp = {
     code_actions = {
-      previewer = 'codeaction_native',
+      previewer = 'codeaction',
     },
   },
   diagnostics = {
