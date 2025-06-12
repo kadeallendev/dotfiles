@@ -1,4 +1,4 @@
--- Better searching
+-- This is only used for other plugins that don't support fzf-lua
 return {
   {
     'nvim-telescope/telescope.nvim',
