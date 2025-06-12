@@ -36,6 +36,7 @@ return {
           ['gd'] = {
             desc = 'Toggle file detail view',
             callback = function()
+              ---@diagnostic disable-next-line: lowercase-global
               detail = not detail
               if detail then
                 oil.set_columns { 'icon', 'permissions', 'size', 'mtime' }
