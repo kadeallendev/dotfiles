@@ -29,6 +29,9 @@ return {
           ['H'] = 'actions.toggle_hidden',
           -- Refresh
           ['gr'] = 'actions.refresh',
+          -- CD commands
+          ['gc'] = { 'actions.cd', mode = 'n' },
+          ['gC'] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n' },
           -- Toggle detail view
           ['gd'] = {
             desc = 'Toggle file detail view',
