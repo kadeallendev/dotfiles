@@ -11,13 +11,3 @@ With the repo cloned into the home directory, the configs can be installed via:
 ```bash
 stow nvim tmux zsh wezterm vim skhd scripts nix-darwin kitty alacritty karabiner starship vim yazi
 ```
-
-
-## TODO
-
-- Use `vim.fn.stdpath "data"` instead of method in `utils` file.
-
-### Third Heading
-
-
-#### Fourth heading
