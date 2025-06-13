@@ -2,16 +2,21 @@ local conform = require 'conform'
 local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
 conform.setup {
-  opts = {
-    notify_on_error = true,
-  },
+  notify_on_error = true,
+  notify_no_formatters = true,
   default_format_opts = {
     lsp_format = 'fallback',
+  },
+  format_on_save = {
+    lsp_format = 'fallback',
+    timeout_ms = 500,
   },
   formatters_by_ft = {
     c = { 'clang-format' }, -- NOTE: might be clang_format
     cpp = { 'clang-format' },
+    csharp = { 'csharpier' },
     lua = { 'stylua' },
+    rust = { 'rustfmt', lsp_format = 'fallback' },
     nix = { 'nixpkgs-fmt' },
     python = { 'ruff' },
     sh = { 'shfmt' },
@@ -40,7 +45,7 @@ conform.setup {
   },
 }
 
--- Format on save
+--[[ -- Format on save
 vim.api.nvim_create_autocmd('BufWritePre', {
   callback = function(args)
     conform.format {
@@ -49,9 +54,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
       quiet = true,
     }
   end,
-})
+}) ]]
 
 -- Format file
-vim.keymap.set('n', '<leader>lf', function()
+vim.keymap.set('n', '<leader>gq', function()
   require('conform').format { async = true }
 end, { desc = 'Format file' })
