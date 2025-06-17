@@ -11,9 +11,7 @@ format = """
 ($status\n)\
 ($cmd_duration\n\n)\
 
-($hostname\n)\
-($username\n)\
-$directory\
+$username@$hostname $directory\
 
 $git_branch\
 $git_commit\
