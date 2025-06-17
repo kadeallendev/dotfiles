@@ -46,11 +46,13 @@ show_milliseconds = true
 
 [hostname]
 format = '[$ssh_symbol$hostname]($style)'
+ssh_only = false
 style = '#004c63'
 
 [username]
 format = '[$user]($style)'
-disabled = true
+show_always = true
+# disabled = true
 
 [directory]
 style = "bold #A6DBFF"
