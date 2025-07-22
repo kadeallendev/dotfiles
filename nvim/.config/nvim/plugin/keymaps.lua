@@ -25,15 +25,6 @@ set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 
--- Quickfix keymaps
-set('n', '[q', '<CMD>cprev<CR>', { desc = 'Go to previous entry in quickfix list' })
-set('n', ']q', '<CMD>cnext<CR>', { desc = 'Go to next entry in quickfix list' })
--- Loclist keymaps
-set('n', '[l', '<CMD>lprev<CR>', { desc = 'Go to previous entry in location list' })
-set('n', ']l', '<CMD>lnext<CR>', { desc = 'Go to next entry in location list' })
-set('n', '[w', '<CMD>lprev<CR>', { desc = 'Go to previous entry in location list' })
-set('n', ']w', '<CMD>lnext<CR>', { desc = 'Go to next entry in location list' })
-
 -- Better scrolling
 set('n', '<C-d>', '<C-d>zz')
 set('n', '<C-u>', '<C-u>zz')
