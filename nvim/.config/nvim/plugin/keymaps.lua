@@ -25,6 +25,10 @@ set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 
 set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 
+-- Better location list jumping with ]j
+set('n', '[j', '<CMD>lprev<CR>', { desc = 'Go to previous location in location list' })
+set('n', ']j', '<CMD>lnext<CR>', { desc = 'Go to next location in location list' })
+
 -- Better scrolling
 set('n', '<C-d>', '<C-d>zz')
 set('n', '<C-u>', '<C-u>zz')
@@ -61,3 +65,6 @@ set('n', '<leader>cl', '<CMD>checkhealth vim.lsp<CR>', { desc = 'Checkhealth lsp
 
 -- Treesitter Inspect
 set('n', '<leader>i', '<CMD>Inspect<CR>', { desc = 'Treesitter Inspect' })
+
+-- Override ga with characterize
+set('n', 'ga', '<CMD>Characterize<CR>', { desc = 'Characterize' })
