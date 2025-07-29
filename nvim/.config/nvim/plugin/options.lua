@@ -13,6 +13,12 @@ opt.mouse = 'a'
 -- Language
 opt.spelllang = 'en_us,en_nz'
 
+-- Grepprg
+opt.grepprg = 'rg --vimgrep'
+
+-- Window border
+opt.winborder = 'solid'
+
 -- Tabs {{{
 opt.tabstop = 4
 opt.softtabstop = 4
