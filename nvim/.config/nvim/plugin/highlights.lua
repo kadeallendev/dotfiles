@@ -23,6 +23,7 @@ vim.cmd [[
 
 -- Quickfix
 vim.cmd [[
-  hi QuickFixLine guibg=NvimLightCyan guifg=NvimDarkGrey2
+  hi QuickFixLine guibg=NvimLightBlue guifg=NvimDarkGrey2
+  hi qfFileName guifg=NvimLightBlue
   hi qfLineNr guifg=NvimDarkGrey4
 ]]
