@@ -2,5 +2,6 @@
 return {
   {
     'tpope/vim-characterize',
+    -- Keybinding override added to plugin/keymaps.lua
   },
 }
