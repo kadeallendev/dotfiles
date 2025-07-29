@@ -23,7 +23,6 @@ conform.setup {
     go = { 'goimports', 'gofmt' },
     css = prettier,
     java = { 'google-java-format' },
-    html = prettier,
     javascript = prettier,
     typescript = prettier,
     yaml = prettier,
