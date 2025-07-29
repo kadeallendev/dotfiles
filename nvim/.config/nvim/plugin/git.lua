@@ -26,6 +26,76 @@ vim.keymap.set('n', ']H', function()
   gitsigns.nav_hunk 'last'
 end, { desc = 'Last hunk', noremap = true, silent = true })
 
+--- Conflict management --
+
+-- Next and previous conflict
+local pat = '^\\(<<<<<<<\\|=======\\|>>>>>>>\\)'
+vim.keymap.set({ 'n', 'v', 'o' }, ']x', function()
+  local count = vim.v.count1
+  for _ = 1, count do
+    local res = vim.fn.search(pat)
+    if res == 0 then
+      vim.notify('No more conflict markers', vim.log.levels.WARN)
+      break
+    end
+  end
+  vim.cmd 'nohlsearch'
+end, { desc = 'Go to next conflict' })
+vim.keymap.set({ 'n', 'v', 'o' }, '[x', function()
+  local count = vim.v.count1
+  for _ = 1, count do
+    local res = vim.fn.search(pat, 'b')
+    if res == 0 then
+      vim.notify('No more conflict markers', vim.log.levels.WARN)
+      break
+    end
+  end
+  vim.cmd 'nohlsearch'
+end, { desc = 'Go to previous conflict' })
+
+-- Load conflicts in current buffer into location list
+local function find_conflicts_buffer()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local locations = {}
+
+  for i, line in ipairs(lines) do
+    if line:match '^<<<<<<< ' then
+      table.insert(locations, {
+        bufnr = bufnr,
+        lnum = i,
+        col = 1,
+        text = 'Conflict: ' .. line:sub(9),
+      })
+    end
+  end
+
+  vim.fn.setloclist(0, locations, 'r')
+
+  if #locations > 0 then
+    vim.cmd 'lopen'
+    print('Found ' .. #locations .. ' conflicts')
+  else
+    print 'No merge conflicts found'
+  end
+end
+vim.keymap.set('n', '<leader>gfc', find_conflicts_buffer, { desc = 'Find conflicts' })
+
+-- Load conflicts in directory to quickfix list
+local function find_conflicts_all()
+  local cmd = 'silent grep "^<<<<<<< " .'
+  vim.cmd(cmd)
+
+  local qf_list = vim.fn.getqflist()
+  if #qf_list > 0 then
+    vim.cmd 'copen'
+    print('Found ' .. #qf_list .. ' conflicts')
+  else
+    print 'No merge conflicts found'
+  end
+end
+vim.keymap.set('n', '<leader>gfC', find_conflicts_all, { desc = 'Find conflicts in directory' })
+
 -- Stage hunk
 vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { noremap = true, silent = true, desc = 'Stage hunk' })
 
