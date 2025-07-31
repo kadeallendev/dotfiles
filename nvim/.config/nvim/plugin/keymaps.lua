@@ -60,9 +60,6 @@ set('n', '<leader>tS', '<CMD>Tsl<CR>', { desc = 'Toggle statusline' }) -- Status
 set('x', '<', '<gv', {})
 set('x', '>', '>gv', {})
 
--- LSP Checkhealth
-set('n', '<leader>cl', '<CMD>checkhealth vim.lsp<CR>', { desc = 'Checkhealth lsp' })
-
 -- Treesitter Inspect
 set('n', '<leader>i', '<CMD>Inspect<CR>', { desc = 'Treesitter Inspect' })
 
