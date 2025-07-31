@@ -1,6 +1,6 @@
 return {
   on_attach = function()
-    print 'ROSLYN ATTACHED'
+    vim.notify('Roslyn Attached', vim.log.levels.INFO)
   end,
   settings = {
     ['csharp|inlay_hints'] = {
