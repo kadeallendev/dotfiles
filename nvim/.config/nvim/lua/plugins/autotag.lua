@@ -8,6 +8,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     ft = '{html,xml,js,ts,jsx,tsx}',
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require('nvim-ts-autotag').setup {
         enable = true,
         filetypes = {

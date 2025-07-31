@@ -80,16 +80,16 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<cr>",
-      node_incremental = "+",
-      node_decremental = "-"
-    }
-  }
+      init_selection = '<cr>',
+      node_incremental = '+',
+      node_decremental = '-',
+    },
+  },
 }
 
 require('nvim-treesitter.install').compilers = { 'clang' }
 
-local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+-- local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 -- parser_config.powershell = {
 --   install_info = {
 --     url = vim.fn.stdpath 'data' .. '/tsparsers/tree-sitter-powershell',

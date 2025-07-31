@@ -1,3 +1,4 @@
+-- Tool to make installing LSPs better
 return {
   'williamboman/mason.nvim',
   lazy = false,

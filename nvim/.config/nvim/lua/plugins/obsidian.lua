@@ -15,6 +15,6 @@ if utils.is_mac() then
       end,
     },
   }
+else
+  return {}
 end
-
-return {}

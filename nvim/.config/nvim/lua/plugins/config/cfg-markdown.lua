@@ -6,6 +6,7 @@ markdown.setup {
 }
 
 -- Toggle rendering
+-- NOTE: This doesn't work as I use my custom one
 vim.keymap.set('n', '<leader>m', function()
   markdown.toggle()
 end, { desc = 'Toggle markdown rendering' })

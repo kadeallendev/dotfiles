@@ -3,7 +3,7 @@
 -- Mainly downloads and executes lazy.nvim
 ]]
 
--- Set leader key
+-- Set leader key to <Space>
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 

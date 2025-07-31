@@ -12,7 +12,7 @@ local heading_colors = {
   h5 = 'NvimLightYellow',
 }
 
--- Generate highlight commands with foreground/background parameters
+--- Generate highlight commands with foreground/background parameters
 local function create_heading_highlight_command(fg, bg)
   local cmd = {}
   for i = 1, 5 do
@@ -21,7 +21,8 @@ local function create_heading_highlight_command(fg, bg)
   return table.concat(cmd, '\n')
 end
 
--- Set normal highlighting (colored headings on default bg)
+--- Set normal highlighting (colored headings on default bg)
+--- Sets the default highlights for markdown headings
 function M.set_normal_highlights()
   -- Headings
   local heading_fg_values = { heading_colors.h1, heading_colors.h2, heading_colors.h3, heading_colors.h4, heading_colors.h5 }
@@ -31,7 +32,8 @@ function M.set_normal_highlights()
   vim.cmd 'hi @markup.list.checked.markdown guibg=NvimDarkGrey2 guifg=NvimLightCyan'
 end
 
--- Set preview highlighting (inverted colors)
+--- Set preview highlighting (inverted colors)
+--- Sets the highlights for previewing markdown
 function M.set_preview_highlights()
   -- Headings
   local heading_fg_values = { 'background', 'background', 'background', 'background', 'background' }
@@ -41,21 +43,21 @@ function M.set_preview_highlights()
   vim.cmd 'hi @markup.list.checked.markdown guibg=NvimLightCyan guifg=NvimDarkGrey2'
 end
 
--- Enable markdown preview mode
+--- Enable markdown preview mode
 function M.enable_preview()
   M.preview_enabled = true
   M.set_preview_highlights()
   vim.opt.conceallevel = 2
 end
 
--- Disable markdown preview mode
+--- Disable markdown preview mode
 function M.disable_preview()
   M.preview_enabled = false
   M.set_normal_highlights()
   vim.opt.conceallevel = 0
 end
 
--- Toggle markdown preview mode
+--- Toggle markdown preview mode
 function M.toggle_preview()
   if M.preview_enabled then
     M.disable_preview()
@@ -64,7 +66,7 @@ function M.toggle_preview()
   end
 end
 
--- Setup function to be called once
+--- Setup function to be called once
 function M.setup()
   if not M.initialized then
     M.initialized = true

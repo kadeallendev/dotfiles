@@ -1,3 +1,4 @@
+-- CSharp language server
 return {
   'seblj/roslyn.nvim',
   ft = { 'cs' },

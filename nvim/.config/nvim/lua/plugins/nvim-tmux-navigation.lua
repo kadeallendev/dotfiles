@@ -1,3 +1,4 @@
+-- Window navigation between nvim and tmux
 return {
   {
     'alexghergh/nvim-tmux-navigation',

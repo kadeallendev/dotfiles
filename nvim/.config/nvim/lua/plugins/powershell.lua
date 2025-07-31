@@ -1,18 +1,15 @@
 -- Powershell development
 
-local utils = require 'kade.utils'
-
-if not utils.is_windows() then
+-- Only for windows
+if require('kade.utils').is_windows() then
+  return {
+    {
+      'TheLeoP/powershell.nvim',
+      opts = {
+        bundle_path = vim.fn.stdpath 'data' .. '\\mason\\packages\\powershell-editor-services',
+      },
+    },
+  }
+else
   return {}
 end
-
--- Only for windows
-
-return {
-  {
-    'TheLeoP/powershell.nvim',
-    opts = {
-      bundle_path = vim.fn.stdpath 'data' .. '\\mason\\packages\\powershell-editor-services',
-    },
-  },
-}
