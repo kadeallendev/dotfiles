@@ -51,3 +51,64 @@ end)
 vim.keymap.set('n', 'gO', function()
   require('fzf-lua').lsp_document_symbols()
 end, { desc = 'Search document symbols' })
+
+-- LSP Checkhealth
+vim.keymap.set('n', '<leader>lc', '<CMD>checkhealth lsp<CR>', { desc = 'Checkhealth lsp' })
+-- Deprecated keymap
+vim.keymap.set('n', '<leader>cl', function()
+  vim.notify('Deprecated: Use <Space>lc', vim.log.levels.WARN)
+end, { desc = 'Checkhealth lsp' })
+
+-- Detach client
+vim.keymap.set('n', '<leader>ld', function()
+  -- Get clients
+  local clients = vim.lsp.get_clients { bufnr = 0 }
+  -- Return if no clients
+  if #clients == 0 then
+    vim.notify('No LSP clients attached to this buffer', vim.log.levels.INFO)
+    return
+  end
+  -- Create table of client ids and names
+  local client_items = {}
+  for _, client in ipairs(clients) do
+    table.insert(client_items, { id = client.id, name = client.name })
+  end
+  -- Select client
+  vim.ui.select(client_items, {
+    prompt = 'Select LSP client to detach:',
+    format_item = function(item)
+      return string.format('%s (id: %d)', item.name, item.id)
+    end,
+  }, function(choice)
+    if choice then
+      vim.lsp.buf_detach_client(0, choice.id)
+    end
+  end)
+end, { desc = 'Detach lsp client' })
+
+-- Attach client
+vim.keymap.set('n', '<leader>la', function()
+  -- Get all active clients
+  local clients = vim.lsp.get_clients()
+  -- Return if no active clients
+  if #clients == 0 then
+    vim.notify('No LSP clients active', vim.log.levels.INFO)
+    return
+  end
+  -- Create table of clients
+  local client_items = {}
+  for _, client in ipairs(clients) do
+    table.insert(client_items, { id = client.id, name = client.name })
+  end
+  -- Select client
+  vim.ui.select(client_items, {
+    prompt = 'Select LSP client to attach:',
+    format_item = function(item)
+      return string.format('%s (id: %d)', item.name, item.id)
+    end,
+  }, function(choice)
+    if choice then
+      vim.lsp.buf_attach_client(0, choice.id)
+    end
+  end)
+end)
