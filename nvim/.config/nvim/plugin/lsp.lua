@@ -59,56 +59,83 @@ vim.keymap.set('n', '<leader>cl', function()
   vim.notify('Deprecated: Use <Space>lc', vim.log.levels.WARN)
 end, { desc = 'Checkhealth lsp' })
 
--- Detach client
-vim.keymap.set('n', '<leader>ld', function()
-  -- Get clients
-  local clients = vim.lsp.get_clients { bufnr = 0 }
-  -- Return if no clients
+--- Gets the active LSP clients on the current buffer.
+---@return table|nil A table with the clients' id and name.
+local function get_active_clients(bufnr)
+  local clients = vim.lsp.get_clients()
+  if bufnr then
+    clients = vim.lsp.get_clients { bufnr = bufnr }
+  end
   if #clients == 0 then
-    vim.notify('No LSP clients attached to this buffer', vim.log.levels.INFO)
+    ---@diagnostic disable-next-line: missing-return-value
     return
   end
-  -- Create table of client ids and names
   local client_items = {}
   for _, client in ipairs(clients) do
     table.insert(client_items, { id = client.id, name = client.name })
   end
-  -- Select client
-  vim.ui.select(client_items, {
-    prompt = 'Select LSP client to detach:',
+  return client_items
+end
+
+--- Calls vim.ui.select with the clients, the given prompt, and calls the given function with the selection
+---@param clients Array active LSP clients
+---@param prompt string The prompt
+---@param callback function A callback function with the client id
+local function lsp_client_select(clients, prompt, callback)
+  vim.ui.select(clients, {
+    prompt = prompt,
     format_item = function(item)
       return string.format('%s (id: %d)', item.name, item.id)
     end,
   }, function(choice)
     if choice then
-      vim.lsp.buf_detach_client(0, choice.id)
+      callback(choice)
     end
+  end)
+end
+
+--- Detach LSP client
+--- Allows the user to select an LSP client to detach from the current buffer
+vim.keymap.set('n', '<leader>ld', function()
+  -- Get clients
+  local clients = get_active_clients(0)
+  if not clients or #clients == 0 then
+    vim.notify('No active LSP clients attached to this buffer', vim.log.levels.INFO)
+    return
+  end
+  -- Select client to detach
+  lsp_client_select(clients, 'Select LSP client to detach', function(client)
+    vim.lsp.buf_detach_client(0, client.id)
+    vim.notify("Detached LSP client '" .. client.name .. "'")
   end)
 end, { desc = 'Detach lsp client' })
 
--- Attach client
+--- Attach client
+--- Allows the user to select an LSP client to attach to the current buffer
 vim.keymap.set('n', '<leader>la', function()
-  -- Get all active clients
-  local clients = vim.lsp.get_clients()
-  -- Return if no active clients
-  if #clients == 0 then
-    vim.notify('No LSP clients active', vim.log.levels.INFO)
+  local clients = get_active_clients()
+  if not clients or #clients == 0 then
+    vim.notify('No active LSP clients', vim.log.levels.INFO)
     return
   end
-  -- Create table of clients
-  local client_items = {}
-  for _, client in ipairs(clients) do
-    table.insert(client_items, { id = client.id, name = client.name })
+  -- Select client to attach
+  lsp_client_select(clients, 'Select LSP client to attach:', function(client)
+    vim.lsp.buf_attach_client(0, client.id)
+    vim.notify("Attached LSP client '" .. client.name .. "'")
+  end)
+end, { desc = 'Attach LSP client' })
+
+--- Stop client
+--- Allows the user to select an LSP client to stop
+vim.keymap.set('n', '<leader>lS', function()
+  local clients = get_active_clients()
+  if not clients or #clients == 0 then
+    vim.notify('No active LSP clients', vim.log.levels.INFO)
+    return
   end
-  -- Select client
-  vim.ui.select(client_items, {
-    prompt = 'Select LSP client to attach:',
-    format_item = function(item)
-      return string.format('%s (id: %d)', item.name, item.id)
-    end,
-  }, function(choice)
-    if choice then
-      vim.lsp.buf_attach_client(0, choice.id)
-    end
+  -- Select client to stop
+  lsp_client_select(clients, 'Select LSP client to stop:', function(client)
+    vim.lsp.stop_client(client)
+    vim.notify("Stopped LSP client '" .. client.name .. "'")
   end)
 end)
