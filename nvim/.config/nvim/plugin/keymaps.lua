@@ -51,41 +51,6 @@ set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })
 set('n', "'", '`', {})
 
 -- Toggles
--- Cursor line
-set('n', '<leader>tcl', '<CMD>setlocal cursorline!', { desc = 'Toggle Cursor Line (Local)' }) -- Cursor line
-set('n', '<leader>Tcl', '<CMD>set cursorline!', { desc = 'Toggle Cursor Line (Global)' })
--- Cursor column
-set('n', '<leader>tcc', '<CMD>setlocal cursorcolumn!', { desc = 'Toggle Cursor Column (Local)' })
-set('n', '<leader>Tcc', '<CMD>set cursorcolumn!', { desc = 'Toggle Cursor Column (global)' })
--- Color column
-set('n', '<leader>tCc', function()
-  if vim.o.colorcolumn == '' then
-    vim.o.colorcolumn = '80'
-  else
-    vim.o.colorcolumn = ''
-  end
-end, { desc = 'Toggle color column' })
--- Diagnostics
-set('n', '<leader>td', function()
-  if vim.diagnostic.is_enabled() then
-    vim.diagnostic.enable(false)
-  else
-    vim.diagnostic.enable(true)
-  end
-end, { desc = 'Toggle diagnostics' })
--- Spell
-set('n', '<leader>ts', '<CMD>setlocal spell! spell?', { desc = 'Toggle Spell (Local)' }) -- Spell
--- Fold column
-set('n', '<leader>tfc', function()
-  local cur_val = vim.wo.foldcolumn
-  if cur_val == '0' then
-    vim.wo.foldcolumn = 'auto'
-  else
-    vim.wo.foldcolumn = '0'
-  end
-end, { desc = 'Toggle foldcolumn' })
--- Statusline
-set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
 
 -- Better indenting with '<' and '>'
 set('x', '<', '<gv', {})
