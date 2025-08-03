@@ -4,12 +4,10 @@ local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 conform.setup {
   notify_on_error = true,
   notify_no_formatters = true,
-  default_format_opts = {
-    lsp_format = 'fallback',
-  },
+  default_format_opts = {},
   format_on_save = {
-    lsp_format = 'fallback',
     timeout_ms = 500,
+    lsp_format = 'prefer',
   },
   formatters_by_ft = {
     c = { 'clang-format' }, -- NOTE: might be clang_format
