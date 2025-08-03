@@ -62,8 +62,11 @@ set('n', '<leader>i', '<CMD>Inspect<CR>', { desc = 'Treesitter Inspect' })
 -- Override ga with characterize
 set('n', 'ga', '<CMD>Characterize<CR>', { desc = 'Characterize' })
 
--- Source highlights
-vim.keymap.set('n', '<leader>sh', function()
+-- Highlights
+-- Clear highlights
+set('n', '<leader>hc', '<CMD>hi clear<CR>', { desc = 'Clear highlights' })
+-- Set highlights
+set('n', '<leader>hs', function()
   local config = vim.fn.stdpath 'config'
   dofile(config .. '/plugin/highlights.lua')
   local ft = vim.bo.filetype
@@ -74,3 +77,7 @@ vim.keymap.set('n', '<leader>sh', function()
   end
   dofile(config .. '/after/ftplugin/' .. ft .. '.lua')
 end, { desc = 'Source highlights' })
+-- Deprectated warning
+set('n', '<leader>sh', function()
+  vim.notify('Keymap deprecated. Use <leader>hs', vim.log.levels.WARN)
+end)
