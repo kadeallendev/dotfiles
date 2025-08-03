@@ -23,6 +23,7 @@ vim.lsp.enable {
   'roslyn',
   'gopls',
   'jsonls',
+  'ts_ls',
   'rust_analyzer',
   -- 'marksman', -- TODO: Sort out why this throws an error when opening lua file
 }
