@@ -1,5 +1,10 @@
 local M = {}
 
+M.is_real_file = function()
+  local filename = vim.api.nvim_buf_get_name(0)
+  return filename ~= "" and vim.fn.filereadable(filename) == 1
+end
+
 --- Checks if the current buffer is GPG encrypted
 ---@return boolean True if GPG encrypted, false otherwise
 M.is_encrypted = function()
@@ -14,7 +19,7 @@ M.is_encrypted = function()
 end
 
 --- Encrypt the current buffer with GPG for $KEYID
---- Only encrypts of not already encrypted.
+--- Only encrypts if it is a real file and not already encrypted.
 --- Saves the original filetype and writes to disk.
 ---
 --- Runs:
@@ -22,7 +27,10 @@ end
 --- gpg --encrypt --recipient $KEYID
 --- ```
 M.encrypt_buffer = function()
-  if M.is_encrypted() then
+  if not M.is_real_file() then
+    vim.notify("Not a file on disk", vim.log.levels.WARN)
+    return
+  elseif M.is_encrypted() then
     vim.notify("Already Encrypted", vim.log.levels.INFO)
     return
   end
@@ -34,7 +42,7 @@ M.encrypt_buffer = function()
 end
 
 --- Decrypt the current GPG encrypted buffer
---- Only decrypts if buffer is GPG encrypted.
+--- Only decrypts if buffer is a real file and is GPG encrypted.
 --- Restores the original filetype and saves to disk.
 ---
 --- Runs:
@@ -42,7 +50,10 @@ end
 --- gpg --quiet --decrypt
 --- ```
 M.decrypt_buffer = function()
-  if not M.is_encrypted() then
+  if not M.is_real_file() then
+    vim.notify("Not a file on disk", vim.log.levels.WARN)
+    return
+  elseif not M.is_encrypted() then
     vim.notify("Not GPG encrypted", vim.log.levels.INFO)
     return
   end
