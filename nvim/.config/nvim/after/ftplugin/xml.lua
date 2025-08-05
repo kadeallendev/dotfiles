@@ -2,9 +2,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 
 -- Highlights
-vim.cmd [[
-  hi @tag.xml guifg=NvimLightBlue
-  hi @string.xml guifg=NvimLightMagenta
-  hi @tag.delimiter.xml guifg=NvimLightGrey4
-  hi @tag.attribute.xml guifg=NvimLightGrey4
-]]
+vim.api.nvim_set_hl(0, '@tag.xml', { fg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, '@string.xml', { fg = 'NvimLightMagenta' })
+vim.api.nvim_set_hl(0, '@tag.delimiter.xml', { fg = 'NvimLightGrey4' })
+vim.api.nvim_set_hl(0, '@tag.attribute.xml', { fg = 'NvimLightGrey4' })

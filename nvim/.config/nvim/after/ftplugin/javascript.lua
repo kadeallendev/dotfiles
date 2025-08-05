@@ -4,7 +4,5 @@
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
-vim.cmd [[
-  hi @variable.javascript guifg=NvimLightBlue
-  hi Special guifg=NvimLightMagenta
-]]
+vim.api.nvim_set_hl(0, '@variable.javascript', { fg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, 'Special', { fg = 'NvimLightMagenta' })

@@ -5,18 +5,14 @@ local M = {
 
 function M.set_default()
   M.current = 'default'
-  vim.cmd [[
-    hi StatusLine guifg=NvimDarkGrey3 guibg=NvimLightGrey3
-    hi StatusLineNC guifg=NvimLightGrey2 guibg=NvimDarkGrey4
-  ]]
+  vim.api.nvim_set_hl(0, 'StatusLineNC', { fg = 'NvimLightGrey2', bg = 'NvimDarkGrey4' })
+  vim.api.nvim_set_hl(0, 'StatusLine', { fg = 'NvimDarkGrey3', bg = 'NvimLightGrey3' })
 end
 
 function M.set_custom()
   M.current = 'custom'
-  vim.cmd [[
-    hi StatusLine guibg=NvimDarkGrey2 guifg=NvimLightBlue
-    hi StatusLineNC guibg=NvimDarkGrey2 guifg=NvimDarkGrey4
-  ]]
+  vim.api.nvim_set_hl(0, 'StatusLineNC', { bg = 'NvimDarkGrey2', fg = 'NvimDarkGrey4' })
+  vim.api.nvim_set_hl(0, 'StatusLine', { bg = 'NvimDarkGrey2', fg = 'NvimLightBlue' })
 end
 
 function M.toggle()
