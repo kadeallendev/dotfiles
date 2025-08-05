@@ -35,7 +35,7 @@ M.encrypt_buffer = function()
     return
   end
 
-  vim.cmd "%! gpg --encrypt --recipient $KEYID"
+  vim.cmd "%! gpg --encrypt --armor --recipient $KEYID"
   vim.b.og_filetype = vim.bo.filetype
   vim.bo.filetype = "gpg"
   vim.cmd.write()
