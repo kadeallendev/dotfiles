@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-*i*)     ;;
-*)       return ;;
+*i*) ;;
+*) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color |   *-256color) color_prompt=yes ;;
+xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -68,7 +68,7 @@ case "$TERM" in
 xterm* | rxvt*)
 	PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 	;;
-*)  ;;
+*) ;;
 esac
 
 # enable color support of ls and also add handy aliases
@@ -119,6 +119,7 @@ export COMPOSE_IGNORE_ORPHANS=true
 export AWS_SDK_LOAD_CONFIG=true
 alias aws-mfa="aws-mfa --profile default"
 alias aws-mfa="aws-mfa --profile default"
+export NODE_EXTRA_CA_CERTS="/mnt/c/PTML/Certs/wlgca.crt"
 
 # ---- Kade's Section ----
 
@@ -203,8 +204,8 @@ function otw() {
 eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
