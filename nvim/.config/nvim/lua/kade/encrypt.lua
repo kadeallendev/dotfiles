@@ -1,3 +1,5 @@
+--- Perform PGP encryption and decryption on the current buffer
+---@class Encryption
 local M = {}
 
 --- Checks if the current buffer is a real file on disk
@@ -7,8 +9,8 @@ M.is_real_file = function()
   return filename ~= '' and vim.fn.filereadable(filename) == 1
 end
 
---- Checks if the current buffer is GPG encrypted
----@return boolean # |TRUE| if the buffer is GPG encrypted, |FALSE| otherwise
+--- Checks if the current buffer is PGP encrypted
+---@return boolean # |TRUE| if the buffer is PGP encrypted, |FALSE| otherwise
 M.is_encrypted = function()
   local lines = vim.api.nvim_buf_get_lines(0, 0, 10, false)
   for _, line in ipairs(lines) do
@@ -20,7 +22,7 @@ M.is_encrypted = function()
   return false
 end
 
---- Encrypt the current buffer with GPG for $KEYID
+--- Encrypt the current buffer with PGP for $KEYID
 --- Only encrypts if it is a real file and not already encrypted.
 --- Saves the original filetype and writes to disk.
 ---
@@ -51,8 +53,8 @@ M.encrypt_buffer = function()
   vim.cmd.write()
 end
 
---- Decrypt the current GPG encrypted buffer
---- Only decrypts if buffer is a real file and is GPG encrypted.
+--- Decrypt the current PGP encrypted buffer
+--- Only decrypts if buffer is a real file and is PGP encrypted.
 --- Restores the original filetype and saves to disk.
 ---
 --- Runs:
@@ -65,7 +67,7 @@ M.decrypt_buffer = function()
     vim.notify('Not a file on disk', vim.log.levels.WARN)
     return
   elseif not M.is_encrypted() then
-    vim.notify('Not GPG encrypted', vim.log.levels.INFO)
+    vim.notify('Not PGP encrypted', vim.log.levels.INFO)
     return
   end
 
@@ -74,12 +76,8 @@ M.decrypt_buffer = function()
   vim.cmd.write()
 end
 
--- Set keymaps
-vim.keymap.set('n', '<leader>e', M.encrypt_buffer, { desc = 'GPG encrypt buffer' })
-vim.keymap.set('n', '<leader>E', M.decrypt_buffer, { desc = 'GPG decrypt buffer' })
 
--- Create commands
-vim.api.nvim_create_user_command('Enc', M.encrypt_buffer, { desc = 'GPG encrypt buffer' })
-vim.api.nvim_create_user_command('Dec', M.decrypt_buffer, { desc = 'GPG decrypt buffer' })
+-- Keymaps in plugin/keymaps.lua
+-- Commands in plugin/commands.lua
 
 return M

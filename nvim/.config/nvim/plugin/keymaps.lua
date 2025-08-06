@@ -3,6 +3,19 @@ local set = vim.keymap.set
 -- Set leader key to space
 vim.g.mapleader = ' '
 
+------ PERSONAL MODULES ------
+
+-- Encrypt
+local encrypt = require('kade.encrypt')
+set('n', '<leader>e', encrypt.encrypt_buffer, { desc = 'GPG encrypt buffer' })
+set('n', '<leader>E', encrypt.decrypt_buffer, { desc = 'GPG decrypt buffer' })
+
+-- Statusline toggle
+set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
+
+
+------ KEYMAPS ------
+
 -- Make relative line jumps with j and k populate the jump list
 local rel_cap = 4
 set('n', 'j', function()
@@ -49,8 +62,6 @@ set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })
 
 -- Overwrite ' goto mark with ` goto mark
 set('n', "'", '`', {})
-
--- Toggles
 
 -- Better indenting with '<' and '>'
 set('x', '<', '<gv', {})
