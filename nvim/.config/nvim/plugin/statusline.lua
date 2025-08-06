@@ -1,6 +1,6 @@
--- Statusline configuration
 local utils = require 'kade.utils'
 
+-- Statusline configuration
 function StatusLine()
   -- Get the git branch
   -- If there is a JIRA ticket in branch name use that instead
@@ -15,23 +15,23 @@ function StatusLine()
   end
 
   return table.concat {
-    '%<', -- Where to truncate
-    '%f', -- Filename relative to cwd
+    '%<',   -- Where to truncate
+    '%f',   -- Filename relative to cwd
     ' ',
-    '%h', -- Help flag
-    '%w', -- Preview window flag
-    '%m', -- Modified flag
-    '%r', -- Readonly flag
-    '%=', -- Separation flag
-    '%a', -- Arglist flag
+    '%h',   -- Help flag
+    '%w',   -- Preview window flag
+    '%m',   -- Modified flag
+    '%r',   -- Readonly flag
+    '%=',   -- Separation flag
+    '%a',   -- Arglist flag
     ' ',
-    '%y', -- Filetype flag
+    '%y',   -- Filetype flag
     branch, -- Git branch or Jira ticket
     ' ',
     -- BEGIN cursor pos group
-    '%10.(', -- Left justified item group with 14 min width
+    '%10.(',   -- Left justified item group with 14 min width
     '%l,%c%V', -- Line number, Column number, Virtual col number
-    '%)', -- End item group
+    '%)',      -- End item group
     -- END cursor pos group
   }
 end

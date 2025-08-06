@@ -42,7 +42,6 @@ end
 
 vim.keymap.set('n', '<leader>tCc', M.toggle_colorcolumn, { desc = 'Toggle color column' })
 
-
 ------ DIAGNOSTICS ------
 
 --- Toggles 'vim.diagnostic' option
@@ -71,10 +70,7 @@ M.toggle_foldcolumn = function()
     vim.wo.foldcolumn = '0'
   end
 end
--- Fold column
-vim.keymap.set('n', '<leader>tfc', M.toggle_foldcolumn, { desc = 'Toggle foldcolumn' })
 
-------- STATUSLINE ------
-vim.keymap.set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
+vim.keymap.set('n', '<leader>tfc', M.toggle_foldcolumn, { desc = 'Toggle foldcolumn' })
 
 return M
