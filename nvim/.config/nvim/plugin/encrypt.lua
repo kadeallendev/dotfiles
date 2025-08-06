@@ -47,7 +47,7 @@ M.encrypt_buffer = function()
 
   vim.cmd(string.format('%%! gpg --encrypt --armor %s', recipient))
   vim.b.og_filetype = vim.bo.filetype
-  vim.bo.filetype = 'gpg'
+  vim.bo.filetype = 'pgp'
   vim.cmd.write()
 end
 
