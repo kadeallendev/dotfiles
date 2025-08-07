@@ -1,31 +1,27 @@
-vim.diagnostic.config {
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-  virtual_text = true,
-  virtual_lines = false,
-  severity_sort = true,
-  float = {
-    border = 'solid',
-    style = 'minimal',
-    focus = true,
-    focusable = true,
-  },
-}
+--- LSP Setup
 
+-- Enable LSPs
 vim.lsp.enable {
+  -- Web
   'html',
-  'luals',
-  'powershell_es',
-  'bashls',
-  'yamlls',
-  'clangd',
-  'roslyn',
-  'gopls',
-  'jsonls',
+  'cssls',
   'ts_ls',
+  'phpactor',
+  -- Markup
+  'yamlls',
+  'jsonls',
+  'marksman',
+  -- Dotnet
+  'powershell_es',
+  -- Other
+  'lua_ls',
+  'bashls',
+  'clangd',
+  'gopls',
   'rust_analyzer',
-  -- 'marksman', -- TODO: Sort out why this throws an error when opening lua file
+  -- Docker
+  'docker_language_server',
+  'docker_compose_language_service'
 }
 
 -- Default keymaps

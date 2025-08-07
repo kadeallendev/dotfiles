@@ -3,9 +3,7 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.highlight.priorities.semantic_tokens = 90
 
-vim.cmd [[
-  hi @variable.parameter.builtin.powershell guifg=NvimLightMagenta
-]]
+vim.api.nvim_set_hl(0, '@variable.parameter.builtin.powershell', { fg = 'NvimLightMagenta' })
 
 -- require('lspconfig').powershell_es.setup {
 --   -- bundle_path = '~/.local/share/nvim/lsp/PowerShellEditorServices',

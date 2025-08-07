@@ -1,7 +1,5 @@
 -- Highlights
-vim.cmd [[
-  hi @tag.html guifg=NvimLightBlue
-  hi @tag.attribute.html guifg=NvimLightGrey4
-  hi @tag.delimiter.html guifg=NvimLightGrey4
-  hi @string.html guifg=NvimLightMagenta
-]]
+vim.api.nvim_set_hl(0, '@tag.html', { fg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, '@tag.attribute.html', { fg = 'NvimLightGrey4' })
+vim.api.nvim_set_hl(0, '@tag.delimiter.html', { fg = 'NvimLightGrey4' })
+vim.api.nvim_set_hl(0, '@string.html', { fg = 'NvimLightMagenta' })

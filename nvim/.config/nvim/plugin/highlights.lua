@@ -4,26 +4,18 @@
 -- NormalNC changes inactive windows
 
 -- General
-vim.cmd [[
-  hi ColorColumn guibg=NvimDarkGray3 
-  hi Folded guifg=NvimLightBlue guibg=NvimDarkGray3
-]]
+vim.api.nvim_set_hl(0, 'ColorColumn', { bg = 'NvimDarkGrey3' })
+vim.api.nvim_set_hl(0, 'Folded', { fg = 'NvimLightBlue', bg = 'NvimDarkGrey3' })
 
 -- Windows
-vim.cmd [[
-  hi! link NormalFloat Pmenu
-]]
+vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Pmenu' })
 
 -- Line numbers
-vim.cmd [[
-  hi LineNr guifg=NvimLightBlue
-  hi LineNrAbove guifg=NvimDarkGray4
-  hi LineNrBelow guifg=NvimDarkGray4
-]]
+vim.api.nvim_set_hl(0, 'LineNr', { fg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = 'NvimDarkGray4' })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = 'NvimDarkGrey4' })
 
 -- Quickfix
-vim.cmd [[
-  hi QuickFixLine guibg=NvimLightBlue guifg=NvimDarkGrey2
-  hi qfFileName guifg=NvimLightBlue
-  hi qfLineNr guifg=NvimDarkGrey4
-]]
+vim.api.nvim_set_hl(0, 'QuickFixLine', { fg = 'NvimDarkGrey2', bg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, 'qfFileName', { fg = 'NvimLightBlue' })
+vim.api.nvim_set_hl(0, 'qfLineNr', { fg = 'NvimDarkGrey4' })

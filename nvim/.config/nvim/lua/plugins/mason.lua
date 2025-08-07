@@ -29,8 +29,6 @@ return {
       'html-lsp',
       'typescript-language-server',
       -- Go
-      'goimports-reviser',
-      'golines',
       'gopls',
       -- Markdown
       'marksman',
@@ -38,7 +36,6 @@ return {
       'shfmt',
       'bash-language-server',
       -- Config
-      'jq',
       'json-lsp',
       'yaml-language-server',
       'gh-actions-language-server',
