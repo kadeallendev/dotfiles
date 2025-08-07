@@ -3,7 +3,8 @@ local ui = require 'dapui'
 
 -- Breakpoints
 vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Toggle Breakpoint' })
-vim.keymap.set('n', '<leader>dB', '<CMD>lua require"dap".set_breakpoint(vim.fn.input "[Condition] > ")<CR>', { desc = 'Conditional Breakpoint' })
+vim.keymap.set('n', '<leader>dB', '<CMD>lua require"dap".set_breakpoint(vim.fn.input "[Condition] > ")<CR>',
+  { desc = 'Conditional Breakpoint' })
 
 -- Eval under cursor
 vim.keymap.set('n', '<leader>de', function()

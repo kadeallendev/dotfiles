@@ -1,21 +1,11 @@
--- Start the GH actions language server
-
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'github-actions-workflow',
+-- Filetype recognition
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  desc = "GitHub Actions",
+  pattern = { "*.github/workflows/*.yaml", "*.github/workflows/*.yml", "*.github/actions/*.yaml", "*.github/actions/*.yml" },
   callback = function()
-    vim.lsp.start {
-      name = 'gh-actions-lsp',
-      filetypes = { 'github-actions-workflow' },
-      cmd = { 'npx', '@strozw/github-actions-languageserver', '--stdio' },
-      root_dir = vim.fn.getcwd(),
-      init_options = {},
-    }
-  end,
+    vim.bo.filetype = "github-action"
+  end
 })
 
-vim.cmd 'autocmd BufRead,BufNewFile *.github/workflows/*.yaml set filetype=github-actions-workflow'
-vim.cmd 'autocmd BufRead,BufNewFile *.github/workflows/*.yml set filetype=github-actions-workflow'
-vim.cmd 'autocmd BufRead,BufNewFile *.github/actions/*.yaml set filetype=github-actions-workflow'
-vim.cmd 'autocmd BufRead,BufNewFile *.github/actions/*.yml set filetype=github-actions-workflow'
-
-vim.treesitter.language.register('yaml', 'github-actions-workflow')
+-- Register yaml treesitter for github actions
+vim.treesitter.language.register('yaml', 'github-action')

@@ -10,18 +10,18 @@ conform.setup {
     lsp_format = 'prefer',
   },
   formatters_by_ft = {
-    c = { 'clang-format' }, -- NOTE: might be clang_format
-    cpp = { 'clang-format' },
+    -- c = { 'clang-format' }, -- NOTE: might be clang_format
+    -- cpp = { 'clang-format' },
+    -- lua = { 'stylua' },
+    -- rust = { 'rustfmt', lsp_format = 'fallback' },
+    -- nix = { 'nixpkgs-fmt' },
+    -- python = { 'ruff' },
+    -- sh = { 'shfmt' },
+    -- go = { 'goimports', 'gofmt' },
+    -- java = { 'google-java-format' },
     csharp = { 'csharpier' },
-    lua = { 'stylua' },
-    rust = { 'rustfmt', lsp_format = 'fallback' },
-    nix = { 'nixpkgs-fmt' },
-    python = { 'ruff' },
-    sh = { 'shfmt' },
-    go = { 'goimports', 'gofmt' },
-    css = prettier,
-    java = { 'google-java-format' },
     javascript = prettier,
+    css = prettier,
     typescript = prettier,
     yaml = prettier,
     json = prettier,
@@ -29,11 +29,11 @@ conform.setup {
   formatters = {
     prettier = {
       command = 'prettier',
-      prepend_args = { '-w' },
+      prepend_args = { '-w', '--single-quote' },
     },
     prettierd = {
       command = 'prettierd',
-      prepend_args = { '-w' },
+      prepend_args = { '-w', '--single-quote' },
     },
     shfmt = {
       command = 'shfmt',

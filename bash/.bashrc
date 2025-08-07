@@ -173,6 +173,9 @@ alias lsa="ls -Xlha --color=auto --group-directories-first"
 alias ..="cd .."
 alias ...="cd ../.."
 
+# Neovim nightly
+alias nightly="bob run nightly"
+
 # GPG RELAY
 ~/.local/bin/gpg-relay
 export KEYID=$(gpg --list-secret-keys --keyid-format=long | grep 'sec.*\[C\]' | head -n 1 | awk '{print $2}' | cut -d'/' -f2)

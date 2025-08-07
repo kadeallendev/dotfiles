@@ -1,15 +1,15 @@
-local markdown = require 'render-markdown'
-
-markdown.setup {
-  render_modes = { 'n', 'c' },
-  enabled = false, -- Disable by default
-}
+-- local markdown = require 'render-markdown'
+--
+-- markdown.setup {
+--   render_modes = { 'n', 'c' },
+--   enabled = false, -- Disable by default
+-- }
 
 -- Toggle rendering
 -- NOTE: This doesn't work as I use my custom one
-vim.keymap.set('n', '<leader>m', function()
-  markdown.toggle()
-end, { desc = 'Toggle markdown rendering' })
+-- vim.keymap.set('n', '<leader>m', function()
+--   markdown.toggle()
+-- end, { desc = 'Toggle markdown rendering' })
 
 -- MARKVIEW
 -- local markview = require 'markview'

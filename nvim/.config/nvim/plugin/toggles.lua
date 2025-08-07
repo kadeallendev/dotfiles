@@ -51,6 +51,14 @@ end
 
 vim.keymap.set('n', '<leader>td', M.toggle_diagnostic, { desc = 'Toggle diagnostics' })
 
+--- Toggles 'vim.diagnostic.config.virtual_lines' option
+M.toggle_diagnostic_virtual_lines = function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end
+
+vim.keymap.set('n', '<leader>tD', M.toggle_diagnostic_virtual_lines, { desc = 'Toggle virtual line diagnostics' })
+
 ------ SPELL ------
 
 --- Toggles 'spell' option
