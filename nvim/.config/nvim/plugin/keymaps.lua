@@ -33,11 +33,6 @@ set('n', 'k', function()
   end
 end, { expr = true })
 
--- Diagnostic keymaps
-set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
-
-set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
-
 -- Better location list jumping with ]j and ]w
 set('n', '[j', '<CMD>lprev<CR>', { desc = 'Go to previous location in location list' })
 set('n', ']j', '<CMD>lnext<CR>', { desc = 'Go to next location in location list' })
