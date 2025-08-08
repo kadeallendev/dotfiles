@@ -11,7 +11,7 @@ format = """
 ($status\n)\
 ($cmd_duration\n\n)\
 
-$username@$hostname $directory\
+$directory\
 
 $git_branch\
 $git_commit\
@@ -55,7 +55,7 @@ show_always = true
 # disabled = true
 
 [directory]
-style = "bold #A6DBFF"
+style = "#A6DBFF"
 truncate_to_repo = true
 
 [character]
