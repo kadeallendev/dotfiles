@@ -2,7 +2,7 @@ local utils = require 'kade.utils'
 local opt = vim.opt
 
 -- Line Numbers {{{
-opt.number = true -- Turn on line numbers
+opt.number = true         -- Turn on line numbers
 opt.relativenumber = true -- Relative numbers
 -- }}}
 

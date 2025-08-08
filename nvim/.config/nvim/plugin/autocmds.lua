@@ -1,13 +1,13 @@
 local utils = require 'kade.utils'
 
+-------------------------------------
 -- Disable automatic comment on enter
+-------------------------------------
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   command = 'setlocal formatoptions-=cro',
 })
 
--- Create an augroup for Git and JIRA related autocommands
-local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })
 
 -------------------------------------------------------------------
 -- Loads the git branch as well as JIRA ticket and link into global
@@ -31,6 +31,9 @@ local function update_git_and_jira_info()
   vim.fn.setreg('t', ticket)
   vim.fn.setreg('j', link)
 end
+
+-- Create an augroup for Git and JIRA related autocommands
+local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })
 
 -- Update git and jira on VimEnter
 vim.api.nvim_create_autocmd('VimEnter', {
