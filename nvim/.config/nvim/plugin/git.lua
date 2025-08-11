@@ -109,7 +109,7 @@ vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { silent = true, 
 vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { silent = true, desc = 'Gitsigns diffthis' })
 
 -- Blame current line
-vim.keymap.set('n', '<leader>gbl', gitsigns.blame_link, { desc = 'Gitsigns blame line' })
+vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { desc = 'Gitsigns blame line' })
 vim.keymap.set('n', '<leader>gbL', function() gitsigns.blame_line { full = true } end,
   { silent = true, desc = 'Gitsigns blame line with diff' })
 
