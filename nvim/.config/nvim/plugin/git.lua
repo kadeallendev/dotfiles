@@ -145,7 +145,7 @@ local function commit()
     end
 
     -- If commit message contains another JIRA prefix, don't prepend branch prefix
-    if input:match(jira.prefix_pattern) ~= nil then
+    if input:match(jira.branch_pattern) ~= nil then
       vim.cmd('G commit -m "' .. input .. '"')
       return
     end
