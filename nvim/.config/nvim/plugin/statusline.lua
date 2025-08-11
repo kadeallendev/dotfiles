@@ -1,11 +1,12 @@
-local utils = require 'kade.utils'
+local git = require 'kade.git'
+local jira = require 'kade.jira'
 
 -- Statusline configuration
 function StatusLine()
   -- Get the git branch
   -- If there is a JIRA ticket in branch name use that instead
-  local branch = utils.get_git_branch()
-  local jira_ticket = utils.get_jira_ticket()
+  local branch = git.get_branch()
+  local jira_ticket = jira.get_ticket()
   if jira_ticket then
     branch = '[ ' .. jira_ticket .. ']'
   elseif branch then

@@ -1,4 +1,4 @@
-local utils = require 'kade.utils'
+local jira = require('kade.jira')
 
 -------------------------------------
 -- Disable automatic comment on enter
@@ -8,29 +8,9 @@ vim.api.nvim_create_autocmd('FileType', {
   command = 'setlocal formatoptions-=cro',
 })
 
-
--------------------------------------------------------------------
--- Loads the git branch as well as JIRA ticket and link into global
--- variables and registers
--------------------------------------------------------------------
-local function update_git_and_jira_info()
-  -- Get branch, ticket, and link
-  local branch = utils.get_git_branch() or ''
-  local ticket = utils.get_jira_ticket() or ''
-  local link = ''
-  if ticket ~= '' then
-    link = string.format('- [%s](https://partstrader.atlassian.net/browse/%s)', ticket, ticket)
-  end
-
-  -- Set global variables
-  vim.g.gitbranch = branch
-  vim.g.jiraticket = ticket
-
-  -- Set registers
-  vim.fn.setreg('b', branch)
-  vim.fn.setreg('t', ticket)
-  vim.fn.setreg('j', link)
-end
+-------------------------------------
+--- Jira Integration
+-------------------------------------
 
 -- Create an augroup for Git and JIRA related autocommands
 local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })
@@ -39,7 +19,7 @@ local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear
 vim.api.nvim_create_autocmd('VimEnter', {
   group = git_jira_group,
   desc = 'Initialize Git and JIRA globals and registers',
-  callback = update_git_and_jira_info,
+  callback = jira.update,
 })
 
 -- Update git and jira on git repo changing
@@ -47,7 +27,7 @@ vim.api.nvim_create_autocmd('User', {
   pattern = 'FugitiveChanged',
   group = git_jira_group,
   desc = 'Reload Git and JIRA globals and registers',
-  callback = update_git_and_jira_info,
+  callback = jira.update,
 })
 
 ----------------------------------------

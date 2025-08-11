@@ -1,4 +1,4 @@
-local utils = require 'kade.utils'
+local jira = require 'kade.jira'
 
 -- Git related shit
 
@@ -117,10 +117,12 @@ end, { noremap = true, silent = true, desc = 'Gitsigns blame line' })
 vim.keymap.set('n', '<leader>gba', gitsigns.blame, { noremap = true, silent = true, desc = 'Gitsigns blame all lines' })
 
 -- Preview hunk
-vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline, { noremap = true, silent = true, desc = 'Gitsigns preview hunk inline' })
+vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline,
+  { noremap = true, silent = true, desc = 'Gitsigns preview hunk inline' })
 
 -- Toggle line highlight a.k.a. preview all lines
-vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl, { noremap = true, silent = true, desc = 'Gitsigns toggle line highlight' })
+vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl,
+  { noremap = true, silent = true, desc = 'Gitsigns toggle line highlight' })
 
 -- Reset hunk
 vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { noremap = true, silent = true, desc = 'Gitsigns reset hunk' })
@@ -129,7 +131,7 @@ vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { noremap = true, silent
 local function commit()
   local prompt = 'Commit msg: '
   -- Get branch prefix
-  local branch_prefix = utils.get_jira_ticket()
+  local branch_prefix = jira.get_ticket()
   if branch_prefix ~= nil then
     prompt = 'Commit msg [' .. branch_prefix .. ']: '
   end
@@ -143,7 +145,7 @@ local function commit()
     end
 
     -- If commit message contains another JIRA prefix, don't prepend branch prefix
-    if input:match(utils.jira_prefix_pat) ~= nil then
+    if input:match(jira.prefix_pattern) ~= nil then
       vim.cmd('G commit -m "' .. input .. '"')
       return
     end
