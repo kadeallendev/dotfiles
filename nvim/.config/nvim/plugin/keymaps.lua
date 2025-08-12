@@ -11,7 +11,9 @@ set('n', '<leader>e', encrypt.encrypt_buffer, { desc = 'GPG encrypt buffer' })
 set('n', '<leader>E', encrypt.decrypt_buffer, { desc = 'GPG decrypt buffer' })
 
 -- Statusline toggle
-set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
+-- NOTE: commented out to use toggle spellwarn instead.
+-- | Use :TStatus to toggle
+-- set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
 
 
 ------ KEYMAPS ------

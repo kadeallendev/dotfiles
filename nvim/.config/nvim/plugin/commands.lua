@@ -16,3 +16,7 @@ end, { desc = 'Print full path of current buffer' })
 local encrypt = require('kade.encrypt')
 vim.api.nvim_create_user_command('Enc', encrypt.encrypt_buffer, { desc = 'GPG encrypt buffer' })
 vim.api.nvim_create_user_command('Dec', encrypt.decrypt_buffer, { desc = 'GPG decrypt buffer' })
+
+-- Statusline toggle
+vim.api.nvim_create_user_command('Tstatus', require('kade.statusline-toggle').toggle,
+  { desc = 'Toggle custom statusline' })
