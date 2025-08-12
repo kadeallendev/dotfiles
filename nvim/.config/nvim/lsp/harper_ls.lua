@@ -7,6 +7,7 @@ return {
         SemicolonApostrophe = false,          -- Corrects semicolons to apostrophes, but may be wrong
         BoringWords = true,                   -- Warns about boring words, TODO: see if is good
         AvoidCurses = false,                  -- Warns about swearing
+        ToDoHyphen = false,                   -- Hyphenates to-do
         -- Word expansions
         ExpandStandardInputAndOutput = false, -- Expands stdin, stdout, and stderr
         ExpandTimeShorthands = false,         -- Expands things like 'hrs' to 'hours'
