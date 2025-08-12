@@ -1,6 +1,8 @@
 return {
   settings = {
     ["harper-ls"] = {
+      diagnosticSeverity = "hint",
+      dialect = "American",
       linters = {
         SpellCheck = false,                   -- Prefer nvim's spellchecker with spellwarn
         SentenceCapitalization = false,       -- Capitalize start of sentences
