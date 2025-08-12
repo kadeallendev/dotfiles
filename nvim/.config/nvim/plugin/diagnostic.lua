@@ -18,6 +18,5 @@ vim.diagnostic.config {
   },
   jump = {
     float = true,
-    severity = { min = vim.diagnostic.severity.WARN }
   }
 }
