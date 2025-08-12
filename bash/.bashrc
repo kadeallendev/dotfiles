@@ -176,6 +176,9 @@ alias ...="cd ../.."
 # Neovim nightly
 alias nightly="bob run nightly"
 
+# Playwright
+alias pw="npx playwright"
+
 # GPG RELAY
 ~/.local/bin/gpg-relay
 export KEYID=$(gpg --list-secret-keys --keyid-format=long | grep 'sec.*\[C\]' | head -n 1 | awk '{print $2}' | cut -d'/' -f2)
