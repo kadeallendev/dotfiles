@@ -8,6 +8,10 @@ vim.api.nvim_set_hl(0, '@import', { fg = 'NvimLightMagenta' })
 vim.api.nvim_set_hl(0, '@lsp.typemod.variable.defaultLibrary.typescript', { fg = 'NvimLightYellow' })
 vim.api.nvim_set_hl(0, 'Type', { fg = 'NvimLightMagenta' })
 vim.api.nvim_set_hl(0, 'Constant', { fg = 'NvimLightYellow' })
--- vim.api.nvim_set_hl(0, '@lsp.type.class.typescript', { fg = 'NvimLightBlue' })
+-- Regex
+vim.api.nvim_set_hl(0, '@string.regexp.typescript', { fg = 'NvimLightMagenta' })
+vim.api.nvim_set_hl(0, '@operator.regex', { fg = 'NvimLightMagenta' })
+vim.api.nvim_set_hl(0, '@string.escape.regex', { fg = 'NvimLightMagenta' })
+
 
 -- vim.highlight.priorities.semantic_tokens = 95
