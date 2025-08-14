@@ -15,6 +15,7 @@ return {
         ExpandTimeShorthands = false,         -- Expands things like 'hrs' to 'hours'
         ExpandArgument = false,               -- Expands arg to argument, don't want that
         ExpandDependencies = false,           -- Expands deps to dependencies
+        ExpandMinimum = false,                -- Expands min to miniumum
         -- Initialism expansions
         BeRightBack = false,                  -- BRB to "be right back"
         ByTheWay = false,                     -- BTW to "by the way"
