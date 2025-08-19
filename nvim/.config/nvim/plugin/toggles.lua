@@ -69,6 +69,21 @@ end
 
 vim.keymap.set('n', '<leader>ts', M.toggle_spell, { desc = 'Toggle Spell (Local)' })
 
+--- Toggles 'spellwarn'
+M.toggle_spellwarn = function()
+  local spellwarn = require('spellwarn')
+  if vim.g.spellwarn_enabled then
+    spellwarn.disable()
+    vim.g.spellwarn_enabled = false
+  else
+    spellwarn.enable()
+    vim.g.spellwarn_enabled = true
+  end
+  print(vim.g.spellwarn_enabled)
+end
+
+vim.keymap.set('n', '<leader>tS', M.toggle_spellwarn, { desc = 'Toggle SpellWarn plugin' })
+
 ------ FOLD COLUMN ------
 
 M.toggle_foldcolumn = function()

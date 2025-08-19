@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local opts = { noremap = true, silent = true }
+local opts = { silent = true }
 local modes = { 'n', 'v' }
 
 -- Open files

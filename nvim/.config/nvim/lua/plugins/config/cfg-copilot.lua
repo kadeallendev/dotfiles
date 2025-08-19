@@ -17,7 +17,7 @@ require('copilot').setup {
   },
 }
 
-vim.keymap.set('n', '<leader>cs', '<cmd>Copilot panel<cr>', { desc = 'Open Copilot suggestions', noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cs', '<cmd>Copilot panel<cr>', { desc = 'Open Copilot suggestions', silent = true })
 
 -- Chat
 local chat = require 'CopilotChat'
@@ -40,4 +40,4 @@ chat.setup {
 -- Open chat
 vim.keymap.set('n', '<leader>cp', function()
   chat.toggle()
-end, { noremap = true, silent = true, desc = 'Open Copilot chat' })
+end, { silent = true, desc = 'Open Copilot chat' })

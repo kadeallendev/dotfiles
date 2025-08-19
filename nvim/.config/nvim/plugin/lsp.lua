@@ -11,6 +11,7 @@ vim.lsp.enable {
   'yamlls',
   'jsonls',
   'marksman',
+  'harper_ls',
   -- Dotnet
   'powershell_es',
   -- Other
@@ -38,6 +39,7 @@ vim.lsp.enable {
 -- My keymaps
 
 -- gr/ Creates doc comment, defined in lua/plugins/neogen.lua
+-- <leader>/s Search workspace symbols
 
 -- Hover documentation
 vim.keymap.set('n', 'K', function()
@@ -48,6 +50,9 @@ end)
 vim.keymap.set('n', 'gO', function()
   require('fzf-lua').lsp_document_symbols()
 end, { desc = 'Search document symbols' })
+
+-- Workspace symbols using fzf-lua
+vim.keymap.set('n', '<leader>/s', require('fzf-lua').lsp_workspace_symbols, { desc = "Search workspace symbols" })
 
 -- LSP Checkhealth
 vim.keymap.set('n', '<leader>lc', '<CMD>checkhealth lsp<CR>', { desc = 'Checkhealth lsp' })

@@ -27,11 +27,11 @@ fzf.setup {
   fzf_colors = true,
   winopts = {
     height = 0.7, -- Default 0.85
-    width = 0.7, -- Default 0.80
+    width = 0.7,  -- Default 0.80
     border = 'single',
     preview = {
       horizontal = 'right:55%', -- Default right:60%
-      title_pos = 'left', -- Default center
+      title_pos = 'left',       -- Default center
     },
   },
   -- PICKERS --
@@ -43,8 +43,8 @@ fzf.setup {
   -- Files picker is used for finding all files in current directory
   files = {
     formatter = 'path.filename_first', -- Show filename first, e.g. "fzf-lua/previewer/fzf.lua" => "fzf.lua previewer/fzf-lua"
-    cwd_prompt_shorten_len = 20, -- Shorten the cwd prompt at 20 letters
-    cwd_prompt_shorten_val = 3, -- Shorten each folder to 3 characters
+    cwd_prompt_shorten_len = 20,       -- Shorten the cwd prompt at 20 letters
+    cwd_prompt_shorten_val = 3,        -- Shorten each folder to 3 characters
     winopts = {
       width = 0.8,
       preview = {
