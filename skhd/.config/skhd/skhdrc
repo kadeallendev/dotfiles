@@ -1,5 +1,11 @@
 # APPS #
 
+# Mullvad VPN
+alt - v : open -a /Applications/Mullvad\ VPN.app/Contents/MacOS/Mullvad\ VPN
+
+# Mullvad browser
+alt - j : open /Applications/Mullvad Browser.app
+
 # Firefox
 # Used to use Arc so 'a' worked
 alt - a : open -a /Applications/Firefox.app/Contents/MacOS/firefox
@@ -13,8 +19,8 @@ alt - f : open -a /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder
 # Obsidian
 alt - o : open -a /Applications/Obsidian.app/Contents/MacOS/Obsidian
 
-# Preview
-alt - p : open -a /System/Applications/Preview.app/Contents/MacOS/Preview
+# # Preview
+# alt - p : open -a /System/Applications/Preview.app/Contents/MacOS/Preview
 
 # Calendar (schedule)
 alt - s : open -a /System/Applications/Calendar.app/Contents/MacOS/Calendar
@@ -23,6 +29,5 @@ alt - s : open -a /System/Applications/Calendar.app/Contents/MacOS/Calendar
 # NOTE: doesn't work
 ctrl + alt - y : /Applications/WezTerm.app/Contents/MacOS/wezterm start -e yazi
 
-# Mullvad
 
-alt - f : open -a /Applications/Mullvad\ VPN.app/Contents/MacOS/Mullvad\ VPN
+alt - p : open -a /Applications/Bitwarden.app/Contents/MacOS/Bitwarden
