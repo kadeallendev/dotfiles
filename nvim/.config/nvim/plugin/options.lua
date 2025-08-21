@@ -115,3 +115,7 @@ end
 
 -- Diff opts
 vim.opt.diffopt:append 'vertical'
+
+-- Project specific config with .nvim.lua, .nvimrc, or .exrc
+vim.o.exrc = true
+vim.o.secure = true

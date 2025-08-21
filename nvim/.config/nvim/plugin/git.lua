@@ -1,5 +1,9 @@
 local jira = require 'kade.jira'
 
+-- The format str for the ticket in commit message.
+-- A nil value signifies to ticket to be added.
+vim.g.commitfmt = '%s '
+
 -- Git related shit
 
 -- Neogit status
@@ -130,9 +134,9 @@ vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { silent = true, desc = 
 -- Commit with the branch jira prefix prefixed to commit message
 local function commit()
   local prompt = 'Commit msg: '
-  -- Get branch prefix
+  -- Get branch prefix, only if it exists and commitfmt contains '%s'
   local branch_prefix = jira.get_ticket()
-  if branch_prefix ~= nil then
+  if branch_prefix ~= nil and vim.g.commitfmt then
     prompt = 'Commit msg [' .. branch_prefix .. ']: '
   end
 
@@ -144,8 +148,8 @@ local function commit()
       return
     end
 
-    -- If commit message contains another JIRA prefix, don't prepend branch prefix
-    if input:match(jira.branch_pattern) ~= nil then
+    -- If commit message contains another JIRA prefix or commitfmt is nil, don't prepend branch prefix
+    if input:match(jira.branch_pattern) ~= nil or not vim.g.commitfmt then
       vim.cmd('G commit -m "' .. input .. '"')
       return
     end
@@ -154,7 +158,8 @@ local function commit()
     local msg = input
     -- Prepend the branch prefix if it exists
     if branch_prefix ~= nil then
-      msg = branch_prefix .. ' ' .. msg
+      local prefix_fmt = vim.g.commitfmt
+      msg = string.format(prefix_fmt .. msg, branch_prefix)
     end
     vim.cmd('G commit -m "' .. msg .. '"')
   end)
@@ -170,12 +175,16 @@ vim.keymap.set('n', '<leader>gC', function()
   -- Wait for commit buffer to open
   vim.defer_fn(function()
     -- Paste JIRA ticket from 't' reg
-    local content = vim.fn.getreg 't' .. ' '
-    local lines = {}
-    for line in string.gmatch(content, '[^\n]+') do
-      table.insert(lines, line)
+    if vim.g.commitfmt then
+      local ticket = jira.get_ticket()
+      local content = string.format(vim.g.commitfmt .. ' ', ticket)
+      local lines = {}
+      ---@diagnostic disable-next-line: param-type-mismatch
+      for line in string.gmatch(content, '[^\n]+') do
+        table.insert(lines, line)
+      end
+      vim.api.nvim_put(lines, '', false, true)
     end
-    vim.api.nvim_put(lines, '', false, true)
 
     -- Enter insert mode
     vim.cmd 'startinsert!'

@@ -33,7 +33,9 @@ M.update = function()
   -- Set registers
   vim.fn.setreg('b', branch)
   vim.fn.setreg('t', ticket)
-  vim.fn.setreg('j', link)
+  if vim.bo.filetype == "markdown.git-pr-body" then
+    vim.fn.setreg('j', link)
+  end
 end
 
 return M

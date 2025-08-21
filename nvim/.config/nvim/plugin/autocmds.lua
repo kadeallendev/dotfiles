@@ -1,5 +1,3 @@
-local jira = require('kade.jira')
-
 -------------------------------------
 -- Disable automatic comment on enter
 -------------------------------------
@@ -11,6 +9,8 @@ vim.api.nvim_create_autocmd('FileType', {
 -------------------------------------
 --- Jira Integration
 -------------------------------------
+
+local jira = require('kade.jira')
 
 -- Create an augroup for Git and JIRA related autocommands
 local git_jira_group = vim.api.nvim_create_augroup('GitJiraIntegration', { clear = true })

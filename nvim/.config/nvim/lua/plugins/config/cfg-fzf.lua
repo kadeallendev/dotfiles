@@ -168,6 +168,11 @@ vim.keymap.set('n', '<leader>g/', function()
   fzf.git_status()
 end, { desc = 'Fzf Git status' })
 
+
+--- LSP ---
+vim.keymap.set('n', '<leader>/lr', vim.lsp.buf.references, { desc = "Search LSP references" })
+vim.keymap.set('n', '<leader>/ld', vim.lsp.buf.definition, { desc = "Search LSP definitions" })
+
 -- -- Git commits
 -- vim.keymap.set('n', '<leader>/gc', function()
 --   fzf.git_commits()

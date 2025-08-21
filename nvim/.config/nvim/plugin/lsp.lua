@@ -26,7 +26,7 @@ vim.lsp.enable {
 }
 
 -- Default keymaps
--- C-] go to definition
+-- C-] go to definition (I also add gd)
 -- gq format
 -- K hover documentation [vim.lsp.buf.hover] (I override to set winopts)
 -- grn rename symbol [vim.lsp.buf.rename]
@@ -40,6 +40,9 @@ vim.lsp.enable {
 
 -- gr/ Creates doc comment, defined in lua/plugins/neogen.lua
 -- <leader>/s Search workspace symbols
+
+-- Goto definition
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
 
 -- Hover documentation
 vim.keymap.set('n', 'K', function()

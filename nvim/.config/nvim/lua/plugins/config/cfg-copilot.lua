@@ -28,6 +28,9 @@ chat.setup {
   },
   model = 'claude-3.7-sonnet',
   mappings = {
+    accept_nearest_diff = {
+      normal = '<C-<CR>>'
+    },
     reset = {
       normal = '<leader>cr',
       callback = function()
