@@ -10,6 +10,8 @@ require('nvim-treesitter.configs').setup {
     'markdown',
     'yaml',
     'cpp',
+    'javascript',
+    'typescript',
   },
   sync_install = false,
   auto_install = true,
@@ -19,66 +21,7 @@ require('nvim-treesitter.configs').setup {
       'csv',
     },
   },
-  indent = { enable = true },
-  matchup = {
-    enable = true,
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    swap = {
-      enable = false,
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        [']f'] = '@function.outer',
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']F'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[f'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[F'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    lsp_interop = {
-      enable = true,
-      border = 'none',
-      peek_definition_code = {
-        ['<leader>K'] = '@function.outer',
-        ['<leader>df'] = '@function.outer',
-        ['<leader>dF'] = '@class.outer',
-      },
-    },
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<cr>',
-      node_incremental = '+',
-      node_decremental = '-',
-    },
-  },
+  indent = { enable = true }
 }
 
 require('nvim-treesitter.install').compilers = { 'clang' }

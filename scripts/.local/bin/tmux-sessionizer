@@ -1,31 +1,49 @@
 #!/bin/bash
 
+# Directories for PartsTrader machine
+PTML_DIRS=(
+    "$HOME"
+    "$HOME/Dev"
+)
+
+# Directories for Hedgy
+HEDGY_DIRS=(
+    "$HOME"
+    "$HOME/dev"
+)
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
+    # Get array of directories to search
     os=$(uname -s)
-    # Work computer
+    DIRS=("${HEDGY_DIRS[@]}")
     if [[ $os == 'Linux' ]]; then
-        selected=$(find ~/Dev ~/ -mindepth 1 -maxdepth 1 -type d | fzf)
-    else
-        selected=$(find ~/development ~/school/2024 ~/.config ~/documents ~/go/src/github.com/kadeallendev -mindepth 1 -maxdepth 2 -type d | fzf --height=100%)
+        DIRS=("${PTML_DIRS[@]}")
     fi
+
+    selected=$(fd "${DIRS[@]}" -t d --max-depth 1 --full-path |
+        sed "s|^$HOME/||" |
+        fzf --height=100% --color=bw)
+
+    [[ $selected ]] && selected="$HOME/$selected"
 fi
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
+# Exit if nothing selected
+[[ ! $selected ]] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# If TMUX is not running
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     tmux new-session -ds $selected_name -c $selected
+    tmux select-window -t "$selected_name:1"
 fi
 
 tmux switch-client -t $selected_name
