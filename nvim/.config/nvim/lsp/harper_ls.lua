@@ -1,4 +1,23 @@
 return {
+  filetypes = {
+    'c',
+    'txt',
+    'cpp',
+    'cs',
+    'gitcommit',
+    'go',
+    'html',
+    'java',
+    'javascript',
+    'lua',
+    'markdown',
+    'python',
+    'rust',
+    'typescript',
+    'typescriptreact',
+    'typst',
+    'php',
+  },
   settings = {
     ["harper-ls"] = {
       diagnosticSeverity = "hint",
