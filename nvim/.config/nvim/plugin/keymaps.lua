@@ -89,3 +89,6 @@ end, { desc = 'Source highlights' })
 set('n', '<leader>sh', function()
   vim.notify('Keymap deprecated. Use <leader>hs', vim.log.levels.WARN)
 end)
+
+-- Correct spelling mistake with <leader>C
+vim.keymap.set('n', '<leader>C', '1z=', { desc = "Accept first spelling suggestion" })

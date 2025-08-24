@@ -12,6 +12,7 @@ opt.mouse = 'a'
 
 -- Language
 opt.spelllang = 'en_us,en_nz'
+opt.spell = true
 
 -- Grepprg
 opt.grepprg = 'rg --vimgrep'
