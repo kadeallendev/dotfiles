@@ -4,6 +4,7 @@
 PTML_DIRS=(
     "$HOME"
     "$HOME/Dev"
+    "$HOME/Documents"
 )
 
 # Directories for Hedgy
@@ -22,7 +23,7 @@ else
         DIRS=("${PTML_DIRS[@]}")
     fi
 
-    selected=$(fd "${DIRS[@]}" -t d --max-depth 1 --full-path |
+    selected=$(fd . "${DIRS[@]}" -t d --max-depth 1 --full-path |
         sed "s|^$HOME/||" |
         fzf --height=100% --color=bw)
 
