@@ -21,14 +21,13 @@ return {
       end, { desc = 'Edit harpoon list' })
 
       -- Select files
-      for _, idx in ipairs { 1, 2, 3, 4, 5 } do
-        -- Primary (Leader)
+      for idx, char in ipairs { '!', '@', '#', '$', '%' } do
+        -- Primary (numbers)
         vim.keymap.set('n', string.format('<leader>%d', idx), function()
           harpoon:list():select(idx)
         end)
-
-        -- Secondary (CTRL)
-        vim.keymap.set('n', string.format('<C-%d>', idx), function()
+        -- Secondary (symbols)
+        vim.keymap.set('n', string.format('<leader>%s', char), function()
           harpoon:list():select(idx + 5)
         end)
       end
