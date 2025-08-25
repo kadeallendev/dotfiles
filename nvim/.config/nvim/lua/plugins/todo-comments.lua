@@ -14,6 +14,8 @@ return {
           multiline_pattern = '^|.',
         },
       })
+      -- Search
+      vim.keymap.set('n', '<leader>/t', '<CMD>TodoFzfLua<CR>', { desc = 'Search TODO comments' })
 
       -- Use yellow for TODO
       vim.api.nvim_set_hl(0, 'TodoFGTODO', { fg = 'NvimLightYellow' })

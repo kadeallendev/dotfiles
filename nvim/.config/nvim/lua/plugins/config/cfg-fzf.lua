@@ -158,9 +158,6 @@ vim.keymap.set('n', '<leader>/D', function()
   fzf.diagnostics_workspace()
 end, { desc = 'Search workspace diagnostics' })
 
--- Todo comments
-vim.keymap.set('n', '<leader>/t', '<CMD>TodoFzfLua<CR>', { desc = 'Search TODO comments' })
-
 --- GIT ---
 
 -- Git status
