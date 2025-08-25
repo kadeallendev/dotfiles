@@ -164,9 +164,15 @@ vim.keymap.set('n', '<leader>/t', '<CMD>TodoFzfLua<CR>', { desc = 'Search TODO c
 --- GIT ---
 
 -- Git status
-vim.keymap.set('n', '<leader>g/', function()
-  fzf.git_status()
-end, { desc = 'Fzf Git status' })
+vim.keymap.set('n', '<leader>g/s', fzf.git_status, { desc = 'FZF Git Status' })
+-- Branches
+vim.keymap.set('n', '<leader>g/b', fzf.git_branches, { desc = 'FZF Git Branch' })
+-- Commits
+vim.keymap.set('n', '<leader>g/c', fzf.git_commits, { desc = 'FZF Git Commits' })
+-- Hunks
+vim.keymap.set('n', '<leader>g/h', fzf.git_hunks, { desc = 'FZF Git Hunks' })
+-- Stashes
+vim.keymap.set('n', '<leader>g/S', fzf.git_stash, { desc = 'FZF Git Stash' })
 
 
 --- LSP ---
