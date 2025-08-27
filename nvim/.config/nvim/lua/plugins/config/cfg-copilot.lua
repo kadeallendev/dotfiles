@@ -10,14 +10,14 @@ require('copilot').setup {
   },
   filetypes = {
     ['*'] = false, -- disable all
-    csharp = true,
-    yaml = true,
-    ['github-actions-workflow'] = true,
-    ps1 = true,
+    -- csharp = true,
+    -- yaml = true,
+    -- ['github-action'] = true,
+    -- ps1 = true,
   },
 }
 
-vim.keymap.set('n', '<leader>cs', '<cmd>Copilot panel<cr>', { desc = 'Open Copilot suggestions', silent = true })
+-- vim.keymap.set('n', '<leader>cs', '<cmd>Copilot panel<cr>', { desc = 'Open Copilot suggestions', silent = true })
 
 -- Chat
 local chat = require 'CopilotChat'
