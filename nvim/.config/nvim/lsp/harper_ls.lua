@@ -29,6 +29,7 @@ return {
         BoringWords = true,                   -- Warns about boring words, TODO: see if is good
         AvoidCurses = false,                  -- Warns about swearing
         ToDoHyphen = false,                   -- Hyphenates to-do
+        EllipsisLength = false,               -- Ensure ellipsis has 3 periods
         -- Word expansions
         ExpandStandardInputAndOutput = false, -- Expands stdin, stdout, and stderr
         ExpandTimeShorthands = false,         -- Expands things like 'hrs' to 'hours'
