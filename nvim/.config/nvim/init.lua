@@ -3,10 +3,10 @@
 -- Mainly downloads and executes lazy.nvim
 ]]
 
--- vim.cmd([[
--- let g:did_install_default_menus = 1  " avoid stupid menu.vim (saves ~100ms)
--- let g:loaded_netrwPlugin = 0  " Disable netrw. 🚮
--- ]])
+vim.cmd([[
+  let g:did_install_default_menus = 1  " avoid stupid menu.vim (saves ~100ms)
+  let g:loaded_netrwPlugin = 0  " Disable netrw. 🚮
+]])
 
 -- Set leader key to <Space>
 vim.g.mapleader = ' '
@@ -44,9 +44,6 @@ require('lazy').setup({ import = 'plugins' }, {
     },
   },
 })
-
--- we can't set the colorscheme if we use custom highlights in plugin/highlight.lua
--- vim.cmd [[colorscheme default]]
 
 -- Setup VSCode
 if vim.g.vscode then
