@@ -19,6 +19,7 @@ require('nvim-treesitter.configs').setup {
     enable = true,
     disable = {
       'csv',
+      'powershell'
     },
   },
   indent = { enable = true }
