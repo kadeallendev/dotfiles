@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# Get wiki directory
+WIKI_DIR=${WIKI_DIR:-~/wiki}
+# Directories to search
+DIRS_TO_SEARCH=(
+	"$WIKI_DIR"
+)
+
+# Get the selected file from either args or fzf
+declare SELECTED
+# TODO: Take multiple args
+if [[ $# -eq 1 ]]; then
+	SELECTED="$1"
+else
+	SELECTED=$(fd . "${DIRS_TO_SEARCH[@]}" -t f --full-path |
+		sed "s|^$HOME/wiki/||" |
+		fzf --height 100% --color bw)
+fi
+
+[[ $SELECTED ]] && SELECTED="$HOME/wiki/$SELECTED"
+
+[[ ! $SELECTED ]] && exit 0
+
+# If TMUX not running create 'wiki' session with file
+TMUX_RUNNING=$(pgrep tmux)
+if [[ -z $TMUX ]] && [[ -z $TMUX_RUNNING ]]; then
+	tmux new-session -s "wiki" -c "nvim $SELECTED"
+	exit 0
+fi
+
+# Create 'wiki' session if it doesn't exist and switch to it
+if ! tmux has-session -t "wiki" 2>/dev/null; then
+	tmux new-session -ds "wiki" -c "$WIKI_DIR"
+	tmux new-window  -t "wiki" -c "~/wiki" "nvim $SELECTED"
+	tmux select-window -t "wiki" 
+fi
+
+# Switch to 'wiki' session and open new window with file
+tmux switch-client -t "wiki"
+tmux new-window  -t "wiki" -c "~/wiki" "nvim $SELECTED"
+tmux select-window -t "wiki" 
+#
