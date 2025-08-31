@@ -135,6 +135,9 @@ export FZF_DEFAULT_OPTS="
 --color=fg+:#E0E2EA,info:#FFC0B9,spinner:#A6DBFF,bg+:#4F5258,pointer:#FCE094,hl:#FCE904,bg:#14161B,fg:#E0E2EA,prompt:#B4F6C0,marker:#FCE094,header:#A6DBFF,hl+:#FCE904
 "
 
+# Wiki directory
+export WIKI_DIR="/home/kade/Documents/Vault"
+
 export PATH="$PATH:/home/kade/slides"
 
 export PATH="$PATH:/home/kade/zig"

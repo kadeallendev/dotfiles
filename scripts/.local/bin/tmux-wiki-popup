@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # WIKI_DIR=${WIKI_DIR:~/wiki}
-WIKI_DIR=~/wiki
+# WIKI_DIR=~/wiki
+if [ -z "$WIKI_DIR" ]; then
+	WIKI_DIR="/home/kade/Documents/Vault"
+fi
 
 declare selected
 # TODO: Take multiple args
@@ -9,11 +12,11 @@ if [[ $# -eq 1 ]]; then
 	selected="$1"
 else
 	selected=$(fd . $WIKI_DIR -t f --full-path |
-		sed "s|^$HOME/wiki/||" |
+		sed "s|^$WIKI_DIR/||" |
 		fzf --height 100% --color bw)
 fi
 
-[[ $selected ]] && selected="$HOME/wiki/$selected"
+[[ $selected ]] && selected="$WIKI_DIR/$selected"
 
 [[ ! $selected ]] && exit 0
 

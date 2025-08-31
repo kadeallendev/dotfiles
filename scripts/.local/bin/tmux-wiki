@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Get wiki directory
-WIKI_DIR=${WIKI_DIR:-~/wiki}
+# WIKI_DIR=${WIKI_DIR:-~/wiki}
+if [ -z "$WIKI_DIR" ]; then
+	WIKI_DIR="/home/kade/Documents/Vault"
+fi
+
 # Directories to search
 DIRS_TO_SEARCH=(
 	"$WIKI_DIR"
@@ -14,11 +18,11 @@ if [[ $# -eq 1 ]]; then
 	SELECTED="$1"
 else
 	SELECTED=$(fd . "${DIRS_TO_SEARCH[@]}" -t f --full-path |
-		sed "s|^$HOME/wiki/||" |
+		sed "s|^$WIKI_DIR/||" |
 		fzf --height 100% --color bw)
 fi
 
-[[ $SELECTED ]] && SELECTED="$HOME/wiki/$SELECTED"
+[[ $SELECTED ]] && SELECTED="$WIKI_DIR/$SELECTED"
 
 [[ ! $SELECTED ]] && exit 0
 
@@ -32,12 +36,12 @@ fi
 # Create 'wiki' session if it doesn't exist and switch to it
 if ! tmux has-session -t "wiki" 2>/dev/null; then
 	tmux new-session -ds "wiki" -c "$WIKI_DIR"
-	tmux new-window  -t "wiki" -c "~/wiki" "nvim $SELECTED"
-	tmux select-window -t "wiki" 
+	tmux new-window -t "wiki" -c "$WIKI_DIR" "nvim $SELECTED"
+	tmux select-window -t "wiki"
 fi
 
 # Switch to 'wiki' session and open new window with file
 tmux switch-client -t "wiki"
-tmux new-window  -t "wiki" -c "~/wiki" "nvim $SELECTED"
-tmux select-window -t "wiki" 
+tmux new-window -t "wiki" -c "$WIKI_DIR" "nvim $SELECTED"
+tmux select-window -t "wiki"
 #
