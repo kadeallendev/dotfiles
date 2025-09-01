@@ -1,9 +1,19 @@
 #!/usr/bin/env bash
 
-# WIKI_DIR=${WIKI_DIR:~/wiki}
-# WIKI_DIR=~/wiki
+# Get wiki directory
 if [ -z "$WIKI_DIR" ]; then
-	WIKI_DIR="/home/kade/Documents/Vault"
+	HOSTNAME=$(hostname)
+	case "$HOSTNAME" in
+	"PTML-WS-060")
+		WIKI_DIR="/home/kade/Documents/wiki"
+		;;
+	"hedgy")
+		WIKI_DIR="/Users/kade/wiki"
+		;;
+	*)
+		WIKI_DIR="~/wiki"
+		;;
+	esac
 fi
 
 declare selected
