@@ -21,7 +21,15 @@ require('nvim-treesitter.configs').setup {
       'csv',
     },
   },
-  indent = { enable = true }
+  indent = { enable = true },
+  textobjects = {
+    lsp_interop = {
+      enable = true,
+      peek_definition_code = {
+        ['<leader>K'] = '@function.outer'
+      }
+    }
+  }
 }
 
 require('nvim-treesitter.install').compilers = { 'clang' }
