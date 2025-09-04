@@ -20,16 +20,19 @@ return {
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end, { desc = 'Edit harpoon list' })
 
+      local keymap = function(format, key, num)
+        vim.keymap.set('n', string.format(format, key), function()
+          harpoon:list():select(num)
+        end)
+      end
       -- Select files
       for idx, char in ipairs { '!', '@', '#', '$', '%' } do
         -- Primary (numbers)
-        vim.keymap.set('n', string.format('<leader>%d', idx), function()
-          harpoon:list():select(idx)
-        end)
+        keymap('<leader>%d', idx, idx)
         -- Secondary (symbols)
-        vim.keymap.set('n', string.format('<leader>%s', char), function()
-          harpoon:list():select(idx + 5)
-        end)
+        keymap('<leader>%s', char, idx + 5)
+        -- I want both symbols and 6-9A
+        keymap('<leader>%d', idx + 5, idx + 5)
       end
     end,
   },
