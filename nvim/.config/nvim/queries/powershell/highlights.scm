@@ -1,6 +1,7 @@
-;; inherits: powershell
-;; extends
+; inherits: powershell
 
-; Custom highlight for $env
+; extends
+
+; Custom highlight for $env variables
 ((variable) @variable.environment
-            (#lua-match? @variable.environment "^\$env:"))
+  (#lua-match? @variable.environment "^$env:"))
