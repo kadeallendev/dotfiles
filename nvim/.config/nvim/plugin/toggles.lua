@@ -40,7 +40,10 @@ M.toggle_colorcolumn = function()
   end
 end
 
+-- I want all variations cause I'm stupid
 vim.keymap.set('n', '<leader>tCc', M.toggle_colorcolumn, { desc = 'Toggle color column' })
+vim.keymap.set('n', '<leader>tCC', M.toggle_colorcolumn, { desc = 'Toggle color column' })
+vim.keymap.set('n', '<leader>tcC', M.toggle_colorcolumn, { desc = 'Toggle color column' })
 
 ------ DIAGNOSTICS ------
 
