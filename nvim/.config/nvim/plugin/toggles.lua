@@ -72,8 +72,6 @@ end
 
 vim.keymap.set('n', '<leader>ts', M.toggle_spell, { desc = 'Toggle Spell (Local)' })
 
--- Spellwarn toggle is defined in spellwarn plugin file
-
 ------ FOLD COLUMN ------
 
 M.toggle_foldcolumn = function()
