@@ -1,7 +1,7 @@
 -- Tool to make installing LSPs better
 return {
   'williamboman/mason.nvim',
-  lazy = false,
+  lazy = true,
   build = ':MasonUpdate',
   config = function()
     require('mason').setup {
