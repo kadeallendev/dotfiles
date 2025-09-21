@@ -94,6 +94,7 @@ opt.wildignore:append '.git'
 opt.wildignore:append '.o,*.obj,*.exe,*.dll,*.manifest,*.rbc,*.class'
 opt.wildignore:append '.swp,.lock,.DS_Store,._*'
 opt.wildignore:append '.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.kbg'
+opt.wildignore:append '*/dist/*,*/node_modules/*'
 
 -- Undercurl
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
