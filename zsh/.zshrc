@@ -86,6 +86,14 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# Kill sessions
+tmux_kill() {
+	tmux list-sessions |\
+		cut -d':' -f1 |\
+		fzf --multi --prompt 'Select sessions: ' --color=bw |\
+		xargs -I {} sh -c 'tmux kill-session -t {} && echo "Killed {}"'
+}
+alias tkill="tmux_kill"
 
 # ------------------------------------------------------------------------------
 # KEYBINDINGS

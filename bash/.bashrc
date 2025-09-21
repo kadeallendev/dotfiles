@@ -186,6 +186,15 @@ alias pw="npx playwright"
 ~/.local/bin/gpg-relay
 export KEYID=$(gpg --list-secret-keys --keyid-format=long | grep 'sec.*\[C\]' | head -n 1 | awk '{print $2}' | cut -d'/' -f2)
 
+# Kill sessions
+tmux_kill() {
+	tmux list-sessions |\
+		cut -d':' -f1 |\
+		fzf --multi --prompt 'Select sessions: ' --color=bw |\
+		xargs -I {} sh -c 'tmux kill-session -t {} && echo "Killed {}"'
+}
+alias tkill="tmux_kill"
+
 # -------
 # Methods
 # -------
