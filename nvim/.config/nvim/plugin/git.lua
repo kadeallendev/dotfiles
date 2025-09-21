@@ -7,7 +7,7 @@ vim.g.commitfmt = '%s '
 -- Git related shit
 
 -- Neogit status
-vim.keymap.set('n', '<leader>gn', '<CMD>Neogit<CR>', { silent = true, desc = 'Neogit' })
+vim.keymap.set('n', '<leader>gn', '<CMD>Neogit<CR>', { desc = 'Neogit' })
 
 local gitsigns = require 'gitsigns'
 
@@ -101,35 +101,37 @@ end
 vim.keymap.set('n', '<leader>gfC', find_conflicts_all, { desc = 'Find conflicts in directory' })
 
 -- Stage hunk
-vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { silent = true, desc = 'Stage hunk' })
+vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { desc = 'Stage hunk' })
 
 -- Stage buffer
-vim.keymap.set('n', '<leader>gs', gitsigns.stage_buffer, { silent = true, desc = 'Stage buffer' })
+vim.keymap.set('n', '<leader>gs', '<CMD>G add %<CR>', { desc = 'Stage buffer' })
 vim.keymap.set('n', '<leader>ga', gitsigns.stage_buffer, { desc = 'Add buffer to index (stage)' })
 -- Unstage buffer
-vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { silent = true, desc = 'Unstage buffer' })
+vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { desc = 'Unstage buffer' })
 
 -- Diff current file
-vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { silent = true, desc = 'Gitsigns diffthis' })
+vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { desc = 'Gitsigns diffthis' })
 
 -- Blame current line
 vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { desc = 'Gitsigns blame line' })
 vim.keymap.set('n', '<leader>gbL', function() gitsigns.blame_line { full = true } end,
-  { silent = true, desc = 'Gitsigns blame line with diff' })
+  { desc = 'Gitsigns blame line with diff' })
 
 -- Blame all lines
-vim.keymap.set('n', '<leader>gba', gitsigns.blame, { silent = true, desc = 'Gitsigns blame all lines' })
+vim.keymap.set('n', '<leader>gba', gitsigns.blame, { desc = 'Gitsigns blame all lines' })
 
--- Preview hunk
+-- Preview hunk inline
 vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline,
-  { silent = true, desc = 'Gitsigns preview hunk inline' })
+  { desc = 'Gitsigns preview hunk inline' })
+-- Preview hunk windowed (overrides focus left window)
+vim.keymap.set('n', '<C-w>h', gitsigns.preview_hunk, { desc = 'Gitsigns preview hunk windowed' })
 
 -- Toggle line highlight a.k.a. preview all lines
 vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl,
-  { silent = true, desc = 'Gitsigns toggle line highlight' })
+  { desc = 'Gitsigns toggle line highlight' })
 
 -- Reset hunk
-vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { silent = true, desc = 'Gitsigns reset hunk' })
+vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { desc = 'Gitsigns reset hunk' })
 
 -- Commit with the branch jira prefix prefixed to commit message
 local function commit()
@@ -166,7 +168,7 @@ local function commit()
 end
 
 -- Commit
-vim.keymap.set('n', '<leader>gc', commit, { silent = true, desc = 'Commit with branch prefix' })
+vim.keymap.set('n', '<leader>gc', commit, { desc = 'Commit with branch prefix' })
 -- Commit with message
 vim.keymap.set('n', '<leader>gC', function()
   -- Open commit window
@@ -189,4 +191,4 @@ vim.keymap.set('n', '<leader>gC', function()
     -- Enter insert mode
     vim.cmd 'startinsert!'
   end, 100)
-end, { silent = true, desc = 'Commit with long message' })
+end, { desc = 'Commit with long message' })
