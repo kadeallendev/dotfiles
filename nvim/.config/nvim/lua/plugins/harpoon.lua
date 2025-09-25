@@ -30,8 +30,10 @@ return {
       keymap('<leader>%d', idx, idx)
       -- Secondary (symbols)
       keymap('<leader>%s', char, idx + 5)
-      -- I want both symbols and 6-9A
-      keymap('<leader>%d', idx + 5, idx + 5)
+      -- I want both symbols and 6-9
+      -- if idx ~= 10 then
+      -- keymap('<leader>%d', idx + 5, idx + 5)
+      -- end
     end
   end,
 }
