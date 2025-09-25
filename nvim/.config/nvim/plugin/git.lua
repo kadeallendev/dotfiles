@@ -3,6 +3,7 @@ local jira = require 'kade.jira'
 -- The format str for the ticket in commit message.
 -- A nil value signifies to ticket to be added.
 vim.g.commitfmt = '%s '
+vim.g.commitopts = ''
 
 -- Git related shit
 
@@ -152,7 +153,7 @@ local function commit()
 
     -- If commit message contains another JIRA prefix or commitfmt is nil, don't prepend branch prefix
     if input:match(jira.branch_pattern) ~= nil or not vim.g.commitfmt then
-      vim.cmd('G commit -m "' .. input .. '"')
+      vim.cmd('G commit ' .. vim.g.commitopts .. ' -m "' .. input .. '"')
       return
     end
 
@@ -163,7 +164,8 @@ local function commit()
       local prefix_fmt = vim.g.commitfmt
       msg = string.format(prefix_fmt .. msg, branch_prefix)
     end
-    vim.cmd('G commit -m "' .. msg .. '"')
+    -- Append commitopts
+    vim.cmd('G commit ' .. vim.g.commitopts .. ' -m "' .. msg .. '"')
   end)
 end
 
@@ -172,7 +174,7 @@ vim.keymap.set('n', '<leader>gc', commit, { desc = 'Commit with branch prefix' }
 -- Commit with message
 vim.keymap.set('n', '<leader>gC', function()
   -- Open commit window
-  vim.cmd 'G commit --verbose'
+  vim.cmd('G commit --verbose ' .. vim.g.commitopts)
 
   -- Wait for commit buffer to open
   vim.defer_fn(function()
