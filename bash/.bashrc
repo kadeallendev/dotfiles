@@ -186,14 +186,6 @@ alias pw="npx playwright"
 ~/.local/bin/gpg-relay
 export KEYID=$(gpg --list-secret-keys --keyid-format=long | grep 'sec.*\[C\]' | head -n 1 | awk '{print $2}' | cut -d'/' -f2)
 
-# Kill sessions
-tmux_kill() {
-	tmux list-sessions |\
-		cut -d':' -f1 |\
-		fzf --multi --prompt 'Select sessions: ' --color=bw |\
-		xargs -I {} sh -c 'tmux kill-session -t {} && echo "Killed {}"'
-}
-alias tkill="tmux_kill"
 
 # -------
 # Methods
@@ -220,6 +212,40 @@ function otw() {
 }
 
 eval "$(starship init bash)"
+
+# Kill TMUX sessions
+tmux_kill() {
+	tmux list-sessions |\
+		cut -d':' -f1 |\
+		fzf --multi --prompt 'Select sessions: ' --color=bw |\
+		xargs -I {} sh -c 'tmux kill-session -t {} && echo "Killed {}"'
+}
+alias tkill="tmux_kill"
+
+# Change git worktree
+function cdworktree() {
+	if ! git rev-parse --is-inside-work-tree &>/dev/null; then
+		echo "Error: Not in a git repository"
+		return 1
+	fi
+	
+	local worktree_list=$(git worktree list 2>/dev/null)
+	if [[ -z "$worktree_list" ]]; then
+		echo "Error: No git worktrees found"
+		return  1
+	fi
+
+	local selected=$(echo "$worktree_list" |
+		grep -v '(bare)' | 
+		awk '{gsub(/[][]/,""); print $1 "\t" $3}' | 
+		fzf --height 40% --reverse --with-nth=2 | 
+		cut -f1)
+
+	if [[ -n "$selected" ]]; then
+		cd "$selected" || return
+	fi
+}
+alias wt="cdworktree"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
