@@ -4,7 +4,7 @@
 [github]
 	user = kadeallendev
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [core]
 	editor = nvim
 [diff]
@@ -15,15 +15,18 @@
 [commit]
 	; gpgsign = true
 	verbose = true
+[alias]
+	wt = worktree
 [gpg]
 	; program = ; Path to gpg-override
-
 ; URLs
 [url "git@github.com:"]
 	insteadOf = "gh:"
 
 [advice]
 	addIgnoredFile=false
+[credential "https://github.com"]
+	helper = !/usr/bin/env gh auth git-credential
 
 ; [credential]
 ; 	helper = /usr/local/share/gcm-core/git-credential-manager
