@@ -1,7 +1,7 @@
 -- Tool to make installing LSPs better
 return {
   'williamboman/mason.nvim',
-  lazy = true,
+  cmd = 'Mason',
   build = ':MasonUpdate',
   config = function()
     require('mason').setup {
@@ -23,8 +23,7 @@ return {
       'csharpier',
       'roslyn',
       -- Docker
-      'docker-compose-language-service',
-      'dockerfile-language-server',
+      'docker-language-server',
       -- Web
       'html-lsp',
       'typescript-language-server',
