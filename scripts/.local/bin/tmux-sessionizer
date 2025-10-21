@@ -5,6 +5,7 @@ PTML_DIRS=(
     "$HOME"
     "$HOME/Dev"
     "$HOME/Documents"
+    $(find ~/Dev -maxdepth 2 -type d -regex '.*/[A-Z]+-[0-9]+.*' -exec dirname {} \; 2>/dev/null | sort | uniq)
 )
 
 # Directories for Hedgy
@@ -33,7 +34,16 @@ fi
 # Exit if nothing selected
 [[ ! $selected ]] && exit 0
 
-selected_name=$(basename "$selected" | tr . _)
+# Get basename of selected
+base=$(basename "$selected" | tr . _)
+selected_name="$base"
+
+# Add repo name before worktree branches
+if [[ $base =~ ^[A-Z]+-[0-9]+.*$ ]] || [[ $base =~ ^(main|bare)$ ]]; then
+    parent="$(basename $(dirname $selected) | tr . _)"
+    selected_name="${parent}_${base}"
+fi
+
 tmux_running=$(pgrep tmux)
 
 # If TMUX is not running
