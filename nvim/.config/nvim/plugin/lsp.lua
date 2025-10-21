@@ -3,26 +3,27 @@
 -- Enable LSPs
 vim.lsp.enable {
   -- Web
-  'html',
-  'cssls',
-  'ts_ls',
+  'html',  -- npm i -g vscode-langservers-extracted
+  'cssls', -- npm i -g vscode-langservers-extracted
+  'ts_ls', -- brew install typescript-language-server
+  'biome', -- brew install biome
   'phpactor',
   -- Markup
-  'yamlls',
-  'jsonls',
-  'marksman',
-  'harper_ls',
+  'yamlls',    -- brew install yaml-language-server
+  'jsonls',    -- npm i -g vscode-langservers-extracted
+  'marksman',  -- brew install marksman
+  'harper_ls', -- brew install harper
   -- Dotnet
   'powershell_es',
   -- Other
-  'lua_ls',
-  'bashls',
+  'lua_ls',                          -- brew install lua-language-server
+  'bashls',                          -- brew install bash-language-server
   'clangd',
-  'gopls',
-  'rust_analyzer',
+  'gopls',                           -- brew install gopls
+  'rust_analyzer',                   -- brew install rust-analyzer
   -- Docker
-  'docker_language_server',
-  'docker_compose_language_service',
+  'docker_language_server',          -- go install github.com/docker/docker-language-server/cmd/docker-language-server@latest
+  'docker_compose_language_service', -- brew install docker-composer-langserver
 }
 
 -- Default keymaps
@@ -31,7 +32,7 @@ vim.lsp.enable {
 -- K hover documentation [vim.lsp.buf.hover] (I override to set winopts)
 -- grn rename symbol [vim.lsp.buf.rename]
 -- gra code action [vim.lsp.buf.code_action]
--- grr references [vim.lsp.buf.references]
+-- grr references [vim.lsp.buf.references] (I override to use fzf-lua)
 -- gri implementation [vim.lsp.buf.implementation]
 -- gO document symbols [vim.lsp.buf.document_symbol] (I override to use fzf-lua)
 -- C-s signature help in insert mode [vim.lsp.buf.signature_help]
@@ -41,8 +42,14 @@ vim.lsp.enable {
 -- gr/ Creates doc comment, defined in lua/plugins/neogen.lua
 -- <leader>/s Search workspace symbols
 
+local fzf = require('fzf-lua')
+
 -- Goto definition
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set('n', 'gd', '<C-]>', { desc = "Go to definition" })
+
+-- References
+vim.keymap.set('n', 'grr', fzf.lsp_references, { desc = "Search LSP references" })
 
 -- Hover documentation
 vim.keymap.set('n', 'K', function()
@@ -50,12 +57,10 @@ vim.keymap.set('n', 'K', function()
 end)
 
 -- Document symbols search using fzf-lua
-vim.keymap.set('n', 'gO', function()
-  require('fzf-lua').lsp_document_symbols()
-end, { desc = 'Search document symbols' })
+vim.keymap.set('n', 'gO', fzf.lsp_document_symbols, { desc = 'Search document symbols' })
 
 -- Workspace symbols using fzf-lua
-vim.keymap.set('n', '<leader>/s', require('fzf-lua').lsp_workspace_symbols, { desc = "Search workspace symbols" })
+vim.keymap.set('n', '<leader>/s', fzf.lsp_workspace_symbols, { desc = "Search workspace symbols" })
 
 -- LSP Checkhealth
 vim.keymap.set('n', '<leader>lc', '<CMD>checkhealth lsp<CR>', { desc = 'Checkhealth lsp' })

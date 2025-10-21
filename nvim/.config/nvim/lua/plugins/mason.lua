@@ -17,31 +17,12 @@ return {
     }
 
     local mason_packages = {
-      'lua-language-server',
-      'stylua',
       -- .NET
       'csharpier',
       'roslyn',
-      -- Docker
-      'docker-language-server',
-      -- Web
-      'html-lsp',
-      'typescript-language-server',
-      -- Go
-      'gopls',
-      -- Markdown
-      'marksman',
       -- Bash
       'shfmt',
-      'bash-language-server',
-      -- Config
-      'json-lsp',
-      'yaml-language-server',
       'gh-actions-language-server',
-      -- C
-      -- 'clang-format',
-      -- Rust
-      'rust-analyzer',
       -- SQL
       'sql-formatter',
       -- Powershell

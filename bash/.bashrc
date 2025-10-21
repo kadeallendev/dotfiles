@@ -144,6 +144,9 @@ export PATH="$PATH:/home/kade/zig"
 
 export PATH="$PATH:/mnt/c/Users/kade.allen/bin"
 
+# Go bin
+export PATH="$PATH:/home/kade/go/bin"
+
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
 
@@ -211,8 +214,6 @@ function otw() {
 	ssh -p 2220 "${1}@${game}.labs.overthewire.org"
 }
 
-eval "$(starship init bash)"
-
 # Kill TMUX sessions
 tmux_kill() {
 	tmux list-sessions |\
@@ -254,3 +255,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+eval "$(starship init bash)"
