@@ -20,17 +20,12 @@ conform.setup {
     -- go = { 'goimports', 'gofmt' },
     -- java = { 'google-java-format' },
     csharp = { 'csharpier' },
-    javascript = prettier,
     css = prettier,
-    typescript = prettier,
-    yaml = prettier,
-    json = prettier,
+    yaml = { 'yamlfmt' },
+    typescript = { 'biome' }
+
   },
   formatters = {
-    prettier = {
-      command = 'prettier',
-      prepend_args = { '-w', '--single-quote' },
-    },
     prettierd = {
       command = 'prettierd',
       prepend_args = { '-w', '--single-quote' },
