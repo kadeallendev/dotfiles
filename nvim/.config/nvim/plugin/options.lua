@@ -81,7 +81,7 @@ opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Line column
--- vim.opt.colorcolumn = '100'
+vim.opt.colorcolumn = '100'
 
 -- Disable folding auto
 -- opt.foldlevelstart = 99
