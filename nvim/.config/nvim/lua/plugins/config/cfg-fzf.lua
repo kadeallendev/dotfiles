@@ -55,10 +55,11 @@ fzf.setup {
   grep = {
     rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
     winopts = {
-      width = 0.8,
+      width = 0.7,
       height = 0.75,
       preview = {
-        horizontal = 'right:50%',
+        layout = 'vertical',
+        vertical = 'down:20%',
       },
     },
   },
