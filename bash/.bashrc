@@ -132,9 +132,8 @@ export FZF_ALT_C_OPTS="
 --preview 'tree -C {}'"
 export FZF_DEFAULT_OPTS="
 --height 40% --layout=reverse
---color=bw
+--color=fg+:#E0E2EA,info:#FFC0B9,spinner:#A6DBFF,bg+:#4F5258,pointer:#FCE094,hl:#FCE904,bg:#14161B,fg:#E0E2EA,prompt:#B4F6C0,marker:#FCE094,header:#A6DBFF,hl+:#FCE904
 "
-# --color=fg+:#E0E2EA,info:#FFC0B9,spinner:#A6DBFF,bg+:#4F5258,pointer:#FCE094,hl:#FCE904,bg:#14161B,fg:#E0E2EA,prompt:#B4F6C0,marker:#FCE094,header:#A6DBFF,hl+:#FCE904
 
 # Wiki directory
 export WIKI_DIR="/home/kade/Documents/Vault"
