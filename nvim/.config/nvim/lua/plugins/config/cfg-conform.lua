@@ -7,7 +7,7 @@ conform.setup {
   default_format_opts = {},
   format_on_save = {
     timeout_ms = 500,
-    lsp_format = 'prefer',
+    lsp_format = 'fallback',
   },
   formatters_by_ft = {
     -- c = { 'clang-format' }, -- NOTE: might be clang_format
@@ -22,8 +22,7 @@ conform.setup {
     csharp = { 'csharpier' },
     css = prettier,
     yaml = { 'yamlfmt' },
-    typescript = { 'biome' }
-
+    typescript = { 'biome', lsp_format = "never" }
   },
   formatters = {
     prettierd = {
