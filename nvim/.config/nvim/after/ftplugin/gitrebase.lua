@@ -1,5 +1,5 @@
 local function set_keymap(letter, word)
-  local lhs = '<leader>' .. letter
+  local lhs = '<leader>' .. letter .. '<leader>'
   local rhs = ':s/\\v^\\w+/' .. word .. '<CR>:nohl<CR>'
   vim.keymap.set('n', lhs, rhs, { buffer = true })
 end
