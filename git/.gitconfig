@@ -11,7 +11,7 @@
 	tool = nvimdiff
 	colorMoved = default
 [pull]
-	rebase = false
+	rebase = true
 [commit]
 	; gpgsign = true
 	verbose = true
