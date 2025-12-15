@@ -4,15 +4,14 @@ local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 conform.setup {
   notify_on_error = true,
   notify_no_formatters = true,
-  default_format_opts = {},
-  format_on_save = {
-    timeout_ms = 500,
+  default_format_opts = {
     lsp_format = 'fallback',
   },
+  format_on_save = { timeout_ms = 500, lsp_format = 'fallback' },
   formatters_by_ft = {
     -- c = { 'clang-format' }, -- NOTE: might be clang_format
     -- cpp = { 'clang-format' },
-    -- lua = { 'stylua' },
+    lua = { 'stylua' },
     -- rust = { 'rustfmt', lsp_format = 'fallback' },
     -- nix = { 'nixpkgs-fmt' },
     -- python = { 'ruff' },
@@ -21,8 +20,8 @@ conform.setup {
     -- java = { 'google-java-format' },
     csharp = { 'csharpier' },
     css = prettier,
-    yaml = { 'yamlfmt' },
-    typescript = { 'biome', lsp_format = "never" }
+    yaml = { 'yamlfmt', lsp_format = 'never' },
+    typescript = { 'biome', lsp_format = 'never' },
   },
   formatters = {
     prettierd = {
