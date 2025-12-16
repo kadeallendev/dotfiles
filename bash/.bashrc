@@ -153,6 +153,10 @@ export MANPAGER="nvim +Man!"
 # GPG signing
 export GPG_TTY=$(tty)
 
+# Windows dir
+export WIN="/mnt/c/Users/kade.allen"
+export ONEDRIVE="$WIN/OneDrive - PartsTrader"
+
 # Aliases
 
 # Git
