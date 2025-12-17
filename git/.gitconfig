@@ -1,12 +1,14 @@
 [user]
 	name = Kade Allen
 	email = 38875538+kadeallendev@users.noreply.github.com
+	; signingKey = 865EC041C63C45D6
 [github]
 	user = kadeallendev
 [init]
 	defaultBranch = main
 [core]
 	editor = nvim
+	fileMode = false
 [diff]
 	tool = nvimdiff
 	colorMoved = default
@@ -22,6 +24,8 @@
 ; URLs
 [url "git@github.com:"]
 	insteadOf = "gh:"
+[url "https://github.com/PartsTrader/"]
+	insteadOf = "pt:"
 
 [advice]
 	addIgnoredFile=false
