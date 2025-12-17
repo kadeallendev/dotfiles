@@ -3,9 +3,9 @@
 # Directories for PartsTrader machine
 PTML_DIRS=(
     "$HOME"
-    "$HOME/Dev"
-    "$HOME/Documents"
-    $(find ~/Dev -maxdepth 2 -type d -regex '.*/[A-Z]+-[0-9]+.*' -exec dirname {} \; 2>/dev/null | sort | uniq)
+    "$HOME/dev"
+    "$HOME/dox"
+    $(find ~/dev -maxdepth 2 -type d -regex '.*/[A-Z]+-[0-9]+.*' -exec dirname {} \; 2>/dev/null | sort | uniq)
 )
 
 # Directories for Hedgy
