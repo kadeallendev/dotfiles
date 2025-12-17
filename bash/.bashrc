@@ -4,8 +4,8 @@
 
 # If not running interactively, don't do anything
 case $- in
-*i*) ;;
-*) return ;;
+	*i*) ;;
+	  *) return ;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-xterm-color | *-256color) color_prompt=yes ;;
+	xterm-color | *-256color) color_prompt=yes ;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -114,10 +114,9 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
-PATH=$HOME/.local/bin/aws-mfa:$PATH
+export PATH="$HOME/.local/bin/aws-mfa:$PATH"
 export COMPOSE_IGNORE_ORPHANS=true
 export AWS_SDK_LOAD_CONFIG=true
-alias aws-mfa="aws-mfa --profile default"
 alias aws-mfa="aws-mfa --profile default"
 export NODE_EXTRA_CA_CERTS="/mnt/c/PTML/Certs/wlgca.crt"
 
@@ -138,14 +137,8 @@ export FZF_DEFAULT_OPTS="
 # Wiki directory
 export WIKI_DIR="/home/kade/Documents/Vault"
 
-export PATH="$PATH:/home/kade/slides"
-
-export PATH="$PATH:/home/kade/zig"
-
+# Bin in windows
 export PATH="$PATH:/mnt/c/Users/kade.allen/bin"
-
-# Go bin
-export PATH="$PATH:/home/kade/go/bin"
 
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
@@ -189,10 +182,9 @@ alias nightly="bob run nightly"
 # Playwright
 alias pw="npx playwright"
 
-# GPG RELAY
-~/.local/bin/gpg-relay
+# # GPG RELAY
+# ~/.local/bin/gpg-relay
 export KEYID=$(gpg --list-secret-keys --keyid-format=long | grep 'sec.*\[C\]' | head -n 1 | awk '{print $2}' | cut -d'/' -f2)
-
 
 # -------
 # Methods
@@ -256,8 +248,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# FZF
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 eval "$(starship init bash)"
