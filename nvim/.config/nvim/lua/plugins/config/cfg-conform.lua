@@ -20,7 +20,7 @@ conform.setup {
     -- java = { 'google-java-format' },
     csharp = { 'csharpier' },
     css = prettier,
-    yaml = { 'yamlfmt', lsp_format = 'never' },
+    -- yaml = { 'yamlfmt' },
     typescript = { 'biome', lsp_format = 'never' },
   },
   formatters = {
