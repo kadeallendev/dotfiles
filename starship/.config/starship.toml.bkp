@@ -1,0 +1,131 @@
+# Get editor completions
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+scan_timeout = 10
+command_timeout = 50
+
+format = """
+
+($status\n)\
+($cmd_duration\n\n)\
+
+$directory\
+
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$shell\
+$dotnet\
+$c\
+$go\
+$elixir\
+$rust\
+$java\
+$python\
+$nodejs\
+$nix_shell\
+$container\
+$docker_context\
+$direnv\
+
+\n\
+$character"""
+
+[status]
+style = "bold #ff6e5e"
+format = 'exited with [$status]($style) [$common_meaning$signal_name](#7b8496)'
+disabled = false
+
+[cmd_duration]
+style = "bold #FCE094"
+min_time = 1_000
+show_milliseconds = true
+
+[hostname]
+format = '[$ssh_symbol$hostname]($style)'
+ssh_only = false
+style = '#004c63'
+
+[username]
+format = '[$user]($style)'
+show_always = true
+# disabled = true
+
+[directory]
+style = "#A6DBFF"
+truncate_to_repo = true
+
+[character]
+format = "$symbol "
+success_symbol = "[❯](#ffffff)"
+error_symbol = "[❯](#ff6e5e)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "on [$branch]($style)"
+style = "#FFCAFF"
+
+[git_status]
+format = '( [$conflicted$modified$staged$ahead_behind]($style))'
+style = "dimmed"
+modified = "*"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\)'
+style = "bright-black"
+
+[shell]
+disabled = false
+format = ' [$indicator]($style) '
+bash_indicator = 'bash'
+powershell_indicator = 'pwsh'
+style = 'dimmed'
+
+# Languages
+
+[dotnet]
+format = "[dotnet ($version)]($style)"
+style = "#7b8496"
+
+[c]
+format = "[c ($version)]($style)"
+style = "#7b8496"
+
+[golang]
+format = "[go ($version)]($style)"
+style = "#7b8496"
+
+[elixir]
+format = "[elixir ($version)]($style)"
+style = "#7b8496"
+
+[java]
+format = "[java ($version)]($style)"
+style = "#7b8496"
+
+[rust]
+format = "[rust ($version)]($style)"
+style = "#7b8496"
+
+[python]
+format = "[python ($version)]($style)"
+style = "#7b8496"
+
+[nodejs]
+format = "[node ($version)]($style)"
+style = "#7b8496"
+
+[nix_shell]
+format = "[nix-shell ($state\\($name\\))]($style)"
+style = "#7b8496"
+
+[container]
+format = "[container ($name)]($style)"
+style = "#7b8496"
+
+[docker_context]
+format = "[docker ($context)]($style)"
+style = "#7b8496"
