@@ -39,9 +39,9 @@ format = "[ $state( $progress_current/$progress_total)]($style)"
 
 [status]
 style = "red"
-format = " [\\[$status\\]($style)]"
+format = " \\[[$status]($style)\\]"
 disabled = false
 
 [character]
 success_symbol = "[>](white)"
-error_symbol = "[<](red)"
+error_symbol = "[>](red)"
