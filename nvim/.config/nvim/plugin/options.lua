@@ -2,7 +2,7 @@ local utils = require 'kade.utils'
 local opt = vim.opt
 
 -- Line Numbers {{{
-opt.number = true         -- Turn on line numbers
+opt.number = true -- Turn on line numbers
 opt.relativenumber = true -- Relative numbers
 -- }}}
 
@@ -74,7 +74,7 @@ opt.splitbelow = true
 -- opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-opt.scrolloff = 12
+opt.scrolloff = 8
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 opt.hlsearch = true
