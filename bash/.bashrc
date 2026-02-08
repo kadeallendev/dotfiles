@@ -142,6 +142,7 @@ export PATH="$PATH:/mnt/c/Users/kade.allen/bin"
 
 # Go
 export GOPATH="$HOME/dev/go"
+export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOPATH/bin"
 
 # Use neovim as manpager
