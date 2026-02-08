@@ -1,8 +1,9 @@
 -- vim.opt.conceallevel = 0
 vim.opt.spell = true
 -- vim.opt.foldmethod = 'manual'
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 vim.opt.textwidth = 100
 
