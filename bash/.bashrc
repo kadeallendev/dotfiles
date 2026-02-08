@@ -140,6 +140,10 @@ export WIKI_DIR="/home/kade/Documents/Vault"
 # Bin in windows
 export PATH="$PATH:/mnt/c/Users/kade.allen/bin"
 
+# Go
+export GOPATH="$HOME/dev/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # Use neovim as manpager
 export MANPAGER="nvim +Man!"
 
