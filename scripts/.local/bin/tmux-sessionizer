@@ -5,7 +5,7 @@ PTML_DIRS=(
     "$HOME"
     "$HOME/dev"
     "$HOME/dox"
-    $(find ~/dev -maxdepth 2 -type d -regex '.*/[A-Z]+-[0-9]+.*' -exec dirname {} \; 2>/dev/null | sort | uniq)
+    $(find ~/dev -maxdepth 2 -type d -regex '.*/bare$' -exec dirname {} \; 2>/dev/null | sort | uniq)
 )
 
 # Directories for Hedgy
