@@ -91,4 +91,11 @@ set('n', '<leader>sh', function()
 end)
 
 -- Correct spelling mistake with <leader>C
-vim.keymap.set('n', '<leader>C', '1z=', { desc = "Accept first spelling suggestion" })
+vim.keymap.set('n', '<leader>C', '1z=', { desc = 'Accept first spelling suggestion' })
+
+-- URL encoding
+local url_module = require 'kade.url-encoding'
+vim.keymap.set('n', '<leader>ue', url_module.encode_line, { desc = 'URL encode current line' })
+vim.keymap.set('n', '<leader>ud', url_module.decode_line, { desc = 'URL decode current line' })
+vim.keymap.set('v', '<leader>ue', url_module.encode_selection, { desc = 'URL encode current selection' })
+vim.keymap.set('v', '<leader>ud', url_module.decode_selection, { desc = 'URL decode current selection' })
