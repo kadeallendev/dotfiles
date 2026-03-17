@@ -64,10 +64,6 @@ vim.keymap.set('n', '<leader>/s', fzf.lsp_workspace_symbols, { desc = 'Search wo
 
 -- LSP Checkhealth
 vim.keymap.set('n', '<leader>lc', '<CMD>checkhealth lsp<CR>', { desc = 'Checkhealth lsp' })
--- Deprecated keymap
-vim.keymap.set('n', '<leader>cl', function()
-  vim.notify('Deprecated: Use <Space>lc', vim.log.levels.WARN)
-end, { desc = 'Checkhealth lsp' })
 
 --- Gets the active LSP clients on the current buffer.
 ---@return table|nil A table with the clients' id and name.
