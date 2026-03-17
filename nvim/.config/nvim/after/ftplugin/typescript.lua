@@ -18,8 +18,8 @@ local function regex(group)
   vim.api.nvim_set_hl(0, group, { fg = 'NvimLightMagenta' })
 end
 
-regex('@string.regexp.typescript')
-regex('@operator.regex')
-regex('@string.escape.regex')
-regex('@puncutation.delimiter.regex')
-regex('@puncutation.bracket.regex')
+regex '@string.regexp.typescript'
+regex '@operator.regex'
+regex '@string.escape.regex'
+regex '@puncutation.delimiter.regex'
+regex '@puncutation.bracket.regex'

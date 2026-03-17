@@ -15,7 +15,6 @@ vim.g.mapleader = ' '
 -- | Use :TStatus to toggle
 -- set('n', '<leader>tS', require('kade.statusline-toggle').toggle, { desc = 'Toggle statusline' })
 
-
 ------ KEYMAPS ------
 
 -- Make relative line jumps with j and k populate the jump list
