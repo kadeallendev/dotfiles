@@ -2,8 +2,8 @@ local jira = require 'kade.jira'
 
 -- The format str for the ticket in commit message.
 -- A nil value signifies to ticket to be added.
-vim.g.commitfmt = '%s '
-vim.g.commitopts = ''
+vim.g.commitfmt = '[%s] - '
+vim.g.commitopts = '--no-verify'
 
 -- Git related shit
 
@@ -106,7 +106,6 @@ vim.keymap.set('n', '<leader>gh', gitsigns.stage_hunk, { desc = 'Stage hunk' })
 
 -- Stage buffer
 vim.keymap.set('n', '<leader>gs', '<CMD>G add %<CR>', { desc = 'Stage buffer' })
-vim.keymap.set('n', '<leader>ga', gitsigns.stage_buffer, { desc = 'Add buffer to index (stage)' })
 -- Unstage buffer
 vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { desc = 'Unstage buffer' })
 
@@ -115,21 +114,20 @@ vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { desc = 'Gitsigns diffthi
 
 -- Blame current line
 vim.keymap.set('n', '<leader>gbl', gitsigns.blame_line, { desc = 'Gitsigns blame line' })
-vim.keymap.set('n', '<leader>gbL', function() gitsigns.blame_line { full = true } end,
-  { desc = 'Gitsigns blame line with diff' })
+vim.keymap.set('n', '<leader>gbL', function()
+  gitsigns.blame_line { full = true }
+end, { desc = 'Gitsigns blame line with diff' })
 
 -- Blame all lines
 vim.keymap.set('n', '<leader>gba', gitsigns.blame, { desc = 'Gitsigns blame all lines' })
 
 -- Preview hunk inline
-vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline,
-  { desc = 'Gitsigns preview hunk inline' })
+vim.keymap.set('n', '<leader>gph', gitsigns.preview_hunk_inline, { desc = 'Gitsigns preview hunk inline' })
 -- Preview hunk windowed (overrides focus left window)
 vim.keymap.set('n', '<C-w>h', gitsigns.preview_hunk, { desc = 'Gitsigns preview hunk windowed' })
 
 -- Toggle line highlight a.k.a. preview all lines
-vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl,
-  { desc = 'Gitsigns toggle line highlight' })
+vim.keymap.set('n', '<leader>gpa', gitsigns.toggle_linehl, { desc = 'Gitsigns toggle line highlight' })
 
 -- Reset hunk
 vim.keymap.set('n', '<leader>grh', gitsigns.reset_hunk, { desc = 'Gitsigns reset hunk' })
