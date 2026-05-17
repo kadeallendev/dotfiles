@@ -5,15 +5,15 @@ return {
   settings = {
     yaml = {
       schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["https://json.schemastore.org/github-action.json"] = "/.github/actions/*",
-        ["https://artillery.io/schema.json"] = "*loadtest*.y*ml"
+        ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+        ['https://json.schemastore.org/github-action.json'] = '/.github/actions/*',
+        ['https://artillery.io/schema.json'] = '*loadtest*.y*ml',
       },
       format = {
-        singleQuote = true
+        singleQuote = true,
       },
-      hover = true
+      hover = true,
     },
-    redhat = { telemetry = { enabled = false } }
-  }
+    redhat = { telemetry = { enabled = false } },
+  },
 }
