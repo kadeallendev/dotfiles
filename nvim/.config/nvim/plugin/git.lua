@@ -182,6 +182,9 @@ vim.keymap.set('n', '<leader>gC', function()
     -- Paste JIRA ticket from 't' reg
     if vim.g.commitfmt then
       local ticket = jira.get_ticket()
+      if ticket == nil then
+        return
+      end
       local content = string.format(vim.g.commitfmt .. ' ', ticket)
       local lines = {}
       ---@diagnostic disable-next-line: param-type-mismatch
