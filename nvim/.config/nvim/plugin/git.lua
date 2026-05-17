@@ -109,6 +109,9 @@ vim.keymap.set('n', '<leader>gs', '<CMD>G add %<CR>', { desc = 'Stage buffer' })
 -- Unstage buffer
 vim.keymap.set('n', '<leader>gS', gitsigns.reset_buffer_index, { desc = 'Unstage buffer' })
 
+-- Amend last commit
+vim.keymap.set('n', '<leader>ga', '<CMD>G commit --amend --no-edit ' .. vim.g.commitopts .. '<CR>', { desc = 'Amend last commit' })
+
 -- Diff current file
 vim.keymap.set('n', '<leader>gdt', gitsigns.diffthis, { desc = 'Gitsigns diffthis' })
 
