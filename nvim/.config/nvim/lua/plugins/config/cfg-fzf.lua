@@ -27,11 +27,11 @@ fzf.setup {
   fzf_colors = true,
   winopts = {
     height = 0.7, -- Default 0.85
-    width = 0.7,  -- Default 0.80
+    width = 0.7, -- Default 0.80
     border = 'single',
     preview = {
       horizontal = 'right:55%', -- Default right:60%
-      title_pos = 'left',       -- Default center
+      title_pos = 'left', -- Default center
     },
   },
   -- PICKERS --
@@ -43,8 +43,8 @@ fzf.setup {
   -- Files picker is used for finding all files in current directory
   files = {
     formatter = 'path.filename_first', -- Show filename first, e.g. "fzf-lua/previewer/fzf.lua" => "fzf.lua previewer/fzf-lua"
-    cwd_prompt_shorten_len = 20,       -- Shorten the cwd prompt at 20 letters
-    cwd_prompt_shorten_val = 3,        -- Shorten each folder to 3 characters
+    cwd_prompt_shorten_len = 20, -- Shorten the cwd prompt at 20 letters
+    cwd_prompt_shorten_val = 3, -- Shorten each folder to 3 characters
     winopts = {
       width = 0.8,
       preview = {
@@ -53,7 +53,7 @@ fzf.setup {
     },
   },
   grep = {
-    rg_opts = '--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
+    rg_opts = '--multiline --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
     winopts = {
       width = 0.7,
       height = 0.75,
@@ -172,10 +172,9 @@ vim.keymap.set('n', '<leader>g/h', fzf.git_hunks, { desc = 'FZF Git Hunks' })
 -- Stashes
 vim.keymap.set('n', '<leader>g/S', fzf.git_stash, { desc = 'FZF Git Stash' })
 
-
 --- LSP ---
-vim.keymap.set('n', '<leader>/lr', vim.lsp.buf.references, { desc = "Search LSP references" })
-vim.keymap.set('n', '<leader>/ld', vim.lsp.buf.definition, { desc = "Search LSP definitions" })
+vim.keymap.set('n', '<leader>/lr', vim.lsp.buf.references, { desc = 'Search LSP references' })
+vim.keymap.set('n', '<leader>/ld', vim.lsp.buf.definition, { desc = 'Search LSP definitions' })
 
 -- -- Git commits
 -- vim.keymap.set('n', '<leader>/gc', function()
