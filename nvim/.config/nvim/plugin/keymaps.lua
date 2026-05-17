@@ -56,6 +56,9 @@ set('n', 'zh', 'zH')
 set('n', '[t', '<CMD>tabp<CR>', { desc = 'Next tab' })
 set('n', ']t', '<CMD>tabn<CR>', { desc = 'Previous tab' })
 
+-- Disable C-k digraph in insert
+set('i', '<C-k>', '<Nop>')
+
 -- Overwrite ' goto mark with ` goto mark
 set('n', "'", '`', {})
 
