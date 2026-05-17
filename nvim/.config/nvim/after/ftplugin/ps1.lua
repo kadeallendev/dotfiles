@@ -8,7 +8,9 @@ local set_hl = function(group, opts)
 end
 
 set_hl('@variable.parameter.builtin.powershell', { fg = 'NvimLightGrey3' })
-set_hl('@variable.environment.powershell', { fg = "NvimLightYellow" })
-set_hl('Type', { fg = "NvimLightMagenta" })
+set_hl('@variable.environment.powershell', { fg = 'NvimLightYellow' })
+set_hl('Type', { fg = 'NvimLightMagenta' })
 set_hl('@type.builtin.powershell', { link = 'Type' })
 set_hl('@function.builtin.powershell', { link = 'Function' })
+
+vim.fn.setreg('p', '[Parameter(Mandatory = $true)]')
