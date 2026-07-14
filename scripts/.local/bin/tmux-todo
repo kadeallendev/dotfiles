@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Opens floating window with input to todo file
+
+TODO_FILE=${TODO_FILE:-"$HOME/dox/todo/todo.md"}
+
+# Read todo
+printf "\e[1m\e[34mTodo: \e[0m"
+input=""
+while IFS= read -r -s -n1 char; do
+	case "$char" in
+		$'\x1b') echo; exit 0 ;; # escape
+		'') break ;; # enter
+		$'\x7f')
+			if [[ -n "$input" ]]; then
+				input="${input%?}"
+				printf "\b \b"
+			fi
+			;;
+		*)
+			input+="$char"
+			printf '%s' "$char"
+			;;
+	esac
+done
+
+# Add todo to todo file
+echo "- $input" >> $TODO_FILE
+
