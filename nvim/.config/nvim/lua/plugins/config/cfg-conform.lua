@@ -1,5 +1,4 @@
 local conform = require 'conform'
-local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
 conform.setup {
   notify_on_error = true,
@@ -19,18 +18,24 @@ conform.setup {
     -- go = { 'goimports', 'gofmt' },
     -- java = { 'google-java-format' },
     csharp = { 'csharpier' },
-    css = prettier,
     -- yaml = { 'yamlfmt' },
     typescript = { 'biome', lsp_format = 'never' },
+    html = { 'biome', lsp_format = 'never' },
+    css = { 'biome', lsp_format = 'never' },
   },
   formatters = {
-    prettierd = {
-      command = 'prettierd',
-      prepend_args = { '-w', '--single-quote' },
-    },
     shfmt = {
       command = 'shfmt',
       prepend_args = { '-i', '0', '-sr', '-kp' },
+    },
+    -- Biome's HTML and CSS formatters are experimental and disabled by
+    -- default; explicitly enable them so `biome format` actually touches
+    -- .html/.css files (without this, biome silently no-ops on them).
+    biome = {
+      append_args = {
+        '--html-formatter-enabled=true',
+        '--css-formatter-enabled=true',
+      },
     },
   },
 }
