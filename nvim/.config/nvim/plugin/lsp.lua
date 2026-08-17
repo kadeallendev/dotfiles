@@ -145,3 +145,17 @@ vim.keymap.set('n', '<leader>lS', function()
     vim.notify("Stopped LSP client '" .. client.name .. "'")
   end)
 end)
+
+--- Restart client
+vim.keymap.set('n', '<leader>lr', function()
+  local clients = get_active_clients()
+  if not clients or #clients == 0 then
+    vim.notify('No active LSP clients', vim.log.levels.INFO)
+    return
+  end
+  -- Select client to restart
+  lsp_client_select(clients, 'Select LSP client to restart: ', function(client)
+    vim.cmd('LspRestart ' .. client.name)
+    vim.notify('Restarting LSP client ' .. client.name)
+  end)
+end)
