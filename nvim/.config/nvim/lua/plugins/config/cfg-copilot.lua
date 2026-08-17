@@ -26,7 +26,7 @@ chat.setup {
     layout = 'vertical',
     width = 0.4,
   },
-  model = 'claude-sonnet-4.6',
+  model = 'claude-sonnet-5',
   mappings = {
     accept_nearest_diff = {
       normal = '<C-<CR>>',
