@@ -37,3 +37,6 @@ cmd('UrlDecode', function(opts)
     url_module.encode_selection()
   end
 end, { desc = 'URL decode current line', range = true })
+
+-- Load git conflicts into quickfix list
+cmd('Conflicts', require('kade.git').load_conflicts, { desc = 'Load git conflicts into quickfix list' })

@@ -33,4 +33,56 @@ M.get_branch = function()
   return branch:gsub('%s+', '')
 end
 
+--- Loads all git conflicts in the repository into the quickfix list
+M.load_conflicts = function()
+  if vim.fn.executable 'git' == 0 then
+    vim.notify('git executable does not exist', vim.log.levels.ERROR)
+    return
+  end
+
+  -- Find the repo root
+  local root = vim.system({ 'git', 'rev-parse', '--show-toplevel' }, { text = true }):wait()
+  if root.code ~= 0 then
+    vim.notify('Not inside a git repository', vim.log.levels.ERROR)
+    return
+  end
+  local toplevel = vim.trim(root.stdout)
+
+  -- Only search files git considers unmerged
+  local unmerged = vim.system({ 'git', 'diff', '--name-only', '--diff-filter=U', '--relative' }, { text = true }):wait()
+  local files = vim.split(vim.trim(unmerged.stdout or ''), '\n', { trimempty = true })
+  if #files == 0 then
+    vim.fn.setqflist({}, 'r')
+    print 'No merge conflicts found'
+    return
+  end
+
+  local items = {}
+  for _, file in ipairs(files) do
+    local path = vim.fs.joinpath(toplevel, file)
+    local ok, lines = pcall(vim.fn.readfile, path)
+    if ok then
+      for i, line in ipairs(lines) do
+        if line:match '^<<<<<<< ' or line == '<<<<<<<' then
+          table.insert(items, {
+            filename = path,
+            lnum = i,
+            col = 1,
+            text = 'Conflict: ' .. line:sub(9),
+          })
+        end
+      end
+    end
+  end
+
+  vim.fn.setqflist({}, 'r', { title = 'Git conflicts', items = items })
+
+  if #items > 0 then
+    vim.cmd 'copen'
+    print('Found ' .. #items .. ' conflicts')
+  else
+    print 'No merge conflicts found'
+  end
+end
+
 return M
